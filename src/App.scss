@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+$white: #f6f6f6;
+$light-grey1: #e5e5e5;
+$light-grey2: #c4c4c4;
+$dark-grey1: #787878;
+$dark-grey2: #595959;
+$black1: #363636;
+$black2: #171717;
+
+$green1: #44b499;
+$green2: #6bd2a1; 
+$blue1: #5e6eff;
+$blue2: #96adff;
+$red1: #f46161;
+$red2: #fca28f;
+$yellow1: #fbcb50;
+$yellow2: #fff48e;
+
+.App{
+  &-light{
+    background-color: $white;
+  }
+  &-dark{
+    background-color: $black2;
+  }
+
+  //text
+  .header1{
+    font-family: 'Exo', sans-serif;
+    font-weight: 800;
+    &--light{
+      color: $black2;
+    }
+    &--dark{
+      color: $white;
+    }
+  }
+  .header2{
+    font-family: 'Exo', sans-serif;
+    font-weight: 700;
+    &--light{
+      color: $black2;
+    }
+    &--dark{
+      color: $white;
+    }
+  }
+  .header3{
+    font-family: 'Exo', sans-serif;
+    font-weight: 700;
+    &--light{
+      color: $dark-grey2;
+    }
+    &--dark{
+      color: $light-grey2;
+    }
+  }
+  .subheader1{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    &--light{
+      color: $green1;
+    }
+    &--dark{
+      color: $green2;
+    }
+  }
+  .subheader2{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    &--light{
+      color: $dark-grey2;
+    }
+    &--dark{
+      color: $light-grey2;
+    }
+  }
+  .body-text1{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    
+    &--light{
+      color: $dark-grey2;
+    }
+    &--dark{
+      color: $light-grey2;
+    }
+    &--bold{
+      font-weight: 600;
+    }
+    &--command{
+      border-radius: 10px;
+      border-color: $dark-grey2;
+    }
+  }
+  .body-text2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    
+    &--light{
+      color: $dark-grey2;
+    }
+    &--dark{
+      color: $light-grey2;
+    }
+    &--command{
+      border-radius: 10px;
+      border-color: $dark-grey2;
+    }
+  }
+  .body-text3{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    border-radius: 10px;
+    
+    &--light{
+      color: $dark-grey2;
+      border-color: $dark-grey2;
+    }
+    &--dark{
+      color: $light-grey2;
+      border-color: $light-grey2;
+    }
+  }
+  .index-text{
+    font-family: 'Quicksand', sans-serif;
+    color: $dark-grey1;
+    
+    &--regular{
+      font-weight: 600;
+    }
+    &--bold{
+      font-weight: 700;
+    }
+  }
+  .link-text{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    
+    &--light{
+      color: $green1;
+    }
+    &--dark{
+      color: $green2;
+    }
+  }
+  .code-text{
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: 500;
+    
+    &--light{
+      color: $dark-grey2;
+    }
+    &--dark{
+      color: $light-grey2;
+    }
+    &--green-light{
+      color: $green1;
+    }
+    &--green-dark{
+      color: $green2;
+    }
+    &--yellow-light{
+      color: $yellow1;
+    }
+    &--yellow-dark{
+      color: $yellow2;
+    }
+    &--red-light{
+      color: $red1;
+    }
+    &--red-dark{
+      color: $red2;
+    }
+    &--blue-light{
+      color: $blue1;
+    }
+    &--blue-dark{
+      color: $blue2;
+    }
+  }
+  //buttons
+  .button{
+    cursor: pointer;
+    display: inline-flex;
+    width: min-content;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: $white;
+
+    .icon{
+      &--light{
+        fill: $black1;
+      }
+      &--dark{
+        fill: $white;
+      }
+    }
+
+    .button-text{
+      display: none;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      
+      &--light{
+        color: $black2;
+      }
+      &--dark{
+        color: $white;
+      }
+    }
+    &:hover{
+      background-color: $light-grey1;
+
+      .button-text{
+        display: inline-block;
+      }
+    }
+  }
+  .i-button{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 40px;
+    border-width: 3px;
+    
+    &--light{
+      border-color: $light-grey1;
+    }
+    &--dark{
+      border-color: $black1;
+    }
+  }
+  //container
+  .nav{
+    display: flex;
+  }
+  .nav-m{
+    position: absolute;
+    border-radius: 40px;
+    border-width: 3px;
+    height: 100vh;
+    width: 70vw;
+
+    &--light{
+      background-color: $white;
+      border-color: $light-grey1;
+    }
+    &--dark{
+      background-color: $black2;
+      border-color: $black1;
+    }
+  }
+  .wraper{
+    border-radius: 40px;
+    border-width: 3px;
+    
+    &--light{
+      border-color: $light-grey1;
+    }
+    &--dark{
+      border-color: $black1;
+    }
+  }
+}
