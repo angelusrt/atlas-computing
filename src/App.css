@@ -2,25 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
-.App-light {
-  background-color: #f6f6f6;
-}
-
-.App-dark {
-  background-color: #171717;
-}
-
 .App .header1 {
   font-family: 'Exo', sans-serif;
   font-weight: 800;
-}
-
-.App .header1--light {
-  color: #171717;
-}
-
-.App .header1--dark {
-  color: #f6f6f6;
 }
 
 .App .header2 {
@@ -28,25 +12,9 @@
   font-weight: 700;
 }
 
-.App .header2--light {
-  color: #171717;
-}
-
-.App .header2--dark {
-  color: #f6f6f6;
-}
-
 .App .header3 {
   font-family: 'Exo', sans-serif;
   font-weight: 700;
-}
-
-.App .header3--light {
-  color: #595959;
-}
-
-.App .header3--dark {
-  color: #c4c4c4;
 }
 
 .App .subheader1 {
@@ -54,38 +22,14 @@
   font-weight: 600;
 }
 
-.App .subheader1--light {
-  color: #44b499;
-}
-
-.App .subheader1--dark {
-  color: #6bd2a1;
-}
-
 .App .subheader2 {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
 }
 
-.App .subheader2--light {
-  color: #595959;
-}
-
-.App .subheader2--dark {
-  color: #c4c4c4;
-}
-
 .App .body-text1 {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-}
-
-.App .body-text1--light {
-  color: #595959;
-}
-
-.App .body-text1--dark {
-  color: #c4c4c4;
 }
 
 .App .body-text1--bold {
@@ -102,14 +46,6 @@
   font-weight: 600;
 }
 
-.App .body-text2--light {
-  color: #595959;
-}
-
-.App .body-text2--dark {
-  color: #c4c4c4;
-}
-
 .App .body-text2--command {
   border-radius: 10px;
   border-color: #595959;
@@ -119,16 +55,6 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
   border-radius: 10px;
-}
-
-.App .body-text3--light {
-  color: #595959;
-  border-color: #595959;
-}
-
-.App .body-text3--dark {
-  color: #c4c4c4;
-  border-color: #c4c4c4;
 }
 
 .App .index-text {
@@ -150,57 +76,9 @@
   font-style: italic;
 }
 
-.App .link-text--light {
-  color: #44b499;
-}
-
-.App .link-text--dark {
-  color: #6bd2a1;
-}
-
 .App .code-text {
   font-family: 'Roboto Mono', sans-serif;
   font-weight: 500;
-}
-
-.App .code-text--light {
-  color: #595959;
-}
-
-.App .code-text--dark {
-  color: #c4c4c4;
-}
-
-.App .code-text--green-light {
-  color: #44b499;
-}
-
-.App .code-text--green-dark {
-  color: #6bd2a1;
-}
-
-.App .code-text--yellow-light {
-  color: #fbcb50;
-}
-
-.App .code-text--yellow-dark {
-  color: #fff48e;
-}
-
-.App .code-text--red-light {
-  color: #f46161;
-}
-
-.App .code-text--red-dark {
-  color: #fca28f;
-}
-
-.App .code-text--blue-light {
-  color: #5e6eff;
-}
-
-.App .code-text--blue-dark {
-  color: #96adff;
 }
 
 .App .button {
@@ -214,15 +92,10 @@
   border: none;
   border-radius: 10px;
   text-decoration: none;
-  background-color: #f6f6f6;
 }
 
-.App .button .icon--light {
-  fill: #363636;
-}
-
-.App .button .icon--dark {
-  fill: #f6f6f6;
+.App .button:hover .button-text {
+  display: inline-block;
 }
 
 .App .button .button-text {
@@ -231,36 +104,12 @@
   font-weight: 600;
 }
 
-.App .button .button-text--light {
-  color: #171717;
-}
-
-.App .button .button-text--dark {
-  color: #f6f6f6;
-}
-
-.App .button:hover {
-  background-color: #e5e5e5;
-}
-
-.App .button:hover .button-text {
-  display: inline-block;
-}
-
 .App .i-button {
   position: absolute;
   bottom: 20px;
   left: 20px;
   border-radius: 40px;
   border-width: 3px;
-}
-
-.App .i-button--light {
-  border-color: #e5e5e5;
-}
-
-.App .i-button--dark {
-  border-color: #363636;
 }
 
 .App .nav {
@@ -277,14 +126,10 @@
   width: 70vw;
 }
 
-.App .nav-m--light {
-  background-color: #f6f6f6;
-  border-color: #e5e5e5;
-}
-
-.App .nav-m--dark {
-  background-color: #171717;
-  border-color: #363636;
+.App span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .App .wraper {
@@ -292,11 +137,191 @@
   border-width: 3px;
 }
 
-.App .wraper--light {
+.App-light {
+  background-color: #f6f6f6;
+}
+
+.App-light .header1 {
+  color: #171717;
+}
+
+.App-light .header2 {
+  color: #171717;
+}
+
+.App-light .header3 {
+  color: #595959;
+}
+
+.App-light .subheader1 {
+  color: #44b499;
+}
+
+.App-light .subheader2 {
+  color: #595959;
+}
+
+.App-light .body-text1 {
+  color: #595959;
+}
+
+.App-light .body-text2 {
+  color: #595959;
+}
+
+.App-light .body-text3 {
+  color: #595959;
+  border-color: #595959;
+}
+
+.App-light .link-text {
+  color: #44b499;
+}
+
+.App-light .code-text--normal {
+  color: #595959;
+}
+
+.App-light .code-text--green {
+  color: #44b499;
+}
+
+.App-light .code-text--yellow {
+  color: #fbcb50;
+}
+
+.App-light .code-text--red {
+  color: #f46161;
+}
+
+.App-light .code-text--blue {
+  color: #5e6eff;
+}
+
+.App-light .button {
+  background-color: #f6f6f6;
+}
+
+.App-light .button:hover {
+  background-color: #e5e5e5;
+}
+
+.App-light .button .icon {
+  fill: #363636;
+}
+
+.App-light .button .button-text {
+  color: #171717;
+}
+
+.App-light .i-button {
   border-color: #e5e5e5;
 }
 
-.App .wraper--dark {
+.App-light .nav {
+  background-color: #f6f6f6;
+}
+
+.App-light .nav-m {
+  background-color: #f6f6f6;
+  border-color: #e5e5e5;
+}
+
+.App-light .wraper {
+  border-color: #e5e5e5;
+}
+
+.App-dark {
+  background-color: #171717;
+}
+
+.App-dark .header1 {
+  color: #f6f6f6;
+}
+
+.App-dark .header2 {
+  color: #f6f6f6;
+}
+
+.App-dark .header3 {
+  color: #c4c4c4;
+}
+
+.App-dark .subheader1 {
+  color: #6bd2a1;
+}
+
+.App-dark .subheader2 {
+  color: #c4c4c4;
+}
+
+.App-dark .body-text1 {
+  color: #c4c4c4;
+}
+
+.App-dark .body-text2 {
+  color: #c4c4c4;
+}
+
+.App-dark .body-text3 {
+  color: #c4c4c4;
+  border-color: #c4c4c4;
+}
+
+.App-dark .link-text {
+  color: #6bd2a1;
+}
+
+.App-dark .code-text--normal {
+  color: #c4c4c4;
+}
+
+.App-dark .code-text--green {
+  color: #6bd2a1;
+}
+
+.App-dark .code-text--yellow {
+  color: #fff48e;
+}
+
+.App-dark .code-text--red {
+  color: #fca28f;
+}
+
+.App-dark .code-text--blue {
+  color: #96adff;
+}
+
+.App-dark .button {
+  background-color: #171717;
+}
+
+.App-dark .button:hover {
+  background-color: #363636;
+}
+
+.App-dark .button .icon {
+  fill: #f6f6f6;
+}
+
+.App-dark .button .button-text {
+  color: #f6f6f6;
+}
+
+.App-dark .i-button {
+  border-color: #363636;
+}
+
+.App-dark .nav {
+  background-color: #171717;
+}
+
+.App-dark .nav-m {
+  background-color: #171717;
+  border-color: #363636;
+}
+
+.App-dark .wraper {
   border-color: #363636;
 }
 /*# sourceMappingURL=App.css.map */

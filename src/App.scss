@@ -21,74 +21,31 @@ $yellow1: #fbcb50;
 $yellow2: #fff48e;
 
 .App{
-  &-light{
-    background-color: $white;
-  }
-  &-dark{
-    background-color: $black2;
-  }
-
   //text
   .header1{
     font-family: 'Exo', sans-serif;
     font-weight: 800;
-    &--light{
-      color: $black2;
-    }
-    &--dark{
-      color: $white;
-    }
   }
   .header2{
     font-family: 'Exo', sans-serif;
     font-weight: 700;
-    &--light{
-      color: $black2;
-    }
-    &--dark{
-      color: $white;
-    }
   }
   .header3{
     font-family: 'Exo', sans-serif;
     font-weight: 700;
-    &--light{
-      color: $dark-grey2;
-    }
-    &--dark{
-      color: $light-grey2;
-    }
   }
   .subheader1{
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
-    &--light{
-      color: $green1;
-    }
-    &--dark{
-      color: $green2;
-    }
   }
   .subheader2{
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
-    &--light{
-      color: $dark-grey2;
-    }
-    &--dark{
-      color: $light-grey2;
-    }
   }
   .body-text1{
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    
-    &--light{
-      color: $dark-grey2;
-    }
-    &--dark{
-      color: $light-grey2;
-    }
+  
     &--bold{
       font-weight: 600;
     }
@@ -100,13 +57,7 @@ $yellow2: #fff48e;
   .body-text2{
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
-    
-    &--light{
-      color: $dark-grey2;
-    }
-    &--dark{
-      color: $light-grey2;
-    }
+
     &--command{
       border-radius: 10px;
       border-color: $dark-grey2;
@@ -116,15 +67,6 @@ $yellow2: #fff48e;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     border-radius: 10px;
-    
-    &--light{
-      color: $dark-grey2;
-      border-color: $dark-grey2;
-    }
-    &--dark{
-      color: $light-grey2;
-      border-color: $light-grey2;
-    }
   }
   .index-text{
     font-family: 'Quicksand', sans-serif;
@@ -141,48 +83,10 @@ $yellow2: #fff48e;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-style: italic;
-    
-    &--light{
-      color: $green1;
-    }
-    &--dark{
-      color: $green2;
-    }
   }
   .code-text{
     font-family: 'Roboto Mono', sans-serif;
     font-weight: 500;
-    
-    &--light{
-      color: $dark-grey2;
-    }
-    &--dark{
-      color: $light-grey2;
-    }
-    &--green-light{
-      color: $green1;
-    }
-    &--green-dark{
-      color: $green2;
-    }
-    &--yellow-light{
-      color: $yellow1;
-    }
-    &--yellow-dark{
-      color: $yellow2;
-    }
-    &--red-light{
-      color: $red1;
-    }
-    &--red-dark{
-      color: $red2;
-    }
-    &--blue-light{
-      color: $blue1;
-    }
-    &--blue-dark{
-      color: $blue2;
-    }
   }
   //buttons
   .button{
@@ -192,35 +96,16 @@ $yellow2: #fff48e;
     border: none;
     border-radius: 10px;
     text-decoration: none;
-    background-color: $white;
 
-    .icon{
-      &--light{
-        fill: $black1;
-      }
-      &--dark{
-        fill: $white;
+    &:hover{
+      .button-text{
+        display: inline-block;
       }
     }
-
     .button-text{
       display: none;
       font-family: 'Quicksand', sans-serif;
       font-weight: 600;
-      
-      &--light{
-        color: $black2;
-      }
-      &--dark{
-        color: $white;
-      }
-    }
-    &:hover{
-      background-color: $light-grey1;
-
-      .button-text{
-        display: inline-block;
-      }
     }
   }
   .i-button{
@@ -229,13 +114,6 @@ $yellow2: #fff48e;
     left: 20px;
     border-radius: 40px;
     border-width: 3px;
-    
-    &--light{
-      border-color: $light-grey1;
-    }
-    &--dark{
-      border-color: $black1;
-    }
   }
   //container
   .nav{
@@ -247,25 +125,170 @@ $yellow2: #fff48e;
     border-width: 3px;
     height: 100vh;
     width: 70vw;
-
-    &--light{
-      background-color: $white;
-      border-color: $light-grey1;
-    }
-    &--dark{
-      background-color: $black2;
-      border-color: $black1;
-    }
+  }
+  span{
+    display: flex;
   }
   .wraper{
     border-radius: 40px;
     border-width: 3px;
-    
-    &--light{
-      border-color: $light-grey1;
+  }
+}
+
+.App-light{
+  background-color: $white;
+
+  //text
+  .header1{
+    color: $black2;
+  }
+  .header2{
+    color: $black2;
+  }
+  .header3{
+    color: $dark-grey2;
+  }
+  .subheader1{
+    color: $green1;
+  }
+  .subheader2{
+    color: $dark-grey2;
+  }
+  .body-text1{
+    color: $dark-grey2;
+  }
+  .body-text2{
+    color: $dark-grey2;
+  }
+  .body-text3{
+    color: $dark-grey2;
+    border-color: $dark-grey2;
+  }
+  .link-text{
+    color: $green1;
+  }
+  .code-text{
+    &--normal{
+      color: $dark-grey2;
     }
-    &--dark{
-      border-color: $black1;
+    &--green{
+      color: $green1;
     }
+    &--yellow{
+      color: $yellow1;
+    }
+    &--red{
+      color: $red1;
+    }
+    &--blue{
+      color: $blue1;
+    }
+  }
+  //buttons
+  .button{
+    background-color: $white;
+
+    &:hover{
+      background-color: $light-grey1;
+    }
+    .icon{
+      fill: $black1;
+    }
+    .button-text{
+      color: $black2;
+    }
+  }
+  .i-button{
+    border-color: $light-grey1;
+  }
+  //container
+  .nav{
+    background-color: $white;
+  }
+  .nav-m{
+    background-color: $white;
+    border-color: $light-grey1;
+  }
+  .wraper{
+    border-color: $light-grey1;
+  }
+}
+
+.App-dark{
+  background-color: $black2;
+
+  //text
+  .header1{
+    color: $white;
+  }
+  .header2{
+    color: $white;
+  }
+  .header3{
+    color: $light-grey2;
+  }
+  .subheader1{
+    color: $green2;
+  }
+  .subheader2{
+    color: $light-grey2;
+  }
+  .body-text1{
+    color: $light-grey2;
+  }
+  .body-text2{
+    color: $light-grey2;
+  }
+  .body-text3{
+    color: $light-grey2;
+    border-color: $light-grey2;
+  }
+  .link-text{
+    color: $green2;
+  }
+  .code-text{
+    &--normal{
+      color: $light-grey2;
+    }
+    &--green{
+      color: $green2;
+    }
+    &--yellow{
+      color: $yellow2;
+    }
+    &--red{
+      color: $red2;
+    }
+    &--blue{
+      color: $blue2;
+    }
+  }
+  //buttons
+  .button{
+    background-color: $black2;
+
+    &:hover{
+      background-color: $black1;
+    }
+    .icon{
+      fill: $white;
+    }
+    .button-text{
+      color: $white;
+    }
+  }
+  .i-button{
+    border-color: $black1;
+  }
+  //container
+  .nav{
+    background-color: $black2;
+  }
+  .nav-m{
+    background-color: $black2;
+    border-color: $black1;
+  }
+  .wraper{
+    border-color: $black1;
   }
 }
