@@ -7,13 +7,13 @@ function Navbar(){
         <h1 className="header1">
           Recentes
         </h1>
-        <Button/>
+        <Button name="Filtrar"/>
       </span>
       <span> 
-          <Button name="casa"/>
-          <Button/>
-          <Button/>
-          <Button name ="modo escuro"/>
+          <Button icon="Podcast" name="Podcast"/>
+          <Button icon="Exclamation" name ="Sobre"/>
+          <Button icon="GrandFont" name ="Aumentar fonte"/>
+          <Button icon="Sun" name ="Modo escuro"/>
       </span>
     </div>
   )
