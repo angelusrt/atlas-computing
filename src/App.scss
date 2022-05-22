@@ -92,7 +92,7 @@ $yellow2: #fff48e;
   .button{
     cursor: pointer;
     display: inline-flex;
-    width: min-content;
+    width: fit-content;
     border: none;
     border-radius: 10px;
     text-decoration: none;
@@ -102,7 +102,13 @@ $yellow2: #fff48e;
         display: inline-block;
       }
     }
+    .icon{
+      fill: $black2;
+    }
     .button-text{
+      &-activated{
+        display: inline-block;
+      }
       display: none;
       font-family: 'Quicksand', sans-serif;
       font-weight: 600;
@@ -118,6 +124,10 @@ $yellow2: #fff48e;
   //container
   .nav{
     display: flex;
+    align-items: center;
+  }
+  .left-side{
+    align-items: center;
   }
   .nav-m{
     position: absolute;
@@ -290,5 +300,41 @@ $yellow2: #fff48e;
   }
   .wraper{
     border-color: $black1;
+  }
+}
+
+@media (min-width: 800px) {
+  .App{
+    //text
+    .header1{
+      margin: 0;
+      font-size: 50px;
+    }
+    //buttons
+    .button{
+      margin-left: 10px;
+      padding: 10px;
+
+      .icon{
+        width: 30px;
+      }
+      .button-text{
+        &-activated{
+          padding: 0;
+        }
+        margin: 0;
+        font-size: 24px;
+        padding-left: 10px;
+      }
+    }
+    //container
+    .nav{
+      margin: auto;
+      width: 640px;
+      padding: 40px 0;
+    }
+    .left-side{
+      margin-right: auto;
+    }
   }
 }

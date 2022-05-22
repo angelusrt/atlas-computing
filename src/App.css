@@ -86,9 +86,9 @@
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   border: none;
   border-radius: 10px;
   text-decoration: none;
@@ -98,10 +98,18 @@
   display: inline-block;
 }
 
+.App .button .icon {
+  fill: #171717;
+}
+
 .App .button .button-text {
   display: none;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
+}
+
+.App .button .button-text-activated {
+  display: inline-block;
 }
 
 .App .i-button {
@@ -116,6 +124,15 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App .left-side {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .App .nav-m {
@@ -323,5 +340,35 @@
 
 .App-dark .wraper {
   border-color: #363636;
+}
+
+@media (min-width: 800px) {
+  .App .header1 {
+    margin: 0;
+    font-size: 50px;
+  }
+  .App .button {
+    margin-left: 10px;
+    padding: 10px;
+  }
+  .App .button .icon {
+    width: 30px;
+  }
+  .App .button .button-text {
+    margin: 0;
+    font-size: 24px;
+    padding-left: 10px;
+  }
+  .App .button .button-text-activated {
+    padding: 0;
+  }
+  .App .nav {
+    margin: auto;
+    width: 640px;
+    padding: 40px 0;
+  }
+  .App .left-side {
+    margin-right: auto;
+  }
 }
 /*# sourceMappingURL=App.css.map */

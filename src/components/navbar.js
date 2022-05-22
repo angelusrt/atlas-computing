@@ -3,17 +3,17 @@ import Button from "./button"
 function Navbar(){
   return(
     <div className="nav">
-      <span>
+      <span className="left-side">
         <h1 className="header1">
           Recentes
         </h1>
-        <Button name="Filtrar"/>
+        <Button type={false} name="Filtrar"/>
       </span>
-      <span> 
-          <Button icon="Podcast" name="Podcast"/>
-          <Button icon="Exclamation" name ="Sobre"/>
-          <Button icon="GrandFont" name ="Aumentar fonte"/>
-          <Button icon="Sun" name ="Modo escuro"/>
+      <span className="rigth-side"> 
+          {/* <Button type={true} icon="Podcast" name="Podcast"/> */}
+          <Button type={true} icon="Exclamation" name ="Sobre"/>
+          <Button type={true} icon="GrandFont" name ="Aum. fonte"/>
+          <Button type={true} icon="Sun" name ="Tema dark"/>
       </span>
     </div>
   )
