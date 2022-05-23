@@ -38,6 +38,7 @@
 
 .App .body-text1--command {
   border-radius: 10px;
+  border-style: solid;
   border-color: #595959;
 }
 
@@ -48,6 +49,7 @@
 
 .App .body-text2--command {
   border-radius: 10px;
+  border-style: solid;
   border-color: #595959;
 }
 
@@ -146,8 +148,19 @@
 }
 
 .App .wraper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   border-radius: 40px;
   border-width: 3px;
+  border-style: solid;
 }
 
 .App-light {
@@ -343,6 +356,14 @@
     margin: 0;
     font-size: 50px;
   }
+  .App .header2 {
+    margin: 0;
+    font-size: 40px;
+  }
+  .App .subheader1 {
+    margin: 0 5px 0 0;
+    font-size: 24px;
+  }
   .App .button {
     margin-left: 10px;
     padding: 10px;
@@ -365,6 +386,12 @@
   }
   .App .left-side {
     margin-right: auto;
+  }
+  .App .wraper {
+    margin: 40px auto;
+    width: 640px;
+    height: 200px;
+    padding: 40px 80px;
   }
 }
 /*# sourceMappingURL=App.css.map */
