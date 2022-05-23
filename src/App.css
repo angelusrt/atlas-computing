@@ -98,10 +98,6 @@
   display: inline-block;
 }
 
-.App .button .icon {
-  fill: #171717;
-}
-
 .App .button .button-text {
   display: none;
   font-family: 'Quicksand', sans-serif;
@@ -224,7 +220,7 @@
 }
 
 .App-light .button .icon {
-  fill: #363636;
+  fill: #171717;
 }
 
 .App-light .button .button-text {

@@ -1,6 +1,6 @@
 import Button from "./button"
 
-function Navbar(){
+function Navbar(props){
   return(
     <div className="nav">
       <span className="left-side">
@@ -13,7 +13,12 @@ function Navbar(){
           {/* <Button type={true} icon="Podcast" name="Podcast"/> */}
           <Button type={true} icon="Exclamation" name ="Sobre"/>
           <Button type={true} icon="GrandFont" name ="Aum. fonte"/>
-          <Button type={true} icon="Sun" name ="Tema dark"/>
+          <Button 
+            type={true} 
+            onFunc={props.setDT} 
+            icon={props.isDT?"Moon":"Sun"} 
+            name={props.isDT?"Modo claro":"Modo escuro"}
+          />
       </span>
     </div>
   )

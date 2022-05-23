@@ -102,9 +102,6 @@ $yellow2: #fff48e;
         display: inline-block;
       }
     }
-    .icon{
-      fill: $black2;
-    }
     .button-text{
       &-activated{
         display: inline-block;
@@ -202,7 +199,7 @@ $yellow2: #fff48e;
       background-color: $light-grey1;
     }
     .icon{
-      fill: $black1;
+      fill: $black2;
     }
     .button-text{
       color: $black2;

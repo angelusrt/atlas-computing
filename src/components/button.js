@@ -2,7 +2,7 @@ import Icon from './Icon'
 
 function Button(props){
   return(
-    <button className="button">
+    <button onClick={() => props.onFunc()} className="button">
       <Icon className="icon" name={props.icon}/>
       <h3 className={
         props.type?
