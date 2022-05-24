@@ -15,7 +15,7 @@ function Navbar(props){
           {/* <Button type={true} icon="GrandFont" name ="Aum. fonte"/> */}
           <Button 
             type={true} 
-            onFunc={props.setDT} 
+            onFunc={props.setIsDT} 
             icon={props.isDT?"Moon":"Sun"} 
             name={props.isDT?"Modo claro":"Modo escuro"}
           />
