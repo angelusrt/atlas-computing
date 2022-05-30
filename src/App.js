@@ -17,7 +17,12 @@ function App() {
 
   return (
     <div className={"App " + (isDT?"App-dark":"App-light")}>
-      <Navbar isDT={isDT} setIsDT={() => setIsDT(!isDT)}/>
+      <Navbar 
+        isDT={isDT} 
+        isPost={isPost}
+        setIsDT={() => setIsDT(!isDT)}
+        onFunc={() => setIsPost(false)}
+      />
       {
         !isPost?
         Posts.posts.map((post, key) =>

@@ -2,12 +2,20 @@ import Button from "./button"
 
 function Navbar(props){
   return(
-    <div className="nav">
+    <div className={`nav ${props.isPost?"nav-post":"nav-home"}`}>
       <span className="left-side">
-        <h1 className="header1">
-          Recentes
-        </h1>
-        <Button type={false} name="Filtrar"/>
+        <button 
+          onClick={() => props.onFunc()}
+          className="button"
+        >
+          <h1 className="header1">
+            {props.isPost?"<ds>":"Recentes"}
+          </h1>
+        </button>
+        {
+          !props.isPost &&
+          <Button type={false} name="Filtrar"/>
+        }
       </span>
       <span className="rigth-side"> 
           {/* <Button type={true} icon="Podcast" name="Podcast"/> */}

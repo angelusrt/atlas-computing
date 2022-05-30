@@ -379,8 +379,13 @@ $yellow2: #fff48e;
     //container
     .nav{
       margin: auto;
-      width: 640px;
       padding: 40px 0;
+    }
+    .nav-home{
+      width: 680px;
+    }
+    .nav-post{
+      width: calc(95% - 160px - 6px + 40px);
     }
     .left-side{
       margin-right: auto;

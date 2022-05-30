@@ -421,8 +421,13 @@
   }
   .App .nav {
     margin: auto;
-    width: 640px;
     padding: 40px 0;
+  }
+  .App .nav-home {
+    width: 680px;
+  }
+  .App .nav-post {
+    width: calc(95% - 160px - 6px + 40px);
   }
   .App .left-side {
     margin-right: auto;
