@@ -2,13 +2,15 @@ import {useState, useEffect} from "react"
 import Navbar from "./components/navbar"
 import PostCard from "./components/PostCard"
 import Post from "./components/Post"
-import Posts from "./posts.json"
+import About from "./components/About"
+import Data from "./data.json"
 import './App.css'
 
 function App() {
   //Dark theme
   const[isDT, setIsDT] = useState(false)
-  const[isPost, setIsPost] = useState(false)
+
+  const[whatPage, setWhatPage] = useState("")
   const[post, setPost] = useState({})
 
   useEffect(()=> {
@@ -19,24 +21,27 @@ function App() {
     <div className={"App " + (isDT?"App-dark":"App-light")}>
       <Navbar 
         isDT={isDT} 
-        isPost={isPost}
+        whatPage={whatPage}
         setIsDT={() => setIsDT(!isDT)}
-        onFunc={() => setIsPost(false)}
+        setWhatPage={() => setWhatPage("about")}
+        onFunc={() => setWhatPage("home")}
       />
       {
-        !isPost?
-        Posts.posts.map((post, key) =>
+        whatPage==="post"?
+        <Post post={post}/> :
+        whatPage==="about"?
+        <About about={Data.about}/> :
+        Data.posts.map((post, key) =>
           <PostCard 
             key={key} 
             tags={post.tags} 
             title={post.title}
             onFunc={() => {
-              setIsPost(true)
+              setWhatPage("post")
               setPost(post)
             }}
           />
-        ):
-        <Post post={post}/>
+        )
       }
     </div>
   )

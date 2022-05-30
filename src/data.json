@@ -29,5 +29,23 @@
         ]
       }
     }
-  ]
+  ],
+  "about": {
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim nec dui nunc mattis. Dignissim convallis aenean et tortor at risus. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat.",
+    "dev": [
+      {
+        "authorName": "Nome Exemplo",
+        "authorDescription": "Isso é um exemplo de descrição",
+        "email": "nome@exemplo.com",
+        "telephone": "+5581999999999",
+        "socials": [
+          {
+            "name": "LinkedIn",
+            "iconName": "LinkedIn",
+            "link": "https://www.linkedin.com/in/angelus-t-a7659b141/"
+          }
+        ]
+      }
+    ]
+  }
 }

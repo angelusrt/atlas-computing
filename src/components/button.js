@@ -2,7 +2,13 @@ import Icon from './Icon'
 
 function Button(props){
   return(
-    <button onClick={() => props.onFunc()} className="button">
+    <a 
+      className="button"
+      target="_blank" 
+      referrerPolicy='no-referrer' 
+      href={props.link} 
+      onClick={() => props.onFunc()} 
+    >
       <Icon className="icon" name={props.icon}/>
       <h3 className={
         props.type?
@@ -11,7 +17,7 @@ function Button(props){
       }>
         {props.name}
       </h3>
-    </button>
+    </a>
   )
 }
 

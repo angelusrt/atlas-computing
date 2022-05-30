@@ -17,6 +17,11 @@
   font-weight: 700;
 }
 
+.App .header4 {
+  font-family: 'Exo', sans-serif;
+  font-weight: 700;
+}
+
 .App .subheader1 {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
@@ -192,6 +197,10 @@
   color: #595959;
 }
 
+.App-light .header4 {
+  color: #171717;
+}
+
 .App-light .subheader1 {
   color: #44b499;
 }
@@ -287,6 +296,10 @@
   color: #c4c4c4;
 }
 
+.App-dark .header4 {
+  color: #f6f6f6;
+}
+
 .App-dark .subheader1 {
   color: #6bd2a1;
 }
@@ -379,6 +392,10 @@
     margin: 0 0 10px 0;
     font-size: 30px;
   }
+  .App .header4 {
+    margin: 40px 0 10px 0;
+    font-size: 30px;
+  }
   .App .subheader1 {
     margin: 0 5px 0 0;
     font-size: 24px;
@@ -423,10 +440,10 @@
     margin: auto;
     padding: 40px 0;
   }
-  .App .nav-home {
+  .App .nav1 {
     width: 680px;
   }
-  .App .nav-post {
+  .App .nav2 {
     width: calc(95% - 160px - 6px + 40px);
   }
   .App .left-side {
@@ -454,9 +471,31 @@
     height: calc(320px - 80px - 6px);
     padding: 40px;
   }
+  .App .wrapper4 {
+    padding: 40px 80px;
+  }
   .App .post {
     width: 95%;
     margin: auto;
+  }
+  .App .about {
+    width: calc(680px + 160px - 40px + 6px);
+    width: calc(680px - 40px + 6px);
+    padding-bottom: 160px;
+    margin: auto;
+  }
+  .App .about .wrapper4 {
+    margin: 0 calc(-80px - 3px);
+  }
+  .App .socials {
+    margin: 40px 0 0 0;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .App .socials .button {
+    margin-left: 0;
+    margin-right: 10px;
   }
   .App .body-wrapper {
     display: -webkit-box;

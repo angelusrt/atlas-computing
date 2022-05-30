@@ -34,6 +34,10 @@ $yellow2: #fff48e;
     font-family: 'Exo', sans-serif;
     font-weight: 700;
   }
+  .header4{
+    font-family: 'Exo', sans-serif;
+    font-weight: 700;
+  }
   .subheader1{
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
@@ -172,6 +176,9 @@ $yellow2: #fff48e;
   .header3{
     color: $dark-grey2;
   }
+  .header4{
+    color: $black2;
+  }
   .subheader1{
     color: $green1;
   }
@@ -251,6 +258,9 @@ $yellow2: #fff48e;
   }
   .header3{
     color: $light-grey2;
+  }
+  .header4{
+    color: $white;
   }
   .subheader1{
     color: $green2;
@@ -334,6 +344,10 @@ $yellow2: #fff48e;
       margin: 0 0 10px 0;
       font-size: 30px;
     }
+    .header4{
+      margin: 40px 0 10px 0;
+      font-size: 30px;
+    }
     .subheader1{
       margin: 0 5px 0 0;
       font-size: 24px;
@@ -381,10 +395,10 @@ $yellow2: #fff48e;
       margin: auto;
       padding: 40px 0;
     }
-    .nav-home{
+    .nav1{
       width: 680px;
     }
-    .nav-post{
+    .nav2{
       width: calc(95% - 160px - 6px + 40px);
     }
     .left-side{
@@ -412,9 +426,31 @@ $yellow2: #fff48e;
       height: calc(320px - 80px - 6px);
       padding: 40px;
     }
+    .wrapper4{
+      padding: 40px 80px;
+    }
     .post{
       width: 95%;
       margin: auto;
+    }
+    .about{
+      width: calc(680px + 160px - 40px + 6px);
+      width: calc(680px - 40px + 6px);
+      padding-bottom: 160px;
+      margin: auto;
+      
+      .wrapper4{
+        margin: 0 calc(-80px - 3px);
+      }
+    }
+    .socials{
+      margin: 40px 0 0 0;
+      align-items: center;
+
+      .button{
+        margin-left: 0;
+        margin-right: 10px;
+      }
     }
     .body-wrapper{
       display: flex;
