@@ -1,6 +1,6 @@
 function PostCard(props) {
   return (
-    <div className="wraper" onClick={() => props.onFunc()}>
+    <div className="wrapper wrapper1" onClick={() => props.onFunc()}>
       <span>
         {props.tags.map((tag, key) =>   
           <a key={key} className="subheader1">{tag}</a>

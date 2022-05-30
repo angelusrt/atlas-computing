@@ -29,7 +29,7 @@
 
 .App .body-text1 {
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .App .body-text1--bold {
@@ -60,7 +60,9 @@
 }
 
 .App .index-text {
+  display: block;
   font-family: 'Quicksand', sans-serif;
+  text-decoration: none;
   color: #787878;
 }
 
@@ -73,13 +75,17 @@
 }
 
 .App .link-text {
+  display: block;
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-style: italic;
+  word-break: break-all;
+  overflow: hidden;
 }
 
 .App .code-text {
   font-family: 'Roboto Mono', sans-serif;
+  line-height: 60px;
   font-weight: 500;
 }
 
@@ -147,10 +153,11 @@
   display: flex;
 }
 
-.App .wraper {
+.App .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -161,6 +168,12 @@
   border-radius: 40px;
   border-width: 3px;
   border-style: solid;
+}
+
+.App .body-wraper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .App-light {
@@ -204,23 +217,23 @@
   color: #44b499;
 }
 
-.App-light .code-text--normal {
+.App-light .code-text-normal {
   color: #595959;
 }
 
-.App-light .code-text--green {
+.App-light .code-text-green {
   color: #44b499;
 }
 
-.App-light .code-text--yellow {
+.App-light .code-text-yellow {
   color: #fbcb50;
 }
 
-.App-light .code-text--red {
+.App-light .code-text-red {
   color: #f46161;
 }
 
-.App-light .code-text--blue {
+.App-light .code-text-blue {
   color: #5e6eff;
 }
 
@@ -253,7 +266,8 @@
   border-color: #e5e5e5;
 }
 
-.App-light .wraper {
+.App-light .wrapper {
+  background-color: #f6f6f6;
   border-color: #e5e5e5;
 }
 
@@ -298,23 +312,23 @@
   color: #6bd2a1;
 }
 
-.App-dark .code-text--normal {
+.App-dark .code-text-normal {
   color: #c4c4c4;
 }
 
-.App-dark .code-text--green {
+.App-dark .code-text-green {
   color: #6bd2a1;
 }
 
-.App-dark .code-text--yellow {
+.App-dark .code-text-yellow {
   color: #fff48e;
 }
 
-.App-dark .code-text--red {
+.App-dark .code-text-red {
   color: #fca28f;
 }
 
-.App-dark .code-text--blue {
+.App-dark .code-text-blue {
   color: #96adff;
 }
 
@@ -347,7 +361,8 @@
   border-color: #363636;
 }
 
-.App-dark .wraper {
+.App-dark .wrapper {
+  background-color: #171717;
   border-color: #363636;
 }
 
@@ -360,9 +375,34 @@
     margin: 0;
     font-size: 40px;
   }
+  .App .header3 {
+    margin: 0 0 10px 0;
+    font-size: 30px;
+  }
   .App .subheader1 {
     margin: 0 5px 0 0;
     font-size: 24px;
+  }
+  .App .subheader2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  .App .body-text1 {
+    margin: 40px 0 80px 0;
+    font-size: 30px;
+    line-height: 45px;
+  }
+  .App .index-text {
+    margin-bottom: 5px;
+    font-size: 24px;
+  }
+  .App .link-text {
+    margin: 0 0 10px 0;
+    font-size: 30px;
+  }
+  .App .code-text {
+    margin: 40px 0 80px 0;
+    font-size: 30px;
   }
   .App .button {
     margin-left: 10px;
@@ -387,11 +427,49 @@
   .App .left-side {
     margin-right: auto;
   }
-  .App .wraper {
+  .App .wrapper1 {
     margin: 40px auto;
-    width: 640px;
-    height: 200px;
+    width: calc(800px - 160px);
+    height: calc(320px - 80px);
     padding: 40px 80px;
+  }
+  .App .wrapper2 {
+    margin: 0 auto 80px auto;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: calc(100% - 560px - 6px);
+    height: calc(320px - 80px - 6px);
+    padding: 40px 480px 40px 80px;
+  }
+  .App .wrapper3 {
+    position: absolute;
+    right: 40px;
+    bottom: -80px;
+    width: calc(320px - 80px - 6px);
+    height: calc(320px - 80px - 6px);
+    padding: 40px;
+  }
+  .App .post {
+    width: 95%;
+    margin: auto;
+  }
+  .App .body-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .App .link-text-wrapper {
+    margin: 40px 0 80px 0;
+  }
+  .App section {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    padding: 0 80px;
+  }
+  .App aside {
+    padding: 40px 83px 0 43px;
+    width: calc(320px - 80px - 6px);
   }
 }
 /*# sourceMappingURL=App.css.map */

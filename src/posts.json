@@ -1,6 +1,8 @@
 {
   "posts": [
     {
+      "author": "João de Melo",
+      "description": "Essa é a minha descrição",
       "tags": ["#Game", "#Code", "#Jorge"],
       "title": "Minha jornada desenvolvendo meu primeiro jogo",
       "body": {
@@ -11,9 +13,18 @@
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim nec dui nunc mattis. Dignissim convallis aenean et tortor at risus. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat."
           },
           {
-            "type": "normal",
+            "type": "code",
             "header": "Desenvolvimento",
             "text": "Lorem ipsum: dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim nec dui nunc mattis. Dignissim et tortor at risus."
+          },
+          {
+            "type": "link",
+            "header": "Referências",
+            "text": [
+              "Loremipsumdolorsitamet.consecteturadipisci", 
+              "ngelitseddoeiusmodtemporincididuntutlaboreetd", 
+              "oloremagnaaliqua.Enimnecduinuncmattis.Dignissim" 
+            ]
           }
         ]
       }
