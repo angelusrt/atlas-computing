@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react"
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"
-import Navbar from "./components/navbar"
+import Navbar from "./components/Navbar"
 import PostCard from "./components/PostCard"
 import Post from "./components/Post"
 import About from "./components/About"

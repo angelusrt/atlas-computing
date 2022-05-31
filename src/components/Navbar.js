@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Button from "./button"
+import Button from "./Button"
 
 function Navbar(props){
   return(
@@ -12,21 +12,22 @@ function Navbar(props){
         </Link>
         {
           props.path === "/" &&
-          <Button type={false} name="Filtrar"/>
+          <Button mode="button" name="Filtrar"/>
         }
       </span>
       <span className="rigth-side"> 
-          {/* <Button type={true} icon="Podcast" name="Podcast"/> */}
-          <Link to="/About">
-            <Button 
-              type={true} 
-              icon="Exclamation" 
-              name ="Sobre"
-            />
-          </Link>
-          {/* <Button type={true} icon="GrandFont" name ="Aum. fonte"/> */}
+          {/* <Button isTextHidden={true} icon="Podcast" name="Podcast"/> */}
           <Button 
-            type={true} 
+            mode="link"
+            path="/About"
+            isTextHidden={true} 
+            icon="Exclamation" 
+            name ="Sobre"
+          />
+          {/* <Button isTextHidden={true} icon="GrandFont" name ="Aum. fonte"/> */}
+          <Button 
+            mode="button"
+            isTextHidden={true} 
             icon={props.isDT?"Moon":"Sun"} 
             name={props.isDT?"Modo claro":"Modo escuro"}
             onFunc={props.setIsDT} 

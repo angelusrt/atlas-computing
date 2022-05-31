@@ -1,6 +1,6 @@
 import React from "react"
 import { useLocation } from "react-router-dom"
-import Button from "./button"
+import Button from "./Button"
 
 function About(props) {
   const {about, setPath} = props
@@ -21,7 +21,8 @@ function About(props) {
               {
                 dev.socials.map((social, key) => 
                   <Button 
-                    type={true}
+                    mode="link-button"
+                    isTextHidden={true}
                     key={key}
                     icon={social.iconName}
                     name={social.name}
