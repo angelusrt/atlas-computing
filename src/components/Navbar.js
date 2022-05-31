@@ -7,7 +7,13 @@ function Navbar(props){
       <span className="left-side">
         <Link to="/" className="button">
           <h1 className="header1">
-            {props.path === "/Post"?"<ds>":"Recentes"}
+            { 
+              props.path === "/Post"?
+              "<ds>":
+              props.path === "/About"?
+              "Sobre":
+              "Recentes"
+            }
           </h1>
         </Link>
         {

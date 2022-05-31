@@ -7,24 +7,45 @@ import About from "./components/About"
 import Data from "./data.json"
 import './App.css'
 
-function Home(props) {
-  props.setPath(useLocation().pathname)
-  return(
-    <>
-      {
-        props.data.posts.map((post, key) =>
-          <Link to="/Post" key={key}>
-            <PostCard 
-              tags={post.tags} 
-              title={post.title}
-              onFunc={() => props.setPost(post)}
-            />
-          </Link>
-        )
-      }
-    </>
-  )
+const _host = "192.168.0.115:3000"
+const _header = {
+  method: "GET",
+  'Content-Type': 'application/json',
+  'Accept-Encoding': 'gzip, deflate, br',
+  connection: 'keep-alive',
+  Accept: '*/*',
+  Host: _host,
 }
+
+function Home(props) {
+  const[data, setData] = useState()
+  const[resolved, setResolved] = useState(false)
+
+  props.setPath(useLocation().pathname)
+
+  const onGet = async () => {
+    return await fetch(`http://${props.host}/api/post`, props.header)
+    .then(res => res.json())
+    .then(data => {
+      setData(data.map((post, key) => (
+        <Link to="/Post" key={key}>
+          <PostCard 
+            tags={post.tags} 
+            title={post.title}
+            onFunc={() => props.setPost(post._id)}
+          />
+        </Link>
+      )))
+      setResolved(true)
+    })
+    .catch(err => console.log(err))
+  }
+  
+  useEffect(() => {onGet()},[])
+
+  return<>{resolved?data:null}</>
+}
+
 function App() {
   //Dark theme
   const[isDT, setIsDT] = useState(false)
@@ -45,32 +66,29 @@ function App() {
         />
         <Routes>
           <Route path="/" element={
-            <Home data={Data} setPath={(path) => setPath(path)} setPost={(post) => setPost(post)}/>
+            <Home 
+              host={_host}
+              header={_header} 
+              data={Data} 
+              setPath={(path) => setPath(path)} 
+              setPost={(post) => setPost(post)}
+            />
           }/>
           <Route path="/About" element={
-            <About about={Data.about} setPath={(path) => setPath(path)}/>
+            <About 
+              host={_host}
+              header={_header}  
+              about={Data.about} 
+              setPath={(path) => setPath(path)}/>
           }/>
           <Route path="/Post" element={
-            <Post post={post} setPath={(path) => setPath(path)}/>
+            <Post 
+              host={_host}
+              header={_header}  
+              post={post} 
+              setPath={(path) => setPath(path)}/>
           }/>
         </Routes>
-        {/* {
-          whatPage==="post"?
-          <Post post={post}/> :
-          whatPage==="about"?
-          <About about={Data.about}/> :
-          Data.posts.map((post, key) =>
-            <PostCard 
-              key={key} 
-              tags={post.tags} 
-              title={post.title}
-              onFunc={() => {
-                setWhatPage("post")
-                setPost(post)
-              }}
-            />
-          )
-        } */}
       </div>
     </Router>
   )

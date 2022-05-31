@@ -359,7 +359,8 @@ $yellow2: #fff48e;
       font-size: 24px;
     }
     .body-text1{
-      margin: 40px 0 80px 0;
+      margin: 0;
+      padding: 40px 0 0 0;
       font-size: 30px;
       line-height: 45px;
     }
@@ -368,11 +369,13 @@ $yellow2: #fff48e;
       font-size: 24px;
     }
     .link-text{
-      margin: 0 0 10px 0;
+      margin: 0;
+      padding-bottom: 10px;
       font-size: 30px;
     }
     .code-text{
-      margin: 40px 0 80px 0;
+      margin: 0;
+      padding: 40px 0 0 0;
       font-size: 30px;
     }
     //buttons
@@ -457,15 +460,24 @@ $yellow2: #fff48e;
     .body-wrapper{
       display: flex;
     }
-    .link-text-wrapper{
-      margin: 40px 0 80px 0;
-    }
-    section{
+    article{
       flex: 1;
       padding: 0 80px;
     }
+    section{
+      margin: 0 0 80px 0;
+
+      .link-text{
+        &:first-of-type{
+          padding-top: 40px;
+        }
+        &:last-child{
+          padding-bottom: 0;
+        }
+      }
+    }
     aside{
-      padding: 40px 83px 0 43px;
+      padding: 40px 86px 0 43px;
       width: calc(320px - 80px - 6px);
     }
   }
