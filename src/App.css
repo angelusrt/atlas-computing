@@ -67,7 +67,6 @@
 .App .index-text {
   display: block;
   font-family: 'Quicksand', sans-serif;
-  text-decoration: none;
   color: #787878;
 }
 
@@ -81,6 +80,7 @@
 
 .App .link-text {
   display: block;
+  text-decoration: underline;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-style: italic;
@@ -94,6 +94,10 @@
   font-weight: 500;
 }
 
+.App a {
+  text-decoration: none;
+}
+
 .App .button {
   cursor: pointer;
   display: -webkit-inline-box;
@@ -104,7 +108,6 @@
   width: fit-content;
   border: none;
   border-radius: 10px;
-  text-decoration: none;
 }
 
 .App .button:hover .button-text {

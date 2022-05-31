@@ -77,7 +77,6 @@ $yellow2: #fff48e;
   .index-text{
     display: block;
     font-family: 'Quicksand', sans-serif;
-    text-decoration: none;
     
     color: $dark-grey1;
     
@@ -90,6 +89,7 @@ $yellow2: #fff48e;
   }
   .link-text{
     display: block;
+    text-decoration: underline;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-style: italic;
@@ -101,6 +101,9 @@ $yellow2: #fff48e;
     line-height: 60px;
     font-weight: 500;
   }
+  a{
+    text-decoration: none;
+  }
   //buttons
   .button{
     cursor: pointer;
@@ -108,7 +111,6 @@ $yellow2: #fff48e;
     width: fit-content;
     border: none;
     border-radius: 10px;
-    text-decoration: none;
 
     &:hover{
       .button-text{

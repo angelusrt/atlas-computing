@@ -1,7 +1,11 @@
+import { useLocation } from "react-router-dom"
 import React from "react"
 
 function Post(props) {
-  const {post} = props
+  const {post, setPath} = props
+
+  setPath(useLocation().pathname)
+
   return (
     <div className="post">
       <div className="wrapper wrapper2">

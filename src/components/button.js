@@ -6,6 +6,7 @@ function Button(props){
       className="button"
       target="_blank" 
       referrerPolicy='no-referrer' 
+      rel='noreferrer'
       href={props.link} 
       onClick={() => props.onFunc()} 
     >

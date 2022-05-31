@@ -1,7 +1,12 @@
 import React from "react"
+import { useLocation } from "react-router-dom"
 import Button from "./button"
 
-function About({about}) {
+function About(props) {
+  const {about, setPath} = props
+
+  setPath(useLocation().pathname)
+
   return (
     <div className="about">
       <h2 className="body-text1">{about.text}</h2>

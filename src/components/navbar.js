@@ -1,30 +1,29 @@
+import { Link } from "react-router-dom"
 import Button from "./button"
 
 function Navbar(props){
   return(
-    <div className={`nav ${props.whatPage !== "post"?"nav1":"nav2"}`}>
+    <div className={`nav ${props.path !== "/Post"?"nav1":"nav2"}`}>
       <span className="left-side">
-        <button 
-          onClick={() => props.onFunc()}
-          className="button"
-        >
+        <Link to="/" className="button">
           <h1 className="header1">
-            {props.whatPage === "post"?"<ds>":"Recentes"}
+            {props.path === "/Post"?"<ds>":"Recentes"}
           </h1>
-        </button>
+        </Link>
         {
-          props.whatPage === "home" &&
+          props.path === "/" &&
           <Button type={false} name="Filtrar"/>
         }
       </span>
       <span className="rigth-side"> 
           {/* <Button type={true} icon="Podcast" name="Podcast"/> */}
-          <Button 
-            type={true} 
-            icon="Exclamation" 
-            name ="Sobre"
-            onFunc={props.setWhatPage}
-          />
+          <Link to="/About">
+            <Button 
+              type={true} 
+              icon="Exclamation" 
+              name ="Sobre"
+            />
+          </Link>
           {/* <Button type={true} icon="GrandFont" name ="Aum. fonte"/> */}
           <Button 
             type={true} 
