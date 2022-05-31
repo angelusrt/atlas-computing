@@ -1,10 +1,9 @@
 import {useState, useEffect} from "react"
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import PostCard from "./components/PostCard"
 import Post from "./components/Post"
 import About from "./components/About"
-import Data from "./data.json"
 import './App.css'
 
 const _host = "192.168.0.115:3000"
@@ -28,13 +27,12 @@ function Home(props) {
     .then(res => res.json())
     .then(data => {
       setData(data.map((post, key) => (
-        <Link to="/Post" key={key}>
-          <PostCard 
-            tags={post.tags} 
-            title={post.title}
-            onFunc={() => props.setPost(post._id)}
-          />
-        </Link>
+        <PostCard 
+          key={key}
+          tags={post.tags} 
+          title={post.title}
+          onFunc={() => props.setPost(post._id)}
+        />
       )))
       setResolved(true)
     })
@@ -43,7 +41,12 @@ function Home(props) {
   
   useEffect(() => {onGet()},[])
 
-  return<>{resolved?data:null}</>
+  return(
+    resolved &&
+    <div className="home">
+      <main>{data}</main>
+    </div>
+  )
 }
 
 function App() {
@@ -69,7 +72,6 @@ function App() {
             <Home 
               host={_host}
               header={_header} 
-              data={Data} 
               setPath={(path) => setPath(path)} 
               setPost={(post) => setPost(post)}
             />
@@ -78,7 +80,6 @@ function App() {
             <About 
               host={_host}
               header={_header}  
-              about={Data.about} 
               setPath={(path) => setPath(path)}/>
           }/>
           <Route path="/Post" element={

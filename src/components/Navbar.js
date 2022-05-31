@@ -2,22 +2,20 @@ import { Link } from "react-router-dom"
 import Button from "./Button"
 
 function Navbar(props){
+  const {path, isDT, setIsDT} = props
+  
   return(
-    <div className={`nav ${props.path !== "/Post"?"nav1":"nav2"}`}>
+    <nav className={`${path === "/Post"&&"nav-post"}`}>
       <span className="left-side">
-        <Link to="/" className="button">
-          <h1 className="header1">
-            { 
-              props.path === "/Post"?
-              "<ds>":
-              props.path === "/About"?
-              "Sobre":
-              "Recentes"
-            }
-          </h1>
+        <Link to="/" className="button header1">
+          { 
+            path === "/Post"?"<ds>":
+            path === "/About"?"Sobre":
+            "Recentes"
+          }
         </Link>
         {
-          props.path === "/" &&
+          path === "/" &&
           <Button mode="button" name="Filtrar"/>
         }
       </span>
@@ -34,12 +32,12 @@ function Navbar(props){
           <Button 
             mode="button"
             isTextHidden={true} 
-            icon={props.isDT?"Moon":"Sun"} 
-            name={props.isDT?"Modo claro":"Modo escuro"}
-            onFunc={props.setIsDT} 
+            icon={isDT?"Moon":"Sun"} 
+            name={isDT?"Modo claro":"Modo escuro"}
+            onFunc={setIsDT} 
           />
       </span>
-    </div>
+    </nav>
   )
 }
 

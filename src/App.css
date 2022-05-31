@@ -132,29 +132,6 @@
   border-width: 3px;
 }
 
-.App .nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.App .left-side {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.App .nav-m {
-  position: absolute;
-  border-radius: 40px;
-  border-width: 3px;
-  height: 100vh;
-  width: 70vw;
-}
-
 .App span {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -178,7 +155,30 @@
   border-style: solid;
 }
 
-.App .body-wraper {
+.App nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App nav .left-side {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App .nav-m {
+  position: absolute;
+  border-radius: 40px;
+  border-width: 3px;
+  height: 100vh;
+  width: 70vw;
+}
+
+.App .post main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -269,7 +269,7 @@
   border-color: #e5e5e5;
 }
 
-.App-light .nav {
+.App-light nav {
   background-color: #f6f6f6;
 }
 
@@ -368,7 +368,7 @@
   border-color: #363636;
 }
 
-.App-dark .nav {
+.App-dark nav {
   background-color: #171717;
 }
 
@@ -442,78 +442,6 @@
   .App .button .button-text-activated {
     padding: 0;
   }
-  .App .nav {
-    margin: auto;
-    padding: 40px 0;
-  }
-  .App .nav1 {
-    width: 680px;
-  }
-  .App .nav2 {
-    width: calc(95% - 160px - 6px + 40px);
-  }
-  .App .left-side {
-    margin-right: auto;
-  }
-  .App .wrapper1 {
-    margin: 40px auto;
-    width: calc(800px - 160px);
-    height: calc(320px - 80px);
-    padding: 40px 80px;
-  }
-  .App .wrapper2 {
-    margin: 0 auto 80px auto;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    width: calc(100% - 560px - 6px);
-    height: calc(320px - 80px - 6px);
-    padding: 40px 480px 40px 80px;
-  }
-  .App .wrapper3 {
-    position: absolute;
-    right: 40px;
-    bottom: -80px;
-    width: calc(320px - 80px - 6px);
-    height: calc(320px - 80px - 6px);
-    padding: 40px;
-  }
-  .App .wrapper4 {
-    padding: 40px 80px;
-  }
-  .App .post {
-    width: 95%;
-    margin: auto;
-  }
-  .App .about {
-    width: calc(680px + 160px - 40px + 6px);
-    width: calc(680px - 40px + 6px);
-    padding-bottom: 160px;
-    margin: auto;
-  }
-  .App .about .wrapper4 {
-    margin: 0 calc(-80px - 3px);
-  }
-  .App .socials {
-    margin: 40px 0 0 0;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .App .socials .button {
-    margin-left: 0;
-    margin-right: 10px;
-  }
-  .App .body-wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .App article {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    padding: 0 80px;
-  }
   .App section {
     margin: 0 0 80px 0;
   }
@@ -523,9 +451,79 @@
   .App section .link-text:last-child {
     padding-bottom: 0;
   }
-  .App aside {
+  .App nav {
+    margin: auto;
+    padding: 40px 0;
+    width: 680px;
+  }
+  .App nav .left-side {
+    margin-right: auto;
+  }
+  .App .nav-post {
+    width: calc(95% - 160px - 6px + 40px);
+  }
+  .App .home main {
+    width: calc(680px - 40px + 160px + 6px);
+    margin: auto;
+  }
+  .App .home main article {
+    margin: 40px 0;
+    width: calc(800px - 160px);
+    height: calc(320px - 80px);
+    padding: 40px 80px;
+  }
+  .App .post {
+    width: 95%;
+    margin: auto;
+  }
+  .App .post header {
+    margin: 0 auto 80px auto;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: calc(100% - 560px - 6px);
+    height: calc(320px - 80px - 6px);
+    padding: 40px 480px 40px 80px;
+  }
+  .App .post header aside {
+    position: absolute;
+    right: 40px;
+    bottom: -80px;
+    width: calc(320px - 80px - 6px);
+    height: calc(320px - 80px - 6px);
+    padding: 40px;
+  }
+  .App .post article {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    padding: 0 80px;
+  }
+  .App .post aside {
     padding: 40px 86px 0 43px;
     width: calc(320px - 80px - 6px);
+  }
+  .App .about {
+    width: calc(680px + 160px - 40px + 6px);
+    width: calc(680px - 40px + 6px);
+    padding-bottom: 160px;
+    margin: auto;
+  }
+  .App .about header {
+    margin: 0 0 80px 0;
+  }
+  .App .about .wrapper {
+    margin: 0 calc(-80px - 3px);
+    padding: 40px 80px;
+  }
+  .App .about .socials {
+    margin: 40px 0 0 0;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .App .about .socials .button {
+    margin-left: 0;
+    margin-right: 10px;
   }
 }
 /*# sourceMappingURL=App.css.map */
