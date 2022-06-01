@@ -14,17 +14,19 @@ function Button(props){
       </h3>
     </>
   )
-  return(
-    <>
-      {
-        props.mode === "button"?
+
+  switch (props.mode) {
+    case "button":
+      return (
         <button 
           className="button"
           onClick={() => props.onFunc()} 
         >
           {content}
-        </button>:
-        props.mode === "link-button"? 
+        </button>
+      ) 
+    case "link-button":
+      return (
         <a 
           className="button"
           target="_blank" 
@@ -33,7 +35,10 @@ function Button(props){
           href={props.link}
         >
           {content}
-        </a>: 
+        </a>
+      )
+    case "link":
+      return (
         <Link to={props.path}>
           <button 
             className="button"
@@ -41,9 +46,17 @@ function Button(props){
             {content}
           </button>
         </Link>
-      }
-    </>
-  )
+      )
+    case "i-button":
+      return (
+        <button 
+          className="button i-button"
+          onClick={() => props.onFunc()} 
+        >
+          <Icon className="icon" name={props.icon}/>
+        </button>
+      )
+  }
 }
 
 export default Button

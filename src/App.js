@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
 import Navbar from "./components/Navbar"
+import Button from "./components/Button"
 import PostCard from "./components/PostCard"
 import Post from "./components/Post"
 import About from "./components/About"
@@ -14,6 +15,18 @@ const _header = {
   connection: 'keep-alive',
   Accept: '*/*',
   Host: _host,
+}
+
+function Menu(props) {
+  return(
+    <header className="menu" onClick={() => props.setIsMenu()}>
+      <Navbar 
+        isDT={props.isDT} 
+        path={props.path}
+        setIsDT={() => props.setIsDT(!props.isDT)}
+      />
+    </header>
+  )
 }
 
 function Home(props) {
@@ -54,6 +67,7 @@ function App() {
   const[isDT, setIsDT] = useState(false)
   const[post, setPost] = useState({})
   const[path, setPath] = useState("/")
+  const[isMenu, setIsMenu] = useState(false)
 
   useEffect(() => {
     document.body.style.background = isDT?"#171717":"#f6f6f6"
@@ -67,6 +81,20 @@ function App() {
           path={path}
           setIsDT={() => setIsDT(!isDT)}
         />
+        <Button
+          mode="i-button"
+          icon="Home"
+          onFunc={() => setIsMenu(!isMenu)}
+        />
+        {
+          isMenu && 
+          <Menu 
+            isDT={isDT} 
+            path={path}
+            setIsDT={() => setIsDT(!isDT)}
+            setIsMenu={() => setIsMenu(!isMenu)}
+          />
+        }
         <Routes>
           <Route path="/" element={
             <Home 

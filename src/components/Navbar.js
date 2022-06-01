@@ -19,7 +19,7 @@ function Navbar(props){
           <Button mode="button" name="Filtrar"/>
         }
       </span>
-      <span className="rigth-side"> 
+      <span className="right-side"> 
           {/* <Button isTextHidden={true} icon="Podcast" name="Podcast"/> */}
           <Button 
             mode="link"

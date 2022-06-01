@@ -26,7 +26,7 @@ function Post(props) {
       <header className="wrapper">
         <span>
           {data.tags.map((tag, key) =>   
-            <a key={key} className="subheader1">{tag}</a>
+            <a key={key} className="subheader1">{`#${tag}`}</a>
           )}
         </span>
         <h2 className="header2">{data.title}</h2>
