@@ -5,10 +5,7 @@ import Button from "./Button"
 function About(props) {
   const[data, setData] = useState()
   const[resolved, setResolved] = useState(false)
-  
-  const {setPath} = props
-  
-  setPath(useLocation().pathname)
+  const[path] = useState(useLocation().pathname)
 
   const onGet = async () => {
     return await fetch(`http://${props.host}/api/dev/`, props.header)
@@ -19,7 +16,7 @@ function About(props) {
     })
     .catch(err => console.log(err))
   }
-  
+  useEffect(() => {props.setPath(path)},[])
   useEffect(() => {onGet()},[])
 
   return (

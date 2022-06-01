@@ -4,11 +4,9 @@ import React, { useEffect, useState } from "react"
 function Post(props) {
   const[data, setData] = useState()
   const[resolved, setResolved] = useState(false)
+  const[path] = useState(useLocation().pathname)
+  const {post} = props
   
-  const {post, setPath} = props
-  
-  setPath(useLocation().pathname)
-
   const onGet = async () => {
     return await fetch(`http://${props.host}/api/post/${post}`, props.header)
     .then(res => res.json())
@@ -19,6 +17,7 @@ function Post(props) {
     .catch(err => console.log(err))
   }
   
+  useEffect(() => {props.setPath(path)},[])
   useEffect(() => {onGet()},[])
 
   return (
