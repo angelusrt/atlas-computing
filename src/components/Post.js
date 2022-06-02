@@ -66,7 +66,7 @@ function Post(props) {
           }
         </article>
         <aside>
-          <h2 className="header3">Índice</h2>
+          <h2 className="header2">Índice</h2>
           {
             data.body.section.map((section, key) => 
               <a 

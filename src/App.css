@@ -586,7 +586,7 @@
   }
   .App .about .wrapper {
     height: calc(280px - 80px);
-    margin: 0 calc(-40px - 3px);
+    margin: 0 -40px;
     padding: 40px;
   }
   .App .about .socials {
@@ -672,7 +672,7 @@
   }
   .App nav {
     margin: auto;
-    padding: 40px 20px;
+    padding: 20px;
     width: calc(100% - 40px);
     max-width: 680px;
   }
@@ -680,7 +680,7 @@
     margin-right: auto;
   }
   .App .nav-post {
-    width: calc(95% - 160px - 6px + 40px);
+    max-width: calc(95% - 160px - 6px + 40px);
   }
   .App .menu {
     display: none;
@@ -706,27 +706,37 @@
     margin: 0 auto 80px auto;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    width: calc(100% - 560px - 6px);
-    height: calc(320px - 80px - 6px);
-    padding: 40px 480px 40px 80px;
+    width: calc(100% - 160px - 6px);
+    padding: 80px 80px 100px 80px;
+    height: calc(320px - 180px - 6px);
   }
   .App .post header aside {
     position: absolute;
-    right: 40px;
-    bottom: -80px;
-    width: calc(320px - 80px - 6px);
-    height: calc(320px - 80px - 6px);
+    width: calc(100% - 80px - 80px - 6px);
+    left: 37px;
+    bottom: -110px;
     padding: 40px;
   }
-  .App .post article {
+  .App .post main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .App .post main article {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     padding: 0 80px;
   }
-  .App .post aside {
-    padding: 40px 86px 0 43px;
+  .App .post main aside {
     width: calc(320px - 80px - 6px);
+    margin-top: 120px;
+    padding: 0 80px 80px 80px;
+  }
+  .App .post main aside .header2 {
+    font-size: 40px;
+    margin-bottom: 40px;
   }
   .App .about {
     max-width: calc(100% - 160px - 6px);
@@ -750,6 +760,41 @@
   .App .about .socials .button {
     margin-left: 0;
     margin-right: 10px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .App .post header {
+    width: calc(100% - 560px - 6px);
+    height: calc(320px - 80px - 6px);
+    padding: 40px 480px 40px 80px;
+  }
+  .App .post header aside {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    left: auto;
+    right: 40px;
+    bottom: -80px;
+    width: calc(320px - 80px - 6px);
+    height: calc(320px - 80px - 6px);
+    padding: 40px;
+    border-style: solid;
+  }
+  .App .post main {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .App .post main aside {
+    display: block;
+    padding: 40px 86px 0 43px;
+    margin-top: 0;
+  }
+  .App .post main aside .header2 {
+    margin-bottom: 10px;
   }
 }
 /*# sourceMappingURL=App.css.map */
