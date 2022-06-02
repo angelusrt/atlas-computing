@@ -13,6 +13,11 @@ function Post(props) {
     .then(data => {
       setData(data)
       setResolved(true)
+      props.setIndex(data.body.section)
+      props.setAuthor({
+        authorName: data.authorName,
+        authorDescription: data.authorDescription
+      })
     })
     .catch(err => console.log(err))
   }

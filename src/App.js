@@ -19,11 +19,18 @@ const _header = {
 
 function Menu(props) {
   return(
-    <header className="menu" onClick={() => props.setIsMenu()}>
+    <header className="menu" onClick={(e) => {
+      e.clientX > (0.65 * window.innerWidth + 6 + 40) &&
+      props.setIsMenu()
+    }}>
       <Navbar 
+        menu={true}
         isDT={props.isDT} 
         path={props.path}
+        index={props.index}
+        author={props.author}
         setIsDT={() => props.setIsDT(!props.isDT)}
+        setIsMenu={props.setIsMenu}
       />
     </header>
   )
@@ -67,16 +74,30 @@ function App() {
   const[isDT, setIsDT] = useState(false)
   const[post, setPost] = useState({})
   const[path, setPath] = useState("/")
+  //Mobile and Menu Vars
   const[isMenu, setIsMenu] = useState(false)
+  const[index, setIndex] = useState()
+  const[author, setAuthor] = useState()
 
   useEffect(() => {
     document.body.style.background = isDT?"#171717":"#f6f6f6"
   },[isDT])
 
+  useEffect(() => {
+    if(isMenu){
+      document.body.style.overflow = "hidden"
+      document.body.style.height = "100%"
+    } else {
+      document.body.style.overflow = "auto"
+      document.body.style.height = "auto"
+    }
+  },[isMenu])
+
   return (
     <Router>
       <div className={"App " + (isDT?"App-dark":"App-light")}>
         <Navbar 
+          menu={false}
           isDT={isDT} 
           path={path}
           setIsDT={() => setIsDT(!isDT)}
@@ -91,8 +112,10 @@ function App() {
           <Menu 
             isDT={isDT} 
             path={path}
+            index={index}
+            author={author}
             setIsDT={() => setIsDT(!isDT)}
-            setIsMenu={() => setIsMenu(!isMenu)}
+            setIsMenu={() => setIsMenu(false)}
           />
         }
         <Routes>
@@ -100,22 +123,26 @@ function App() {
             <Home 
               host={_host}
               header={_header} 
-              setPath={(path) => setPath(path)} 
-              setPost={(post) => setPost(post)}
+              setPath={path => setPath(path)} 
+              setPost={post => setPost(post)}
             />
           }/>
           <Route path="/About" element={
             <About 
               host={_host}
               header={_header}  
-              setPath={(path) => setPath(path)}/>
+              setPath={path => setPath(path)}
+            />
           }/>
           <Route path="/Post" element={
             <Post 
               host={_host}
               header={_header}  
               post={post} 
-              setPath={(path) => setPath(path)}/>
+              setPath={path => setPath(path)}
+              setIndex={index => setIndex(index)}
+              setAuthor={author => setAuthor(author)}
+            />
           }/>
         </Routes>
       </div>

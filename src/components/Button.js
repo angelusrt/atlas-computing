@@ -37,11 +37,27 @@ function Button(props){
           {content}
         </a>
       )
+      case "link-button-2":
+        return (
+          <a 
+            className="button"
+            referrerPolicy='no-referrer' 
+            rel='noreferrer'
+            href={props.link}
+            onClick={() => props.onFunc()} 
+          >
+            <Icon className="icon" name={props.icon}/>
+              <h3 className="button-text button-text2 button-text-activated">
+                {props.name}
+              </h3>
+          </a>
+        )
     case "link":
       return (
         <Link to={props.path}>
           <button 
             className="button"
+            onClick={() => props.onFunc()} 
           >
             {content}
           </button>

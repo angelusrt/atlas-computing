@@ -11,6 +11,9 @@ $dark-grey2: #595959;
 $black1: #363636;
 $black2: #171717;
 
+$white-opaque: rgba(246, 246, 246, 0.7);
+$black-opaque: rgba(23, 23, 23, 0.7);
+
 $green1: #44b499;
 $green2: #6bd2a1; 
 $blue1: #5e6eff;
@@ -154,7 +157,8 @@ $yellow2: #fff48e;
     }
   }
   .menu{
-    position: absolute;
+    overflow: hidden;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -162,17 +166,14 @@ $yellow2: #fff48e;
     z-index: 1;
   
     nav{
+      overflow: scroll;
       display: flex;
       flex-direction: column;
       border-style: solid;
       border-radius: 40px;
       border-width: 3px;
-  
-      .left-side{
-        flex: 1;
-      }
+
       .right-side{
-        flex: 2;
         flex-direction: column;
       }
     }
@@ -249,6 +250,9 @@ $yellow2: #fff48e;
     .button-text{
       color: $black2;
     }
+    .button-text2{
+      color: $dark-grey1;
+    }
   }
   .i-button{
     background-color: $light-grey1;
@@ -266,6 +270,7 @@ $yellow2: #fff48e;
     background-color: $white;
   }
   .menu{
+    background-color: $white-opaque;
     nav{
       border-color: $light-grey1;
     }
@@ -341,6 +346,9 @@ $yellow2: #fff48e;
     .button-text{
       color: $white;
     }
+    .button-text2{
+      color: $dark-grey1;
+    }
   }
   .i-button{
     background-color: $black1;
@@ -358,6 +366,7 @@ $yellow2: #fff48e;
     background-color: $black2;
   }
   .menu{
+    background-color: $black-opaque;
     nav{
       border-color: $black1;
     }
@@ -468,24 +477,22 @@ $yellow2: #fff48e;
       }
     }
     .menu{
-      // background-color: $white;
-      // opacity: 50%;
-
+      overflow: scroll;
       nav{
-        // opacity: 100%;
         width: 65%;
         height: calc(100% - 6px - 80px);
         margin: 0;
         padding: 40px 20px;
         align-items: flex-start;
 
-        .left-side{
-          align-items: flex-end;
-          margin-right: 0;
-        }
         .right-side{
+          margin: auto 0;
           display: flex;
+          justify-content: center;
 
+          .header1:first-child{
+            margin-bottom: 40px;
+          }
           button{
             .icon{
               display: none;
@@ -494,6 +501,13 @@ $yellow2: #fff48e;
               display: block;
               padding-left: 0;
             }
+          }
+          section{
+            margin: 20px calc(-20px - 3px);
+            width: calc(100% - 6px - 80px);
+            padding: 40px;
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
           }
         }
       }
@@ -652,6 +666,9 @@ $yellow2: #fff48e;
       
       .left-side{
         margin-right: auto;
+      }
+      .mobile-post{
+        display: none;
       }
     }
     .nav-post{
