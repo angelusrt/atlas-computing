@@ -114,19 +114,17 @@ $yellow2: #fff48e;
     width: fit-content;
     border: none;
     border-radius: 10px;
-
-    &:hover{
-      .button-text{
-        display: inline-block;
-      }
-    }
+    
     .button-text{
+      display: none;
+      white-space: nowrap;
+      overflow: hidden;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+
       &-activated{
         display: inline-block;
       }
-      display: none;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 600;
     }
   }
   .i-button{
@@ -155,6 +153,94 @@ $yellow2: #fff48e;
     .left-side{
       align-items: center;
     }
+    .right-side-navbar{
+      justify-content: flex-end;
+
+      a{
+        display: flex;
+        justify-content: flex-end;
+      }
+      .button{
+        position: relative;
+        justify-content: flex-end;
+
+        &-anim-enter {
+          width: 50px;
+          
+          .icon{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+          }
+          .button-text{
+            display: none;
+            width: 0px;
+            padding-left: 0;
+            opacity: 0.5;
+          }
+        }
+        &-anim-enter-active {
+          width: 100%;
+  
+          .button-text{
+            display: inline-block;
+            width: calc(100% - 30px);
+            padding-left: 10px;
+            margin-left: 30px;
+            opacity: 1;
+            
+            transition: all 1s;
+          }
+          transition: all 1s;
+        }
+        &-anim-enter-done{
+          .icon{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+          }
+          .button-text{
+            display: inline-block;
+            margin-left: 30px;
+          }
+        }
+        &-anim-exit {
+          width: 100%;
+
+          .icon{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+          }
+          .button-text{
+            display: inline-block;
+            width: 100%;
+            padding-left: 10px;
+            margin-left: 30px;
+            opacity: 1;
+          }
+        }
+        &-anim-exit-active {
+          width: 50px;
+          
+          .button-text{
+            display: inline-block;
+            width: 0;
+            padding-left: 10px;
+            margin-left: 30px;
+            margin-right: auto;
+            opacity: 0.5;
+            transition: all 1s;
+          }
+          transition: all 1s;
+        }
+        &-anim-exit-done {
+          .button-text{
+            display: none;
+          }
+        }
+      }
+    }
   }
   .menu{
     overflow: hidden;
@@ -175,12 +261,99 @@ $yellow2: #fff48e;
 
       .right-side{
         flex-direction: column;
+        
+        a{
+          justify-content: flex-start;
+        }
       }
     }
   }
   .post{
     main{
       display: flex;
+    }
+  }
+  .about{
+    span{
+      width: fit-content;
+      .button{
+        position: relative;
+        &-anim-enter {
+          width: 50px;
+          
+          .icon{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+          }
+          .button-text{
+            display: none;
+            width: 0px;
+            padding-left: 0;
+            opacity: 0.5;
+          }
+        }
+        &-anim-enter-active {
+          width: 100%;
+  
+          .button-text{
+            display: inline-block;
+            width: calc(100% - 30px);
+            padding-left: 10px;
+            margin-left: 30px;
+            opacity: 1;
+            
+            transition: all 1s;
+          }
+          transition: all 1s;
+        }
+        &-anim-enter-done{
+          .icon{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+          }
+          .button-text{
+            display: inline-block;
+            margin-left: 30px;
+          }
+        }
+        &-anim-exit {
+          width: 100%;
+
+          .icon{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+          }
+          .button-text{
+            display: inline-block;
+            width: 100%;
+            padding-left: 10px;
+            margin-left: 30px;
+            opacity: 1;
+          }
+        }
+        &-anim-exit-active {
+          width: 50px;
+          
+          .button-text{
+            display: inline-block;
+            width: 0;
+            padding-left: 10px;
+            margin-left: 30px;
+            margin-right: auto;
+            opacity: 0.5;
+            transition: all 1s;
+          }
+          transition: all 1s;
+        }
+        &-anim-exit-done {
+          .button-text{
+            display: none;
+          }
+        }
+      }
     }
   }
 }
@@ -241,8 +414,25 @@ $yellow2: #fff48e;
   .button{
     background-color: $white;
 
-    &:hover{
+    &-anim-enter {
+      background-color: transparent;
+    }
+    &-anim-enter-active {
       background-color: $light-grey1;
+      transition: background-color .25s;
+    }
+    &-anim-enter-done {
+      background-color: $light-grey1;
+    }
+    &-anim-exit {
+      background-color: $light-grey1;
+    }
+    &-anim-exit-active {
+      background-color: transparent;
+      transition: background-color 1s;
+    }
+    &-anim-exit-done {
+      background-color: transparent;
     }
     .icon{
       fill: $black2;
@@ -257,17 +447,56 @@ $yellow2: #fff48e;
   .i-button{
     background-color: $light-grey1;
 
-    &:hover{
+    &-anim-enter {
+      background-color: $light-grey1;
+    }
+    &-anim-enter-active {
       background-color: $light-grey2;
-
-      .icon{
-        fill: $black2;
-      }
+      transition: background-color .25s;
+    }
+    &-anim-enter-done {
+      background-color: $light-grey2;
+    }
+    &-anim-exit {
+      background-color: $light-grey2;
+    }
+    &-anim-exit-active {
+      background-color: $light-grey1;
+      transition: background-color 1s;
+    }
+    &-anim-exit-done {
+      background-color: $light-grey1;
+    }
+    .icon{
+      fill: $black2;
     }
   }
   //container
   nav{
     background-color: $white;
+
+    .right-side-navbar{
+      .button{
+        &-anim-enter {
+          background-color: transparent;
+        }
+        &-anim-enter-active {
+          background-color: $light-grey1;
+        }
+        &-anim-enter-done{
+          background-color: $light-grey1;
+        }
+        &-anim-exit {
+          background-color: $light-grey1;
+        }
+        &-anim-exit-active {
+          background-color: transparent;
+        }
+        &-anim-exit-done {
+          background-color: transparent;
+        }
+      }
+    }
   }
   .menu{
     background-color: $white-opaque;
@@ -278,6 +507,31 @@ $yellow2: #fff48e;
   .wrapper{
     background-color: $white;
     border-color: $light-grey1;
+  }
+  .about{
+    span{
+      .button{
+        position: relative;
+        &-anim-enter {
+          background-color: transparent;
+        }
+        &-anim-enter-active {
+          background-color: $light-grey1;
+        }
+        &-anim-enter-done{
+          background-color: $light-grey1;
+        }
+        &-anim-exit {
+          background-color: $light-grey1;
+        }
+        &-anim-exit-active {
+          background-color: transparent;
+        }
+        &-anim-exit-done {
+          background-color: transparent;
+        }
+      }
+    }
   }
 }
 
@@ -337,8 +591,25 @@ $yellow2: #fff48e;
   .button{
     background-color: $black2;
 
-    &:hover{
+    &-anim-enter {
+      background-color: transparent;
+    }
+    &-anim-enter-active {
       background-color: $black1;
+      transition: background-color .25s;
+    }
+    &-anim-enter-done {
+      background-color: $black1;
+    }
+    &-anim-exit {
+      background-color: $black1;
+    }
+    &-anim-exit-active {
+      background-color: transparent;
+      transition: background-color 1s;
+    }
+    &-anim-exit-done {
+      background-color: transparent;
     }
     .icon{
       fill: $white;
@@ -353,17 +624,56 @@ $yellow2: #fff48e;
   .i-button{
     background-color: $black1;
 
-    &:hover{
+    &-anim-enter {
+      background-color: $black1;
+    }
+    &-anim-enter-active {
       background-color: $dark-grey2;
-
-      .icon{
-        fill: $black2;
-      }
+      transition: background-color .25s;
+    }
+    &-anim-enter-done {
+      background-color: $dark-grey2;
+    }
+    &-anim-exit {
+      background-color: $dark-grey2;
+    }
+    &-anim-exit-active {
+      background-color: $black1;
+      transition: background-color 1s;
+    }
+    &-anim-exit-done {
+      background-color: $black1;
+    }
+    .icon{
+      fill: $black2;
     }
   }
   //container
   nav{
     background-color: $black2;
+    
+    .right-side-navbar{
+      .button{
+        &-anim-enter {
+          background-color: transparent;
+        }
+        &-anim-enter-active {
+          background-color: $black1;
+        }
+        &-anim-enter-done{
+          background-color: $black1;
+        }
+        &-anim-exit {
+          background-color: $black1;
+        }
+        &-anim-exit-active {
+          background-color: transparent;
+        }
+        &-anim-exit-done {
+          background-color: transparent;
+        }
+      }
+    }
   }
   .menu{
     background-color: $black-opaque;
@@ -374,6 +684,30 @@ $yellow2: #fff48e;
   .wrapper{
     background-color: $black2;
     border-color: $black1;
+  }
+  .about{
+    span{
+      .button{
+        &-anim-enter {
+          background-color: transparent;
+        }
+        &-anim-enter-active {
+          background-color: $black1;
+        }
+        &-anim-enter-done{
+          background-color: $black1;
+        }
+        &-anim-exit {
+          background-color: $black1;
+        }
+        &-anim-exit-active {
+          background-color: transparent;
+        }
+        &-anim-exit-done {
+          background-color: transparent;
+        }
+      }
+    }
   }
 }
 
@@ -432,6 +766,7 @@ $yellow2: #fff48e;
 
       .icon{
         width: 30px;
+        height: 30px;
       }
       .button-text{
         &-activated{
@@ -468,6 +803,11 @@ $yellow2: #fff48e;
       .left-side{
         margin-right: auto;
 
+        a{
+          button{
+            display: inline-block;
+          }
+        }
         button{
           display: none;
         }
@@ -490,7 +830,7 @@ $yellow2: #fff48e;
           display: flex;
           justify-content: center;
 
-          .header1:first-child{
+          a:first-child{
             margin-bottom: 40px;
           }
           button{
@@ -561,7 +901,6 @@ $yellow2: #fff48e;
         margin: 0 0 40px 0;
       }
       .wrapper{
-        height: calc(280px - 80px);
         margin: 0 -40px;
         padding: 40px;
       }
@@ -633,6 +972,7 @@ $yellow2: #fff48e;
 
       .icon{
         width: 30px;
+        height: 30px;
       }
       .button-text{
         &-activated{

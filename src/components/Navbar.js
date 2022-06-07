@@ -12,19 +12,17 @@ function Navbar(props){
     !props.menu?
     <nav className={`${path === "/Post"&&"nav-post"}`}>
       <span className="left-side">
-        <Link to="/" className="button header1">
-          { 
-            path === "/Post"?"<ds>":
-            path === "/About"?"Sobre":
-            "Recentes"
-          }
-        </Link>
+        <Button 
+          mode="link2"
+          path="/" 
+          onFunc={props.setIsMenu}
+        />
         {
           path === "/" &&
           <Button mode="button" name="Filtrar"/>
         }
       </span>
-      <span className="right-side"> 
+      <span className="right-side right-side-navbar"> 
         <Button 
           mode="link"
           path="/About"
@@ -43,28 +41,20 @@ function Navbar(props){
   </nav> :
   <nav className={`${path === "/Post"&&"nav-post"}`}>
     <span className="right-side">
-      <Link 
-        to="/" 
-        className="button header1" 
-        onClick={props.setIsMenu}
-      >
-        { 
-          path === "/Post"?"<ds>":
-          path === "/About"?"Sobre":
-          "Recentes"
-        }
-      </Link>
+      <Button 
+        mode="link2"
+        path="/" 
+        onFunc={props.setIsMenu}
+      />
       <Button 
         mode="link"
         path="/About"
-        isTextHidden={true} 
         icon="Exclamation" 
-        name ="Sobre"
+        name="Sobre"
         onFunc={props.setIsMenu}
       />
       <Button 
         mode="button"
-        isTextHidden={true} 
         icon={isDT?"Moon":"Sun"} 
         name={isDT?"Modo claro":"Modo escuro"}
         onFunc={() => {
@@ -77,7 +67,6 @@ function Navbar(props){
         <>
           <Button 
             mode="button"
-            isTextHidden={true} 
             name="Índice"
             onFunc={() => {
               setIsIndex(!isIndex)
@@ -98,7 +87,6 @@ function Navbar(props){
           }
           <Button 
             mode="button"
-            isTextHidden={true} 
             name="Autor"
             onFunc={() => {
               setIsAuthor(!isAuthor)
