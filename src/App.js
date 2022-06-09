@@ -103,7 +103,6 @@ function App() {
           setIsDT={() => setIsDT(!isDT)}
         />
         <Button
-          mode="i-button"
           icon="Home"
           onFunc={() => setIsMenu(!isMenu)}
         />

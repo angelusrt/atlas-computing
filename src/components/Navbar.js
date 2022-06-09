@@ -12,24 +12,22 @@ function Navbar(props){
     <nav className={path === "/Post"?"nav-post":null}>
       <span className="left-side">
         <Button 
-          mode="link2"
           path="/" 
+          pathCurrent={path}
           onFunc={props.setIsMenu}
         />
-        {
+        {/* {
           path === "/" &&
           <Button mode="button" name="Filtrar"/>
-        }
+        } */}
       </span>
       <span className="right-side right-side-navbar"> 
         <Button 
-          mode="link"
           path="/About"
           icon="Exclamation" 
           name ="Sobre"
         />
         <Button 
-          mode="button"
           icon={isDT?"Moon":"Sun"} 
           name={isDT?"Modo claro":"Modo escuro"}
           onFunc={setIsDT} 
@@ -39,18 +37,16 @@ function Navbar(props){
   <nav className={path === "/Post"?"nav-post":null}>
     <span className="right-side">
       <Button 
-        mode="link2"
         path="/" 
+        pathCurrent={path}
         onFunc={props.setIsMenu}
       />
       <Button 
-        mode="link"
         path="/About"
         name="Sobre"
         onFunc={props.setIsMenu}
       />
       <Button 
-        mode="button"
         name={isDT?"Modo claro":"Modo escuro"}
         onFunc={() => {
           setIsDT()
@@ -61,7 +57,6 @@ function Navbar(props){
         props.path === "/Post" &&
         <>
           <Button 
-            mode="button"
             name="Índice"
             onFunc={() => {
               setIsIndex(!isIndex)
@@ -73,7 +68,6 @@ function Navbar(props){
             props.index.map((index, key) => 
               <Button
                 key={key}
-                mode="link-button-2"
                 name={index.title}
                 link={`#${index.title}${key}`}
                 onFunc={props.setIsMenu}
@@ -81,7 +75,6 @@ function Navbar(props){
             )
           }
           <Button 
-            mode="button"
             name="Autor"
             onFunc={() => {
               setIsAuthor(!isAuthor)

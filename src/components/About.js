@@ -34,7 +34,6 @@ function About(props) {
               {
                 dev.socials.map((social, key) => 
                   <Button 
-                    mode="link-button"
                     key={key}
                     icon={social.iconName}
                     name={social.name}
