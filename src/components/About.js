@@ -22,22 +22,19 @@ function About(props) {
   return (
     resolved &&
     <div className="about">
-      <header>
-        <h2 className="body-text1">{data.about}</h2>
-      </header>
+      <header><p>{data.about}</p></header>
       {
         data.dev.map((dev, key) =>
           <section key={key}>
             <div className="wrapper">
-              <h2 className="header2">{dev.authorName}</h2>
-              <h3 className="subheader2">{dev.authorDescription}</h3>
+              <h2>{dev.authorName}</h2>
+              <h3>{dev.authorDescription}</h3>
             </div>
-            <span className="socials">
+            <span>
               {
                 dev.socials.map((social, key) => 
                   <Button 
                     mode="link-button"
-                    isTextHidden={true}
                     key={key}
                     icon={social.iconName}
                     name={social.name}
@@ -46,10 +43,10 @@ function About(props) {
                 )
               }
             </span>
-            <h2 className="header4">Email</h2>
-            <h3 className="subheader2">{dev.email}</h3>
-            <h2 className="header4">Telefone</h2>
-            <h3 className="subheader2">{
+            <h2>Email</h2>
+            <h3>{dev.email}</h3>
+            <h2>Telefone</h2>
+            <h3>{
               `${dev.telephone.slice(0,3)} 
               ${dev.telephone.slice(3,5)} 
               ${dev.telephone.slice(5)}`

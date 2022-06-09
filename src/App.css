@@ -2,124 +2,196 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
-.App .header1 {
-  font-family: 'Exo', sans-serif;
-  font-weight: 800;
-}
-
-.App .header2 {
-  font-family: 'Exo', sans-serif;
-  font-weight: 700;
-}
-
-.App .header3 {
-  font-family: 'Exo', sans-serif;
-  font-weight: 700;
-}
-
-.App .header4 {
-  font-family: 'Exo', sans-serif;
-  font-weight: 700;
-}
-
-.App .subheader1 {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-}
-
-.App .subheader2 {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-}
-
-.App .body-text1 {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-}
-
-.App .body-text1--bold {
-  font-weight: 600;
-}
-
-.App .body-text1--command {
-  border-radius: 10px;
-  border-style: solid;
-  border-color: #595959;
-}
-
-.App .body-text2 {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 600;
-}
-
-.App .body-text2--command {
-  border-radius: 10px;
-  border-style: solid;
-  border-color: #595959;
-}
-
-.App .body-text3 {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 600;
-  border-radius: 10px;
-}
-
-.App .index-text {
-  display: block;
-  font-family: 'Quicksand', sans-serif;
-  color: #787878;
-}
-
-.App .index-text--regular {
-  font-weight: 600;
-}
-
-.App .index-text--bold {
-  font-weight: 700;
-}
-
-.App .link-text {
-  display: block;
-  text-decoration: underline;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-style: italic;
-  word-break: break-all;
-  overflow: hidden;
-}
-
-.App .code-text {
-  font-family: 'Roboto Mono', sans-serif;
-  line-height: 60px;
-  font-weight: 500;
+.App {
+  background-color: #f6f6f6;
 }
 
 .App a {
   text-decoration: none;
 }
 
+.App h2 {
+  font: 700 30px 'Exo', sans-serif;
+  color: #171717;
+  margin: 0;
+}
+
+.App h3 {
+  font: 600 14px 'Quicksand', sans-serif;
+  color: #595959;
+  margin: 0;
+}
+
+.App p {
+  font: 400 20px/30px 'Roboto', sans-serif;
+  color: #595959;
+  padding: 30px 0 0 0;
+  margin: 0;
+}
+
 .App .button {
-  cursor: pointer;
+  position: relative;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  cursor: pointer;
+  background-color: transparent;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  border: none;
+  padding: 10px;
+  margin-left: 10px;
   border-radius: 10px;
+  border: none;
+  text-decoration: none;
 }
 
-.App .button .button-text {
-  display: none;
-  white-space: nowrap;
-  overflow: hidden;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-}
-
-.App .button .button-text-activated {
+.App .button h3 {
   display: inline-block;
+  overflow: hidden;
+  font: 600 24px "Quicksand", sans-serif;
+  color: #171717;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.App .button svg {
+  fill: #171717;
+  width: 30px;
+  height: 30px;
+}
+
+.App .button .index-text {
+  color: #787878;
+}
+
+.App .button-anim-enter {
+  background-color: transparent;
+}
+
+.App .button-anim-enter-active {
+  background-color: #e5e5e5;
+  -webkit-transition: background-color .25s;
+  transition: background-color .25s;
+}
+
+.App .button-anim-enter-done {
+  background-color: #e5e5e5;
+}
+
+.App .button-anim-exit {
+  background-color: #e5e5e5;
+}
+
+.App .button-anim-exit-active {
+  background-color: transparent;
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
+}
+
+.App .button-anim-exit-done {
+  background-color: transparent;
+}
+
+.App .button-icon h3 {
+  display: none;
+  padding-left: 10px;
+}
+
+.App .button-icon-anim-enter {
+  background-color: transparent;
+  width: 50px;
+}
+
+.App .button-icon-anim-enter h3 {
+  display: none;
+  width: 0px;
+  padding-left: 0;
+  opacity: 0.5;
+}
+
+.App .button-icon-anim-enter svg {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.App .button-icon-anim-enter-active {
+  background-color: #e5e5e5;
+  width: 100%;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.App .button-icon-anim-enter-active h3 {
+  display: inline-block;
+  width: calc(100% - 30px);
+  padding-left: 10px;
+  margin-left: 30px;
+  opacity: 1;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.App .button-icon-anim-enter-done {
+  background-color: #e5e5e5;
+}
+
+.App .button-icon-anim-enter-done h3 {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.App .button-icon-anim-enter-done svg {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.App .button-icon-anim-exit {
+  background-color: #e5e5e5;
+  width: 100%;
+}
+
+.App .button-icon-anim-exit h3 {
+  display: inline-block;
+  width: 100%;
+  padding-left: 10px;
+  margin-left: 30px;
+  opacity: 1;
+}
+
+.App .button-icon-anim-exit svg {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.App .button-icon-anim-exit-active {
+  background-color: transparent;
+  width: 50px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.App .button-icon-anim-exit-active h3 {
+  display: inline-block;
+  width: 0;
+  padding-left: 10px;
+  margin-left: 30px;
+  margin-right: auto;
+  opacity: 0.5;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.App .button-icon-anim-exit-done {
+  background-color: transparent;
+}
+
+.App .button-icon-anim-exit-done h3 {
+  display: none;
 }
 
 .App .i-button {
@@ -127,6 +199,104 @@
   position: fixed;
   bottom: 20px;
   left: 20px;
+  background-color: #e5e5e5;
+  padding: 20px;
+  margin-left: 0;
+}
+
+.App .i-button-anim-enter {
+  background-color: #e5e5e5;
+}
+
+.App .i-button-anim-enter-active {
+  background-color: #c4c4c4;
+  -webkit-transition: background-color .25s;
+  transition: background-color .25s;
+}
+
+.App .i-button-anim-enter-done {
+  background-color: #c4c4c4;
+}
+
+.App .i-button-anim-exit {
+  background-color: #c4c4c4;
+}
+
+.App .i-button-anim-exit-active {
+  background-color: #e5e5e5;
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
+}
+
+.App .i-button-anim-exit-done {
+  background-color: #e5e5e5;
+}
+
+.App .i-button svg {
+  fill: #171717;
+}
+
+.App section {
+  margin: 0 0 40px 0;
+}
+
+.App section a {
+  display: block;
+  font: italic 400 20px 'Roboto', sans-serif;
+  color: #44b499;
+  padding-bottom: 10px;
+  margin: 0;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.App section a:first-of-type {
+  padding-top: 30px;
+}
+
+.App section a:last-child {
+  padding-bottom: 80px;
+}
+
+.App section .code-text {
+  font: 500 20px/40px 'Roboto Mono', sans-serif;
+  padding: 30px 0 0 0;
+  margin: 0;
+}
+
+.App section .code-text-normal {
+  color: #595959;
+}
+
+.App section .code-text-green {
+  color: #44b499;
+}
+
+.App section .code-text-yellow {
+  color: #fbcb50;
+}
+
+.App section .code-text-red {
+  color: #f46161;
+}
+
+.App section .code-text-blue {
+  color: #5e6eff;
+}
+
+.App section .button:first-of-type {
+  padding: 10px;
+}
+
+.App section .button:last-of-type {
+  padding: 10px;
+}
+
+.App aside a {
+  display: block;
+  font: 24px 'Quicksand', sans-serif;
+  color: #787878;
+  margin-bottom: 5px;
 }
 
 .App span {
@@ -135,36 +305,41 @@
   display: flex;
 }
 
-.App .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  border-radius: 40px;
-  border-width: 3px;
-  border-style: solid;
-}
-
 .App nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: #f6f6f6;
+  padding: 10px 0;
+  margin: auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
+.App nav h1 {
+  font: 800 40px 'Exo', sans-serif;
+  color: #171717;
+  margin: 0;
+}
+
 .App nav .left-side {
+  margin-right: auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.App nav .left-side a button {
+  display: inline-block;
+}
+
+.App nav .left-side button {
+  display: none;
+}
+
+.App nav .right-side {
+  display: none;
 }
 
 .App nav .right-side-navbar {
@@ -183,512 +358,218 @@
 }
 
 .App nav .right-side-navbar .button {
-  position: relative;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
 
-.App nav .right-side-navbar .button-anim-enter {
-  width: 50px;
+.App .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  background-color: #f6f6f6;
+  border: 3px solid #e5e5e5;
+  border-radius: 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
-.App nav .right-side-navbar .button-anim-enter .icon {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
-
-.App nav .right-side-navbar .button-anim-enter .button-text {
-  display: none;
-  width: 0px;
-  padding-left: 0;
-  opacity: 0.5;
-}
-
-.App nav .right-side-navbar .button-anim-enter-active {
-  width: 100%;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App nav .right-side-navbar .button-anim-enter-active .button-text {
-  display: inline-block;
-  width: calc(100% - 30px);
-  padding-left: 10px;
-  margin-left: 30px;
-  opacity: 1;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App nav .right-side-navbar .button-anim-enter-done .icon {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
-
-.App nav .right-side-navbar .button-anim-enter-done .button-text {
-  display: inline-block;
-  margin-left: 30px;
-}
-
-.App nav .right-side-navbar .button-anim-exit {
-  width: 100%;
-}
-
-.App nav .right-side-navbar .button-anim-exit .icon {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
-
-.App nav .right-side-navbar .button-anim-exit .button-text {
-  display: inline-block;
-  width: 100%;
-  padding-left: 10px;
-  margin-left: 30px;
-  opacity: 1;
-}
-
-.App nav .right-side-navbar .button-anim-exit-active {
-  width: 50px;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App nav .right-side-navbar .button-anim-exit-active .button-text {
-  display: inline-block;
-  width: 0;
-  padding-left: 10px;
-  margin-left: 30px;
-  margin-right: auto;
-  opacity: 0.5;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App nav .right-side-navbar .button-anim-exit-done .button-text {
-  display: none;
+.App .wrapper a {
+  font: 600 14px 'Quicksand', sans-serif;
+  color: #44b499;
+  margin: 0 5px 0 0;
 }
 
 .App .menu {
+  z-index: 1;
   overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
+  background-color: rgba(246, 246, 246, 0.7);
   width: 100%;
   height: 100%;
-  z-index: 1;
 }
 
 .App .menu nav {
   overflow: scroll;
+  width: 65%;
+  height: calc(100% - 6px - 80px);
+  margin: 0;
+  padding: 40px 20px;
+  border: 3px solid #e5e5e5;
+  border-radius: 40px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.App .menu nav span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: auto 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border-style: solid;
-  border-radius: 40px;
-  border-width: 3px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.App .menu nav .right-side {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.App .menu nav .right-side a {
+.App .menu nav span a {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+}
+
+.App .menu nav span a:first-child {
+  margin-bottom: 40px;
+}
+
+.App .menu nav span .button svg {
+  display: none;
+}
+
+.App .menu nav span .button h3 {
+  display: block;
+  padding-left: 0;
+}
+
+.App .menu nav span .wrapper {
+  width: calc(100% - 6px - 80px);
+  padding: 40px;
+  margin: 20px calc(-20px - 3px);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.App .home main {
+  margin: auto;
+}
+
+.App .home main article {
+  width: calc(100% - 6px - 80px);
+  height: calc(280px - 80px);
+  padding: 40px;
+  margin: 40px 0;
+}
+
+.App .post header {
+  width: calc(100% - 6px - 80px);
+  height: calc(280px - 80px - 6px);
+  padding: 40px;
+  margin: 0 auto 40px auto;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.App .post header aside {
+  display: none;
 }
 
 .App .post main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.App .post main article {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0 40px;
+}
+
+.App .post main aside {
+  display: none;
+}
+
+.App .about {
+  padding-bottom: 160px;
+  margin: auto 40px;
+}
+
+.App .about header {
+  margin: 0 0 40px 0;
+}
+
+.App .about section h2 {
+  font-size: 20px;
+  margin: 20px 0 5px 0;
 }
 
 .App .about span {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  margin: 20px 0 0 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .App .about span .button {
   position: relative;
+  margin-left: 0;
+  margin-right: 10px;
 }
 
-.App .about span .button-anim-enter {
-  width: 50px;
+.App .about .wrapper {
+  padding: 40px;
+  margin: 0 -40px;
 }
 
-.App .about span .button-anim-enter .icon {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
-
-.App .about span .button-anim-enter .button-text {
-  display: none;
-  width: 0px;
-  padding-left: 0;
-  opacity: 0.5;
-}
-
-.App .about span .button-anim-enter-active {
-  width: 100%;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App .about span .button-anim-enter-active .button-text {
-  display: inline-block;
-  width: calc(100% - 30px);
-  padding-left: 10px;
-  margin-left: 30px;
-  opacity: 1;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App .about span .button-anim-enter-done .icon {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
-
-.App .about span .button-anim-enter-done .button-text {
-  display: inline-block;
-  margin-left: 30px;
-}
-
-.App .about span .button-anim-exit {
-  width: 100%;
-}
-
-.App .about span .button-anim-exit .icon {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
-
-.App .about span .button-anim-exit .button-text {
-  display: inline-block;
-  width: 100%;
-  padding-left: 10px;
-  margin-left: 30px;
-  opacity: 1;
-}
-
-.App .about span .button-anim-exit-active {
-  width: 50px;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App .about span .button-anim-exit-active .button-text {
-  display: inline-block;
-  width: 0;
-  padding-left: 10px;
-  margin-left: 30px;
-  margin-right: auto;
-  opacity: 0.5;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App .about span .button-anim-exit-done .button-text {
-  display: none;
-}
-
-.App-light {
-  background-color: #f6f6f6;
-}
-
-.App-light .header1 {
-  color: #171717;
-}
-
-.App-light .header2 {
-  color: #171717;
-}
-
-.App-light .header3 {
-  color: #595959;
-}
-
-.App-light .header4 {
-  color: #171717;
-}
-
-.App-light .subheader1 {
-  color: #44b499;
-}
-
-.App-light .subheader2 {
-  color: #595959;
-}
-
-.App-light .body-text1 {
-  color: #595959;
-}
-
-.App-light .body-text2 {
-  color: #595959;
-}
-
-.App-light .body-text3 {
-  color: #595959;
-  border-color: #595959;
-}
-
-.App-light .link-text {
-  color: #44b499;
-}
-
-.App-light .code-text-normal {
-  color: #595959;
-}
-
-.App-light .code-text-green {
-  color: #44b499;
-}
-
-.App-light .code-text-yellow {
-  color: #fbcb50;
-}
-
-.App-light .code-text-red {
-  color: #f46161;
-}
-
-.App-light .code-text-blue {
-  color: #5e6eff;
-}
-
-.App-light .button {
-  background-color: #f6f6f6;
-}
-
-.App-light .button-anim-enter {
-  background-color: transparent;
-}
-
-.App-light .button-anim-enter-active {
-  background-color: #e5e5e5;
-  -webkit-transition: background-color .25s;
-  transition: background-color .25s;
-}
-
-.App-light .button-anim-enter-done {
-  background-color: #e5e5e5;
-}
-
-.App-light .button-anim-exit {
-  background-color: #e5e5e5;
-}
-
-.App-light .button-anim-exit-active {
-  background-color: transparent;
-  -webkit-transition: background-color 1s;
-  transition: background-color 1s;
-}
-
-.App-light .button-anim-exit-done {
-  background-color: transparent;
-}
-
-.App-light .button .icon {
-  fill: #171717;
-}
-
-.App-light .button .button-text {
-  color: #171717;
-}
-
-.App-light .button .button-text2 {
-  color: #787878;
-}
-
-.App-light .i-button {
-  background-color: #e5e5e5;
-}
-
-.App-light .i-button-anim-enter {
-  background-color: #e5e5e5;
-}
-
-.App-light .i-button-anim-enter-active {
-  background-color: #c4c4c4;
-  -webkit-transition: background-color .25s;
-  transition: background-color .25s;
-}
-
-.App-light .i-button-anim-enter-done {
-  background-color: #c4c4c4;
-}
-
-.App-light .i-button-anim-exit {
-  background-color: #c4c4c4;
-}
-
-.App-light .i-button-anim-exit-active {
-  background-color: #e5e5e5;
-  -webkit-transition: background-color 1s;
-  transition: background-color 1s;
-}
-
-.App-light .i-button-anim-exit-done {
-  background-color: #e5e5e5;
-}
-
-.App-light .i-button .icon {
-  fill: #171717;
-}
-
-.App-light nav {
-  background-color: #f6f6f6;
-}
-
-.App-light nav .right-side-navbar .button-anim-enter {
-  background-color: transparent;
-}
-
-.App-light nav .right-side-navbar .button-anim-enter-active {
-  background-color: #e5e5e5;
-}
-
-.App-light nav .right-side-navbar .button-anim-enter-done {
-  background-color: #e5e5e5;
-}
-
-.App-light nav .right-side-navbar .button-anim-exit {
-  background-color: #e5e5e5;
-}
-
-.App-light nav .right-side-navbar .button-anim-exit-active {
-  background-color: transparent;
-}
-
-.App-light nav .right-side-navbar .button-anim-exit-done {
-  background-color: transparent;
-}
-
-.App-light .menu {
-  background-color: rgba(246, 246, 246, 0.7);
-}
-
-.App-light .menu nav {
-  border-color: #e5e5e5;
-}
-
-.App-light .wrapper {
-  background-color: #f6f6f6;
-  border-color: #e5e5e5;
-}
-
-.App-light .about span .button {
-  position: relative;
-}
-
-.App-light .about span .button-anim-enter {
-  background-color: transparent;
-}
-
-.App-light .about span .button-anim-enter-active {
-  background-color: #e5e5e5;
-}
-
-.App-light .about span .button-anim-enter-done {
-  background-color: #e5e5e5;
-}
-
-.App-light .about span .button-anim-exit {
-  background-color: #e5e5e5;
-}
-
-.App-light .about span .button-anim-exit-active {
-  background-color: transparent;
-}
-
-.App-light .about span .button-anim-exit-done {
-  background-color: transparent;
+.App .about .wrapper h2 {
+  font-size: 30px;
+  margin: 0;
 }
 
 .App-dark {
   background-color: #171717;
 }
 
-.App-dark .header1 {
+.App-dark h2 {
   color: #f6f6f6;
 }
 
-.App-dark .header2 {
-  color: #f6f6f6;
-}
-
-.App-dark .header3 {
+.App-dark h3 {
   color: #c4c4c4;
 }
 
-.App-dark .header4 {
-  color: #f6f6f6;
-}
-
-.App-dark .subheader1 {
-  color: #6bd2a1;
-}
-
-.App-dark .subheader2 {
+.App-dark p {
   color: #c4c4c4;
-}
-
-.App-dark .body-text1 {
-  color: #c4c4c4;
-}
-
-.App-dark .body-text2 {
-  color: #c4c4c4;
-}
-
-.App-dark .body-text3 {
-  color: #c4c4c4;
-  border-color: #c4c4c4;
-}
-
-.App-dark .link-text {
-  color: #6bd2a1;
-}
-
-.App-dark .code-text-normal {
-  color: #c4c4c4;
-}
-
-.App-dark .code-text-green {
-  color: #6bd2a1;
-}
-
-.App-dark .code-text-yellow {
-  color: #fff48e;
-}
-
-.App-dark .code-text-red {
-  color: #fca28f;
-}
-
-.App-dark .code-text-blue {
-  color: #96adff;
 }
 
 .App-dark .button {
   background-color: #171717;
+}
+
+.App-dark .button h3 {
+  color: #f6f6f6;
+}
+
+.App-dark .button svg {
+  fill: #f6f6f6;
+}
+
+.App-dark .button .index-text {
+  color: #787878;
 }
 
 .App-dark .button-anim-enter {
@@ -719,16 +600,28 @@
   background-color: transparent;
 }
 
-.App-dark .button .icon {
-  fill: #f6f6f6;
+.App-dark .button-icon-anim-enter {
+  background-color: transparent;
 }
 
-.App-dark .button .button-text {
-  color: #f6f6f6;
+.App-dark .button-icon-anim-enter-active {
+  background-color: #363636;
 }
 
-.App-dark .button .button-text2 {
-  color: #787878;
+.App-dark .button-icon-anim-enter-done {
+  background-color: #363636;
+}
+
+.App-dark .button-icon-anim-exit {
+  background-color: #363636;
+}
+
+.App-dark .button-icon-anim-exit-active {
+  background-color: transparent;
+}
+
+.App-dark .button-icon-anim-exit-done {
+  background-color: transparent;
 }
 
 .App-dark .i-button {
@@ -763,36 +656,49 @@
   background-color: #363636;
 }
 
-.App-dark .i-button .icon {
+.App-dark .i-button svg {
   fill: #171717;
+}
+
+.App-dark section a {
+  color: #6bd2a1;
+}
+
+.App-dark section .code-text-normal {
+  color: #c4c4c4;
+}
+
+.App-dark section .code-text-green {
+  color: #6bd2a1;
+}
+
+.App-dark section .code-text-yellow {
+  color: #fff48e;
+}
+
+.App-dark section .code-text-red {
+  color: #fca28f;
+}
+
+.App-dark section .code-text-blue {
+  color: #96adff;
 }
 
 .App-dark nav {
   background-color: #171717;
 }
 
-.App-dark nav .right-side-navbar .button-anim-enter {
-  background-color: transparent;
+.App-dark nav h1 {
+  color: #f6f6f6;
 }
 
-.App-dark nav .right-side-navbar .button-anim-enter-active {
-  background-color: #363636;
+.App-dark .wrapper {
+  background-color: #171717;
+  border-color: #363636;
 }
 
-.App-dark nav .right-side-navbar .button-anim-enter-done {
-  background-color: #363636;
-}
-
-.App-dark nav .right-side-navbar .button-anim-exit {
-  background-color: #363636;
-}
-
-.App-dark nav .right-side-navbar .button-anim-exit-active {
-  background-color: transparent;
-}
-
-.App-dark nav .right-side-navbar .button-anim-exit-done {
-  background-color: transparent;
+.App-dark .wrapper a {
+  color: #6bd2a1;
 }
 
 .App-dark .menu {
@@ -803,294 +709,52 @@
   border-color: #363636;
 }
 
-.App-dark .wrapper {
-  background-color: #171717;
-  border-color: #363636;
-}
-
-.App-dark .about span .button-anim-enter {
-  background-color: transparent;
-}
-
-.App-dark .about span .button-anim-enter-active {
-  background-color: #363636;
-}
-
-.App-dark .about span .button-anim-enter-done {
-  background-color: #363636;
-}
-
-.App-dark .about span .button-anim-exit {
-  background-color: #363636;
-}
-
-.App-dark .about span .button-anim-exit-active {
-  background-color: transparent;
-}
-
-.App-dark .about span .button-anim-exit-done {
-  background-color: transparent;
-}
-
-@media (max-width: 680px) {
-  .App .header1 {
-    margin: 0;
-    font-size: 40px;
-  }
-  .App .header2 {
-    margin: 0;
-    font-size: 30px;
-  }
-  .App .header3 {
-    margin: 0 0 10px 0;
-    font-size: 30px;
-  }
-  .App .header4 {
-    margin: 20px 0 5px 0;
-    font-size: 20px;
-  }
-  .App .subheader1 {
-    margin: 0 5px 0 0;
-    font-size: 14px;
-  }
-  .App .subheader2 {
-    margin: 0;
-    font-size: 14px;
-  }
-  .App .body-text1 {
-    margin: 0;
-    padding: 30px 0 0 0;
-    font-size: 20px;
-    line-height: 30px;
-  }
-  .App .index-text {
-    margin-bottom: 5px;
-    font-size: 24px;
-  }
-  .App .link-text {
-    margin: 0;
-    padding-bottom: 10px;
-    font-size: 20px;
-  }
-  .App .code-text {
-    margin: 0;
-    padding: 30px 0 0 0;
-    font-size: 20px;
-    line-height: 40px;
-  }
-  .App .button {
-    margin-left: 10px;
-    padding: 10px;
-  }
-  .App .button .icon {
-    width: 30px;
-    height: 30px;
-  }
-  .App .button .button-text {
-    margin: 0;
-    font-size: 24px;
-    padding-left: 10px;
-  }
-  .App .button .button-text-activated {
-    padding: 0;
-  }
-  .App .i-button {
-    margin-left: 0;
-    padding: 20px;
-  }
-  .App section {
-    margin: 0 0 40px 0;
-  }
-  .App section .link-text:first-of-type {
-    padding-top: 30px;
-  }
-  .App section .link-text:last-child {
-    padding-bottom: 80px;
-  }
-  .App nav {
-    margin: auto;
-    padding: 10px 0;
-  }
-  .App nav .left-side {
-    margin-right: auto;
-  }
-  .App nav .left-side a button {
-    display: inline-block;
-  }
-  .App nav .left-side button {
-    display: none;
-  }
-  .App nav .right-side {
-    display: none;
-  }
-  .App .menu {
-    overflow: scroll;
-  }
-  .App .menu nav {
-    width: 65%;
-    height: calc(100% - 6px - 80px);
-    margin: 0;
-    padding: 40px 20px;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
-  .App .menu nav .right-side {
-    margin: auto 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  .App .menu nav .right-side a:first-child {
-    margin-bottom: 40px;
-  }
-  .App .menu nav .right-side button .icon {
-    display: none;
-  }
-  .App .menu nav .right-side button .button-text {
-    display: block;
-    padding-left: 0;
-  }
-  .App .menu nav .right-side section {
-    margin: 20px calc(-20px - 3px);
-    width: calc(100% - 6px - 80px);
-    padding: 40px;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-  }
-  .App .home main {
-    margin: auto;
-  }
-  .App .home main article {
-    margin: 40px 0;
-    width: calc(100% - 6px - 80px);
-    height: calc(280px - 80px);
-    padding: 40px;
-  }
-  .App .post {
-    margin: auto;
-  }
-  .App .post header {
-    margin: 0 auto 40px auto;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    width: calc(100% - 6px - 80px);
-    height: calc(280px - 80px - 6px);
-    padding: 40px;
-  }
-  .App .post header aside {
-    display: none;
-  }
-  .App .post main {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .App .post main article {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    padding: 0 40px;
-  }
-  .App .post main aside {
-    display: none;
-  }
-  .App .about {
-    padding-bottom: 160px;
-    margin: auto 40px;
-  }
-  .App .about header {
-    margin: 0 0 40px 0;
-  }
-  .App .about .wrapper {
-    margin: 0 -40px;
-    padding: 40px;
-  }
-  .App .about .socials {
-    margin: 20px 0 0 0;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .App .about .socials .button {
-    margin-left: 0;
-    margin-right: 10px;
-  }
-}
-
 @media (min-width: 680px) {
-  .App .header1 {
-    margin: 0;
-    font-size: 50px;
-  }
-  .App .header2 {
-    margin: 0;
+  .App h2 {
     font-size: 40px;
+    margin: 0;
   }
-  .App .header3 {
-    margin: 0 0 10px 0;
-    font-size: 30px;
-  }
-  .App .header4 {
-    margin: 40px 0 10px 0;
-    font-size: 30px;
-  }
-  .App .subheader1 {
-    margin: 0 5px 0 0;
+  .App h3 {
     font-size: 24px;
   }
-  .App .subheader2 {
-    margin: 0;
-    font-size: 24px;
-  }
-  .App .body-text1 {
-    margin: 0;
-    padding: 40px 0 0 0;
+  .App p {
     font-size: 30px;
     line-height: 45px;
-  }
-  .App .index-text {
-    margin-bottom: 5px;
-    font-size: 24px;
-  }
-  .App .link-text {
-    margin: 0;
-    padding-bottom: 10px;
-    font-size: 30px;
-  }
-  .App .code-text {
-    margin: 0;
     padding: 40px 0 0 0;
-    font-size: 30px;
+    margin: 0;
   }
   .App .button {
-    margin-left: 10px;
     padding: 10px;
+    margin-left: 10px;
   }
-  .App .button .icon {
+  .App .button svg {
     width: 30px;
     height: 30px;
   }
-  .App .button .button-text {
-    margin: 0;
-    font-size: 24px;
-    padding-left: 10px;
+  .App .i-button {
+    display: none;
   }
-  .App .button .button-text-activated {
-    padding: 0;
+  .App .i-button h3 {
+    padding-left: 10px;
   }
   .App section {
     margin: 0 0 80px 0;
   }
-  .App section .link-text:first-of-type {
+  .App section a {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 30px;
+  }
+  .App section a:first-of-type {
     padding-top: 40px;
   }
-  .App section .link-text:last-child {
+  .App section a:last-child {
     padding-bottom: 0;
+  }
+  .App section .code-text {
+    margin: 0;
+    padding: 40px 0 0 0;
+    font-size: 30px;
   }
   .App nav {
     margin: auto;
@@ -1098,8 +762,22 @@
     width: calc(100% - 40px);
     max-width: 680px;
   }
+  .App nav h1 {
+    margin: 0;
+    font-size: 50px;
+  }
   .App nav .left-side {
     margin-right: auto;
+  }
+  .App nav .left-side button {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+  .App nav .right-side {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
   .App nav .mobile-post {
     display: none;
@@ -1110,8 +788,9 @@
   .App .menu {
     display: none;
   }
-  .App .i-button {
-    display: none;
+  .App .wrapper a {
+    margin: 0 5px 0 0;
+    font-size: 24px;
   }
   .App .home main {
     width: calc(100% - 6px);
@@ -1121,6 +800,7 @@
   .App .home main article {
     margin: 40px 0;
     height: calc(320px - 80px);
+    width: auto;
     padding: 40px 80px;
   }
   .App .post {
@@ -1136,6 +816,7 @@
     height: calc(320px - 180px - 6px);
   }
   .App .post header aside {
+    display: block;
     position: absolute;
     width: calc(100% - 80px - 80px - 6px);
     left: 37px;
@@ -1155,12 +836,12 @@
     padding: 0 80px;
   }
   .App .post main aside {
+    display: block;
     width: calc(320px - 80px - 6px);
     margin-top: 120px;
     padding: 0 80px 80px 80px;
   }
-  .App .post main aside .header2 {
-    font-size: 40px;
+  .App .post main aside h2 {
     margin-bottom: 40px;
   }
   .App .about {
@@ -1172,19 +853,26 @@
   .App .about header {
     margin: 0 0 80px 0;
   }
-  .App .about .wrapper {
-    margin: 0 calc(-80px - 3px);
-    padding: 40px 80px;
+  .App .about section h2 {
+    font-size: 30px;
+    margin: 40px 0 10px 0;
   }
-  .App .about .socials {
+  .App .about section h3 {
+    font-size: 24px;
+  }
+  .App .about span {
     margin: 40px 0 0 0;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
   }
-  .App .about .socials .button {
+  .App .about span .button {
     margin-left: 0;
     margin-right: 10px;
+  }
+  .App .about .wrapper {
+    margin: 0 calc(-80px - 3px);
+    padding: 40px 80px;
   }
 }
 
@@ -1218,7 +906,7 @@
     padding: 40px 86px 0 43px;
     margin-top: 0;
   }
-  .App .post main aside .header2 {
+  .App .post main aside h2 {
     margin-bottom: 10px;
   }
 }

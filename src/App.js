@@ -95,7 +95,7 @@ function App() {
 
   return (
     <Router>
-      <div className={"App " + (isDT?"App-dark":"App-light")}>
+      <div className={isDT?"App App-dark":"App"}>
         <Navbar 
           menu={false}
           isDT={isDT} 

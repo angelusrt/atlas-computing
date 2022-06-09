@@ -5,11 +5,11 @@ function PostCard(props) {
     <article className="wrapper" onClick={() => props.onFunc()}>
       <span>
         {props.tags.map((tag, key) =>   
-          <a key={key} className="subheader1">{`#${tag}`}</a>
+          <a key={key}>{`#${tag}`}</a>
         )}
       </span>
-      <Link to="/Post" className="post-link">
-        <h2 className="header2">{props.title}</h2>
+      <Link to="/Post">
+        <h2>{props.title}</h2>
       </Link>
     </article>
   )

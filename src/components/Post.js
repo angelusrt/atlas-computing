@@ -31,13 +31,13 @@ function Post(props) {
       <header className="wrapper">
         <span>
           {data.tags.map((tag, key) =>   
-            <a key={key} className="subheader1">{`#${tag}`}</a>
+            <a key={key}>{`#${tag}`}</a>
           )}
         </span>
-        <h2 className="header2">{data.title}</h2>
+        <h2>{data.title}</h2>
         <aside className="wrapper">
-          <h2 className="header2">{data.authorName}</h2>
-          <h3 className="subheader2">{data.authorDescription}</h3>
+          <h2>{data.authorName}</h2>
+          <h3>{data.authorDescription}</h3>
         </aside>
       </header>
       <main>
@@ -45,25 +45,18 @@ function Post(props) {
           {
             data.body.section.map((section, key) => 
               <section key={key}>
-                <h2 
-                  className="header2" 
-                  id={`${section.title}${key}`}
-                >
+                <h2 id={`${section.title}${key}`}>
                   {section.title}
                 </h2>
                 {
                   section.paragraphs.map((p, key) => 
                     p.mode === "normal"?
-                    <p key={key} className={"body-text1"}>
-                      {p.text}
-                    </p> :
+                    <p key={key}>{p.text}</p> :
                     p.mode === "code"?
                     <p key={key} className={"code-text code-text-normal"}>
                       {p.text}
                     </p> :
-                    <a key={key} href={p.text} className="link-text">
-                      {p.text}
-                    </a>
+                    <a key={key} href={p.text}>{p.text}</a>
                   )
                 }
               </section>
@@ -71,13 +64,12 @@ function Post(props) {
           }
         </article>
         <aside>
-          <h2 className="header2">Índice</h2>
+          <h2>Índice</h2>
           {
             data.body.section.map((section, key) => 
               <a 
                 key={key}
                 href={`#${section.title}${key}`} 
-                className="index-text"
               >
                 {section.title}
               </a>

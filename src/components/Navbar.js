@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
 import Button from "./Button"
 
 function Navbar(props){
@@ -10,7 +9,7 @@ function Navbar(props){
   
   return(
     !props.menu?
-    <nav className={`${path === "/Post"&&"nav-post"}`}>
+    <nav className={path === "/Post"?"nav-post":null}>
       <span className="left-side">
         <Button 
           mode="link2"
@@ -26,20 +25,18 @@ function Navbar(props){
         <Button 
           mode="link"
           path="/About"
-          isTextHidden={true} 
           icon="Exclamation" 
           name ="Sobre"
         />
         <Button 
           mode="button"
-          isTextHidden={true} 
           icon={isDT?"Moon":"Sun"} 
           name={isDT?"Modo claro":"Modo escuro"}
           onFunc={setIsDT} 
         />
       </span>
   </nav> :
-  <nav className={`${path === "/Post"&&"nav-post"}`}>
+  <nav className={path === "/Post"?"nav-post":null}>
     <span className="right-side">
       <Button 
         mode="link2"
@@ -49,13 +46,11 @@ function Navbar(props){
       <Button 
         mode="link"
         path="/About"
-        icon="Exclamation" 
         name="Sobre"
         onFunc={props.setIsMenu}
       />
       <Button 
         mode="button"
-        icon={isDT?"Moon":"Sun"} 
         name={isDT?"Modo claro":"Modo escuro"}
         onFunc={() => {
           setIsDT()
@@ -96,10 +91,10 @@ function Navbar(props){
           {
             props.author && isAuthor &&
             <section className="wrapper">
-              <h2 className="header2">
+              <h2>
                 {props.author.authorName}
               </h2>
-              <h3 className="subheader2">
+              <h3>
                 {props.author.authorDescription}
               </h3>
             </section>

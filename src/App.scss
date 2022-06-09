@@ -24,106 +24,166 @@ $yellow1: #fbcb50;
 $yellow2: #fff48e;
 
 .App{
-  //text
-  .header1{
-    font-family: 'Exo', sans-serif;
-    font-weight: 800;
-  }
-  .header2{
-    font-family: 'Exo', sans-serif;
-    font-weight: 700;
-  }
-  .header3{
-    font-family: 'Exo', sans-serif;
-    font-weight: 700;
-  }
-  .header4{
-    font-family: 'Exo', sans-serif;
-    font-weight: 700;
-  }
-  .subheader1{
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
-  }
-  .subheader2{
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
-  }
-  .body-text1{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-  
-    &--bold{
-      font-weight: 600;
-    }
-    &--command{
-      border-radius: 10px;
-      border-style: solid;
-      border-color: $dark-grey2;
-    }
-  }
-  .body-text2{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
+  background-color: $white;
 
-    &--command{
-      border-radius: 10px;
-      border-style: solid;
-      border-color: $dark-grey2;
-    }
-  }
-  .body-text3{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    border-radius: 10px;
-  }
-  .index-text{
-    display: block;
-    font-family: 'Quicksand', sans-serif;
-    
-    color: $dark-grey1;
-    
-    &--regular{
-      font-weight: 600;
-    }
-    &--bold{
-      font-weight: 700;
-    }
-  }
-  .link-text{
-    display: block;
-    text-decoration: underline;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-style: italic;
-    word-break: break-all;
-    overflow: hidden;
-  }
-  .code-text{
-    font-family: 'Roboto Mono', sans-serif;
-    line-height: 60px;
-    font-weight: 500;
-  }
+  //text
   a{
     text-decoration: none;
   }
+  h2{
+    font: 700 30px 'Exo', sans-serif;
+    color: $black2;
+    margin: 0;
+  }
+  h3{
+    font: 600 14px 'Quicksand', sans-serif;
+    color: $dark-grey2;
+    margin: 0;
+  }
+  p{
+    font: 400 20px/30px 'Roboto', sans-serif;
+    color: $dark-grey2;
+    padding: 30px 0 0 0;
+    margin: 0;
+  }
+
   //buttons
   .button{
-    cursor: pointer;
+    position: relative;
     display: inline-flex;
+    cursor: pointer;
+    background-color: transparent;
     width: fit-content;
-    border: none;
+    padding: 10px;
+    margin-left: 10px;
     border-radius: 10px;
+    border: none;
+    text-decoration: none;
     
-    .button-text{
-      display: none;
-      white-space: nowrap;
+    h3{
+      display: inline-block;
       overflow: hidden;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 600;
-
-      &-activated{
+      font: 600 24px "Quicksand", sans-serif;
+      color: $black2;
+      padding: 0;
+      margin: 0;
+      white-space: nowrap;
+    }
+    svg{
+      fill: $black2;
+      width: 30px;
+      height: 30px;
+    }
+    .index-text{
+      color: $dark-grey1;
+    }
+    &-anim-enter{
+      background-color: transparent;
+    }
+    &-anim-enter-active{
+      background-color: $light-grey1;
+      transition: background-color .25s;
+    }
+    &-anim-enter-done{
+      background-color: $light-grey1;
+    }
+    &-anim-exit{
+      background-color: $light-grey1;
+    }
+    &-anim-exit-active{
+      background-color: transparent;
+      transition: background-color 1s;
+    }
+    &-anim-exit-done{
+      background-color: transparent;
+    }
+  }
+  .button-icon{
+    h3{
+      display: none;
+      padding-left: 10px;
+    }
+    &-anim-enter{
+      background-color: transparent;
+      width: 50px;
+      
+      h3{
+        display: none;
+        width: 0px;
+        padding-left: 0;
+        opacity: 0.5;
+      }
+      svg{
+        position: absolute;
+        left: 10px;
+        top: 10px;
+      }
+    }
+    &-anim-enter-active{
+      background-color: $light-grey1;
+      width: 100%;
+      
+      h3{
         display: inline-block;
+        width: calc(100% - 30px);
+        padding-left: 10px;
+        margin-left: 30px;
+        opacity: 1;
+        
+        transition: all 1s;
+      }
+      transition: all 1s;
+    }
+    &-anim-enter-done{
+      background-color: $light-grey1;
+      
+      h3{
+        display: inline-block;
+        margin-left: 30px;
+      }
+      svg{
+        position: absolute;
+        left: 10px;
+        top: 10px;
+      }
+    }
+    &-anim-exit{
+      background-color: $light-grey1;
+      width: 100%;
+      
+      h3{
+        display: inline-block;
+        width: 100%;
+        padding-left: 10px;
+        margin-left: 30px;
+        opacity: 1;
+      }
+      svg{
+        position: absolute;
+        left: 10px;
+        top: 10px;
+      }
+    }
+    &-anim-exit-active{
+      background-color: transparent;
+      width: 50px;
+      
+      h3{
+        display: inline-block;
+        width: 0;
+        padding-left: 10px;
+        margin-left: 30px;
+        margin-right: auto;
+        opacity: 0.5;
+        transition: all 1s;
+      }
+      transition: all 1s;
+    }
+    &-anim-exit-done{
+      background-color: transparent;
+      
+      h3{
+        display: none;
       }
     }
   }
@@ -132,26 +192,119 @@ $yellow2: #fff48e;
     position: fixed;
     bottom: 20px;
     left: 20px;
+    background-color: $light-grey1;
+    padding: 20px;
+    margin-left: 0;
+    
+    &-anim-enter{
+      background-color: $light-grey1;
+    }
+    &-anim-enter-active{
+      background-color: $light-grey2;
+      transition: background-color .25s;
+    }
+    &-anim-enter-done{
+      background-color: $light-grey2;
+    }
+    &-anim-exit{
+      background-color: $light-grey2;
+    }
+    &-anim-exit-active{
+      background-color: $light-grey1;
+      transition: background-color 1s;
+    }
+    &-anim-exit-done{
+      background-color: $light-grey1;
+    }
+    svg{
+      fill: $black2;
+    }
   }
+
   //container
+  section{
+    margin: 0 0 40px 0;
+
+    a{
+      display: block;
+      font: italic 400 20px 'Roboto', sans-serif;
+      color: $green1;
+      padding-bottom: 10px;
+      margin: 0;
+      text-decoration: underline;
+      word-break: break-all;
+
+      &:first-of-type{
+        padding-top: 30px;
+      }
+      &:last-child{
+        padding-bottom: 80px;
+      }
+    }
+    .code-text{
+      font: 500 20px/40px 'Roboto Mono', sans-serif;
+      padding: 30px 0 0 0;
+      margin: 0;
+      
+      &-normal{
+        color: $dark-grey2;
+      }
+      &-green{
+        color: $green1;
+      }
+      &-yellow{
+        color: $yellow1;
+      }
+      &-red{
+        color: $red1;
+      }
+      &-blue{
+        color: $blue1;
+      }
+    }
+    .button{
+      &:first-of-type{
+        padding: 10px;
+      }
+      &:last-of-type{
+        padding: 10px;
+      }
+    }
+  }
+  aside a{
+    display: block;
+    font: 24px 'Quicksand', sans-serif;
+    color: $dark-grey1;
+    margin-bottom: 5px;
+  }
   span{
     display: flex;
   }
-  .wrapper{
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: flex-end;
-    border-radius: 40px;
-    border-width: 3px;
-    border-style: solid;
-  }
   nav{
     display: flex;
+    background-color: $white;
+    padding: 10px 0;
+    margin: auto;
     align-items: center;
-
+    
+    h1{
+      font: 800 40px 'Exo', sans-serif;
+      color: $black2;
+      margin: 0;
+    }
     .left-side{
+      margin-right: auto;
       align-items: center;
+      
+      a button{
+        display: inline-block;
+      }
+      button{
+        display: none;
+      }
+    }
+    .right-side{
+      display: none;
     }
     .right-side-navbar{
       justify-content: flex-end;
@@ -161,375 +314,147 @@ $yellow2: #fff48e;
         justify-content: flex-end;
       }
       .button{
-        position: relative;
         justify-content: flex-end;
-
-        &-anim-enter {
-          width: 50px;
-          
-          .icon{
-            position: absolute;
-            left: 10px;
-            top: 10px;
-          }
-          .button-text{
-            display: none;
-            width: 0px;
-            padding-left: 0;
-            opacity: 0.5;
-          }
-        }
-        &-anim-enter-active {
-          width: 100%;
-  
-          .button-text{
-            display: inline-block;
-            width: calc(100% - 30px);
-            padding-left: 10px;
-            margin-left: 30px;
-            opacity: 1;
-            
-            transition: all 1s;
-          }
-          transition: all 1s;
-        }
-        &-anim-enter-done{
-          .icon{
-            position: absolute;
-            left: 10px;
-            top: 10px;
-          }
-          .button-text{
-            display: inline-block;
-            margin-left: 30px;
-          }
-        }
-        &-anim-exit {
-          width: 100%;
-
-          .icon{
-            position: absolute;
-            left: 10px;
-            top: 10px;
-          }
-          .button-text{
-            display: inline-block;
-            width: 100%;
-            padding-left: 10px;
-            margin-left: 30px;
-            opacity: 1;
-          }
-        }
-        &-anim-exit-active {
-          width: 50px;
-          
-          .button-text{
-            display: inline-block;
-            width: 0;
-            padding-left: 10px;
-            margin-left: 30px;
-            margin-right: auto;
-            opacity: 0.5;
-            transition: all 1s;
-          }
-          transition: all 1s;
-        }
-        &-anim-exit-done {
-          .button-text{
-            display: none;
-          }
-        }
       }
     }
   }
+  .wrapper{
+    display: flex;
+    position: relative;
+    background-color: $white;
+    border: 3px solid $light-grey1; 
+    border-radius: 40px;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    a{
+      font: 600 14px 'Quicksand', sans-serif;
+      color: $green1;
+      margin: 0 5px 0 0;
+    }
+  }
   .menu{
+    z-index: 1;
     overflow: hidden;
     position: fixed;
     top: 0;
     left: 0;
+    background-color: $white-opaque;
     width: 100%;
     height: 100%;
-    z-index: 1;
-  
+    
     nav{
       overflow: scroll;
-      display: flex;
-      flex-direction: column;
-      border-style: solid;
+      width: 65%;
+      height: calc(100% - 6px - 80px);
+      margin: 0;
+      padding: 40px 20px;
+      border: 3px solid $light-grey1;
       border-radius: 40px;
-      border-width: 3px;
+      align-items: flex-start;
+      flex-direction: column;
 
-      .right-side{
+      span{
+        display: flex;
+        margin: auto 0;
         flex-direction: column;
+        justify-content: center;
         
         a{
           justify-content: flex-start;
+
+          &:first-child{
+            margin-bottom: 40px;
+          }
+        }
+        .button{
+          svg{
+            display: none;
+          }
+          h3{
+            display: block;
+            padding-left: 0;
+          }
+        }
+        .wrapper{
+          width: calc(100% - 6px - 80px);
+          padding: 40px;
+          margin: 20px calc(-20px - 3px);
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0;
         }
       }
+    }
+  }
+
+  //screens
+  .home main{
+    margin: auto;
+
+    article{
+      width: calc(100% - 6px - 80px);
+      height: calc(280px - 80px);
+      padding: 40px;
+      margin: 40px 0;
     }
   }
   .post{
+    header{
+      width: calc(100% - 6px - 80px);
+      height: calc(280px - 80px - 6px);
+      padding: 40px;
+      margin: 0 auto 40px auto;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      
+      aside{
+        display: none;
+      }
+    }
     main{
       display: flex;
+      flex-direction: column;
+      
+      article{
+        flex: 1;
+        padding: 0 40px;
+      }
+      aside{
+        display: none;
+      }
     }
   }
   .about{
+    padding-bottom: 160px;
+    margin: auto 40px;
+    
+    header{
+      margin: 0 0 40px 0;
+    }
+    section{
+      h2{
+        font-size: 20px;
+        margin: 20px 0 5px 0;
+      }
+    }
     span{
       width: fit-content;
+      margin: 20px 0 0 0;
+      align-items: center;
+      
       .button{
         position: relative;
-        &-anim-enter {
-          width: 50px;
-          
-          .icon{
-            position: absolute;
-            left: 10px;
-            top: 10px;
-          }
-          .button-text{
-            display: none;
-            width: 0px;
-            padding-left: 0;
-            opacity: 0.5;
-          }
-        }
-        &-anim-enter-active {
-          width: 100%;
-  
-          .button-text{
-            display: inline-block;
-            width: calc(100% - 30px);
-            padding-left: 10px;
-            margin-left: 30px;
-            opacity: 1;
-            
-            transition: all 1s;
-          }
-          transition: all 1s;
-        }
-        &-anim-enter-done{
-          .icon{
-            position: absolute;
-            left: 10px;
-            top: 10px;
-          }
-          .button-text{
-            display: inline-block;
-            margin-left: 30px;
-          }
-        }
-        &-anim-exit {
-          width: 100%;
-
-          .icon{
-            position: absolute;
-            left: 10px;
-            top: 10px;
-          }
-          .button-text{
-            display: inline-block;
-            width: 100%;
-            padding-left: 10px;
-            margin-left: 30px;
-            opacity: 1;
-          }
-        }
-        &-anim-exit-active {
-          width: 50px;
-          
-          .button-text{
-            display: inline-block;
-            width: 0;
-            padding-left: 10px;
-            margin-left: 30px;
-            margin-right: auto;
-            opacity: 0.5;
-            transition: all 1s;
-          }
-          transition: all 1s;
-        }
-        &-anim-exit-done {
-          .button-text{
-            display: none;
-          }
-        }
+        margin-left: 0;
+        margin-right: 10px;
       }
     }
-  }
-}
+    .wrapper{
+      padding: 40px;
+      margin: 0 -40px;
 
-.App-light{
-  background-color: $white;
-
-  //text
-  .header1{
-    color: $black2;
-  }
-  .header2{
-    color: $black2;
-  }
-  .header3{
-    color: $dark-grey2;
-  }
-  .header4{
-    color: $black2;
-  }
-  .subheader1{
-    color: $green1;
-  }
-  .subheader2{
-    color: $dark-grey2;
-  }
-  .body-text1{
-    color: $dark-grey2;
-  }
-  .body-text2{
-    color: $dark-grey2;
-  }
-  .body-text3{
-    color: $dark-grey2;
-    border-color: $dark-grey2;
-  }
-  .link-text{
-    color: $green1;
-  }
-  .code-text{
-    &-normal{
-      color: $dark-grey2;
-    }
-    &-green{
-      color: $green1;
-    }
-    &-yellow{
-      color: $yellow1;
-    }
-    &-red{
-      color: $red1;
-    }
-    &-blue{
-      color: $blue1;
-    }
-  }
-  //buttons
-  .button{
-    background-color: $white;
-
-    &-anim-enter {
-      background-color: transparent;
-    }
-    &-anim-enter-active {
-      background-color: $light-grey1;
-      transition: background-color .25s;
-    }
-    &-anim-enter-done {
-      background-color: $light-grey1;
-    }
-    &-anim-exit {
-      background-color: $light-grey1;
-    }
-    &-anim-exit-active {
-      background-color: transparent;
-      transition: background-color 1s;
-    }
-    &-anim-exit-done {
-      background-color: transparent;
-    }
-    .icon{
-      fill: $black2;
-    }
-    .button-text{
-      color: $black2;
-    }
-    .button-text2{
-      color: $dark-grey1;
-    }
-  }
-  .i-button{
-    background-color: $light-grey1;
-
-    &-anim-enter {
-      background-color: $light-grey1;
-    }
-    &-anim-enter-active {
-      background-color: $light-grey2;
-      transition: background-color .25s;
-    }
-    &-anim-enter-done {
-      background-color: $light-grey2;
-    }
-    &-anim-exit {
-      background-color: $light-grey2;
-    }
-    &-anim-exit-active {
-      background-color: $light-grey1;
-      transition: background-color 1s;
-    }
-    &-anim-exit-done {
-      background-color: $light-grey1;
-    }
-    .icon{
-      fill: $black2;
-    }
-  }
-  //container
-  nav{
-    background-color: $white;
-
-    .right-side-navbar{
-      .button{
-        &-anim-enter {
-          background-color: transparent;
-        }
-        &-anim-enter-active {
-          background-color: $light-grey1;
-        }
-        &-anim-enter-done{
-          background-color: $light-grey1;
-        }
-        &-anim-exit {
-          background-color: $light-grey1;
-        }
-        &-anim-exit-active {
-          background-color: transparent;
-        }
-        &-anim-exit-done {
-          background-color: transparent;
-        }
-      }
-    }
-  }
-  .menu{
-    background-color: $white-opaque;
-    nav{
-      border-color: $light-grey1;
-    }
-  }
-  .wrapper{
-    background-color: $white;
-    border-color: $light-grey1;
-  }
-  .about{
-    span{
-      .button{
-        position: relative;
-        &-anim-enter {
-          background-color: transparent;
-        }
-        &-anim-enter-active {
-          background-color: $light-grey1;
-        }
-        &-anim-enter-done{
-          background-color: $light-grey1;
-        }
-        &-anim-exit {
-          background-color: $light-grey1;
-        }
-        &-anim-exit-active {
-          background-color: transparent;
-        }
-        &-anim-exit-done {
-          background-color: transparent;
-        }
+      h2{
+        font-size: 30px;
+        margin: 0;
       }
     }
   }
@@ -539,58 +464,29 @@ $yellow2: #fff48e;
   background-color: $black2;
 
   //text
-  .header1{
+  h2{
     color: $white;
   }
-  .header2{
-    color: $white;
-  }
-  .header3{
+  h3{
     color: $light-grey2;
   }
-  .header4{
-    color: $white;
-  }
-  .subheader1{
-    color: $green2;
-  }
-  .subheader2{
+  p{
     color: $light-grey2;
   }
-  .body-text1{
-    color: $light-grey2;
-  }
-  .body-text2{
-    color: $light-grey2;
-  }
-  .body-text3{
-    color: $light-grey2;
-    border-color: $light-grey2;
-  }
-  .link-text{
-    color: $green2;
-  }
-  .code-text{
-    &-normal{
-      color: $light-grey2;
-    }
-    &-green{
-      color: $green2;
-    }
-    &-yellow{
-      color: $yellow2;
-    }
-    &-red{
-      color: $red2;
-    }
-    &-blue{
-      color: $blue2;
-    }
-  }
+  
   //buttons
   .button{
     background-color: $black2;
 
+    h3{
+      color: $white;
+    }
+    svg{
+      fill: $white;
+    }
+    .index-text{
+      color: $dark-grey1;
+    }
     &-anim-enter {
       background-color: transparent;
     }
@@ -611,14 +507,25 @@ $yellow2: #fff48e;
     &-anim-exit-done {
       background-color: transparent;
     }
-    .icon{
-      fill: $white;
+  }
+  .button-icon{
+    &-anim-enter {
+      background-color: transparent;
     }
-    .button-text{
-      color: $white;
+    &-anim-enter-active {
+      background-color: $black1;
     }
-    .button-text2{
-      color: $dark-grey1;
+    &-anim-enter-done{
+      background-color: $black1;
+    }
+    &-anim-exit {
+      background-color: $black1;
+    }
+    &-anim-exit-active {
+      background-color: transparent;
+    }
+    &-anim-exit-done {
+      background-color: transparent;
     }
   }
   .i-button{
@@ -644,275 +551,54 @@ $yellow2: #fff48e;
     &-anim-exit-done {
       background-color: $black1;
     }
-    .icon{
+    svg{
       fill: $black2;
     }
   }
+
   //container
-  nav{
-    background-color: $black2;
-    
-    .right-side-navbar{
-      .button{
-        &-anim-enter {
-          background-color: transparent;
-        }
-        &-anim-enter-active {
-          background-color: $black1;
-        }
-        &-anim-enter-done{
-          background-color: $black1;
-        }
-        &-anim-exit {
-          background-color: $black1;
-        }
-        &-anim-exit-active {
-          background-color: transparent;
-        }
-        &-anim-exit-done {
-          background-color: transparent;
-        }
+  section{
+    a{
+      color: $green2;
+    }
+    .code-text{
+      &-normal{
+        color: $light-grey2;
+      }
+      &-green{
+        color: $green2;
+      }
+      &-yellow{
+        color: $yellow2;
+      }
+      &-red{
+        color: $red2;
+      }
+      &-blue{
+        color: $blue2;
       }
     }
   }
-  .menu{
-    background-color: $black-opaque;
-    nav{
-      border-color: $black1;
+  nav{
+    background-color: $black2;
+    
+    h1{
+      color: $white;
     }
   }
   .wrapper{
     background-color: $black2;
     border-color: $black1;
-  }
-  .about{
-    span{
-      .button{
-        &-anim-enter {
-          background-color: transparent;
-        }
-        &-anim-enter-active {
-          background-color: $black1;
-        }
-        &-anim-enter-done{
-          background-color: $black1;
-        }
-        &-anim-exit {
-          background-color: $black1;
-        }
-        &-anim-exit-active {
-          background-color: transparent;
-        }
-        &-anim-exit-done {
-          background-color: transparent;
-        }
-      }
+
+    a{
+      color: $green2;
     }
   }
-}
+  .menu{
+    background-color: $black-opaque;
 
-@media (max-width: 680px) {
-  .App{
-    //text
-    .header1{
-      margin: 0;
-      font-size: 40px;
-    }
-    .header2{
-      margin: 0;
-      font-size: 30px;
-    }
-    .header3{
-      margin: 0 0 10px 0;
-      font-size: 30px;
-    }
-    .header4{
-      margin: 20px 0 5px 0;
-      font-size: 20px;
-    }
-    .subheader1{
-      margin: 0 5px 0 0;
-      font-size: 14px;
-    }
-    .subheader2{
-      margin: 0;
-      font-size: 14px;
-    }
-    .body-text1{
-      margin: 0;
-      padding: 30px 0 0 0;//20px
-      font-size: 20px;
-      line-height: 30px;
-    }
-    .index-text{
-      margin-bottom: 5px;
-      font-size: 24px;
-    }
-    .link-text{
-      margin: 0;
-      padding-bottom: 10px;
-      font-size: 20px;
-    }
-    .code-text{
-      margin: 0;
-      padding: 30px 0 0 0;//20px
-      font-size: 20px;
-      line-height: 40px;
-    }
-    //buttons
-    .button{
-      margin-left: 10px;
-      padding: 10px;
-
-      .icon{
-        width: 30px;
-        height: 30px;
-      }
-      .button-text{
-        &-activated{
-          padding: 0;
-        }
-        margin: 0;
-        font-size: 24px;
-        padding-left: 10px;
-      }
-    }
-    .i-button{
-      margin-left: 0;
-      padding: 20px;
-    }
-    //container
-    section{
-      margin: 0 0 40px 0;
-
-      .link-text{
-        &:first-of-type{
-          padding-top: 30px;//20px
-        }
-        &:last-child{
-          padding-bottom: 80px;
-        }
-      }
-    }
-
-    //nav
     nav{
-      margin: auto;
-      padding: 10px 0;
-      
-      .left-side{
-        margin-right: auto;
-
-        a{
-          button{
-            display: inline-block;
-          }
-        }
-        button{
-          display: none;
-        }
-      }
-      .right-side{
-        display: none;
-      }
-    }
-    .menu{
-      overflow: scroll;
-      nav{
-        width: 65%;
-        height: calc(100% - 6px - 80px);
-        margin: 0;
-        padding: 40px 20px;
-        align-items: flex-start;
-
-        .right-side{
-          margin: auto 0;
-          display: flex;
-          justify-content: center;
-
-          a:first-child{
-            margin-bottom: 40px;
-          }
-          button{
-            .icon{
-              display: none;
-            }
-            .button-text{
-              display: block;
-              padding-left: 0;
-            }
-          }
-          section{
-            margin: 20px calc(-20px - 3px);
-            width: calc(100% - 6px - 80px);
-            padding: 40px;
-            border-bottom-left-radius: 0;
-            border-top-left-radius: 0;
-          }
-        }
-      }
-    }
-    //home
-    .home{
-      main{
-        margin: auto;
-
-        article{
-          margin: 40px 0;
-          width: calc(100% - 6px - 80px);
-          height: calc(280px - 80px);
-          padding: 40px;
-        }
-      }
-    }
-    //post
-    .post{
-      margin: auto;
-
-      header{
-        margin: 0 auto 40px auto;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        width: calc(100% - 6px - 80px);
-        height: calc(280px - 80px - 6px);
-        padding: 40px;
-  
-        aside{
-          display: none;
-        }
-      }
-      main{
-        flex-direction: column;
-        article{
-          flex: 1;
-          padding: 0 40px;
-        }
-        aside{
-          display: none;
-        }
-      }
-    }
-    //about
-    .about{
-      padding-bottom: 160px;
-      margin: auto 40px;
-
-      header{
-        margin: 0 0 40px 0;
-      }
-      .wrapper{
-        margin: 0 -40px;
-        padding: 40px;
-      }
-      .socials{
-        margin: 20px 0 0 0;
-        align-items: center;
-  
-        .button{
-          margin-left: 0;
-          margin-right: 10px;
-        }
-      }
+      border-color: $black1;
     }
   }
 }
@@ -921,73 +607,47 @@ $yellow2: #fff48e;
 @media (min-width: 680px) {
   .App{
     //text
-    .header1{
-      margin: 0;
-      font-size: 50px;
-    }
-    .header2{
-      margin: 0;
+    h2{
       font-size: 40px;
+      margin: 0;
     }
-    .header3{
-      margin: 0 0 10px 0;
-      font-size: 30px;
-    }
-    .header4{
-      margin: 40px 0 10px 0;
-      font-size: 30px;
-    }
-    .subheader1{
-      margin: 0 5px 0 0;
+    h3{
       font-size: 24px;
     }
-    .subheader2{
-      margin: 0;
-      font-size: 24px;
-    }
-    .body-text1{
-      margin: 0;
-      padding: 40px 0 0 0;
+    p{
       font-size: 30px;
       line-height: 45px;
-    }
-    .index-text{
-      margin-bottom: 5px;
-      font-size: 24px;
-    }
-    .link-text{
-      margin: 0;
-      padding-bottom: 10px;
-      font-size: 30px;
-    }
-    .code-text{
-      margin: 0;
       padding: 40px 0 0 0;
-      font-size: 30px;
+      margin: 0;
     }
+
     //buttons
     .button{
-      margin-left: 10px;
       padding: 10px;
+      margin-left: 10px;
 
-      .icon{
+      svg{
         width: 30px;
         height: 30px;
       }
-      .button-text{
-        &-activated{
-          padding: 0;
-        }
-        margin: 0;
-        font-size: 24px;
+    }
+    .i-button{
+      display: none;
+
+      h3{
         padding-left: 10px;
       }
     }
+
     //container
     section{
       margin: 0 0 80px 0;
 
-      .link-text{
+      a{
+        margin: 0;
+        padding-bottom: 10px;
+        font-size: 30px;
+        
         &:first-of-type{
           padding-top: 40px;
         }
@@ -995,17 +655,31 @@ $yellow2: #fff48e;
           padding-bottom: 0;
         }
       }
+      .code-text{
+        margin: 0;
+        padding: 40px 0 0 0;
+        font-size: 30px;
+      }
     }
-
-    //nav
     nav{
       margin: auto;
       padding: 20px;
       width: calc(100% - 40px);
       max-width: 680px;
       
+      h1{
+        margin: 0;
+        font-size: 50px;
+      }
       .left-side{
         margin-right: auto;
+        
+        button{
+          display: inline-flex;
+        }
+      }
+      .right-side{
+        display: flex;
       }
       .mobile-post{
         display: none;
@@ -1017,10 +691,12 @@ $yellow2: #fff48e;
     .menu{
       display: none;
     }
-    .i-button{
-      display: none;
+    .wrapper a{
+      margin: 0 5px 0 0;
+      font-size: 24px;
     }
-    //home
+
+    //screens
     .home{
       main{
         width: calc(100% - 6px);
@@ -1030,11 +706,11 @@ $yellow2: #fff48e;
         article{
           margin: 40px 0;
           height: calc(320px - 80px);
+          width: auto;
           padding: 40px 80px;
         }
       }
     }
-    //post
     .post{
       width: 95%;
       margin: auto;
@@ -1048,6 +724,7 @@ $yellow2: #fff48e;
         height: calc(320px - 180px - 6px);
   
         aside{
+          display: block;
           position: absolute;
           width: calc(100% - 80px - 80px - 6px);
           left: 37px;
@@ -1063,18 +740,17 @@ $yellow2: #fff48e;
           padding: 0 80px;
         }
         aside{
+          display: block;
           width: calc(320px - 80px - 6px);
           margin-top: 120px;
           padding: 0 80px 80px 80px;
 
-          .header2{
-            font-size: 40px;
+          h2{
             margin-bottom: 40px; 
           }
         }
       }
     }
-    //about
     .about{
       max-width: calc(100% - 160px - 6px);
       width: calc(680px - 40px + 6px);
@@ -1084,11 +760,16 @@ $yellow2: #fff48e;
       header{
         margin: 0 0 80px 0;
       }
-      .wrapper{
-        margin: 0 calc(-80px - 3px);
-        padding: 40px 80px;
+      section{
+        h2{
+          font-size: 30px;
+          margin: 40px 0 10px 0;
+        }
+        h3{
+          font-size: 24px;
+        }
       }
-      .socials{
+      span{
         margin: 40px 0 0 0;
         align-items: center;
   
@@ -1096,6 +777,10 @@ $yellow2: #fff48e;
           margin-left: 0;
           margin-right: 10px;
         }
+      }
+      .wrapper{
+        margin: 0 calc(-80px - 3px);
+        padding: 40px 80px;
       }
     }
   }
@@ -1130,7 +815,7 @@ $yellow2: #fff48e;
           padding: 40px 86px 0 43px;
           margin-top: 0;
 
-          .header2{
+          h2{
             margin-bottom: 10px;
           }
         }
