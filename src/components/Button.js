@@ -8,6 +8,8 @@ function ButtonWrapper(props) {
     <button 
       className={props.buttonName}
       onClick={() => props.onFunc()} 
+      onTouchStart={() => props.setIsButton(true)}
+      onTouchEnd={() => props.setIsButton(false)}
       onMouseOver={() => props.setIsButton(true)}
       onMouseLeave={() => props.setIsButton(false)}
     >
@@ -81,6 +83,8 @@ function Button(props){
           rel='noreferrer'
           href={props.link}
           target="_blank"
+          onTouchStart={() => setIsButton(true)}
+          onTouchEnd={() => setIsButton(false)}
           onMouseOver={() => setIsButton(true)}
           onMouseLeave={() => setIsButton(false)}
         >
@@ -92,6 +96,8 @@ function Button(props){
           referrerPolicy='no-referrer' 
           rel='noreferrer'
           href={props.link}
+          onTouchStart={() => setIsButton(true)}
+          onTouchEnd={() => setIsButton(false)}
           onMouseOver={() => setIsButton(true)}
           onMouseLeave={() => setIsButton(false)}
           onClick={() => props.onFunc()}

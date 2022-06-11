@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 .App {
   background-color: #f6f6f6;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .App a {
@@ -392,13 +393,80 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(246, 246, 246, 0.7);
   width: 100%;
   height: 100%;
 }
 
+.App .menu-anim-enter {
+  background-color: transparent;
+}
+
+.App .menu-anim-enter nav {
+  opacity: 0.5;
+  -webkit-transform: translate(-60%, 0);
+          transform: translate(-60%, 0);
+}
+
+.App .menu-anim-enter-active {
+  background-color: rgba(246, 246, 246, 0.7);
+  -webkit-transition: background-color .25s;
+  transition: background-color .25s;
+}
+
+.App .menu-anim-enter-active nav {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  -webkit-transition: all .25s;
+  transition: all .25s;
+}
+
+.App .menu-anim-enter-done {
+  background-color: rgba(246, 246, 246, 0.7);
+}
+
+.App .menu-anim-enter-done nav {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.App .menu-anim-exit {
+  background-color: rgba(246, 246, 246, 0.7);
+}
+
+.App .menu-anim-exit nav {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.App .menu-anim-exit-active {
+  background-color: transparent;
+  -webkit-transition: background-color .25s;
+  transition: background-color .25s;
+}
+
+.App .menu-anim-exit-active nav {
+  opacity: 0;
+  -webkit-transform: translate(-60%, 0);
+          transform: translate(-60%, 0);
+  -webkit-transition: all .25s;
+  transition: all .25s;
+}
+
+.App .menu-anim-exit-done {
+  background-color: transparent;
+}
+
+.App .menu-anim-exit-done nav {
+  opacity: 0;
+  -webkit-transform: translate(-60%, 0);
+          transform: translate(-60%, 0);
+}
+
 .App .menu nav {
-  overflow: scroll;
+  overflow: auto;
   width: 65%;
   height: calc(100% - 6px - 80px);
   margin: 0;
@@ -703,6 +771,34 @@
 
 .App-dark .menu {
   background-color: rgba(23, 23, 23, 0.7);
+}
+
+.App-dark .menu-anim-enter {
+  background-color: transparent;
+}
+
+.App-dark .menu-anim-enter-active {
+  background-color: rgba(23, 23, 23, 0.7);
+  -webkit-transition: background-color .25s;
+  transition: background-color .25s;
+}
+
+.App-dark .menu-anim-enter-done {
+  background-color: rgba(23, 23, 23, 0.7);
+}
+
+.App-dark .menu-anim-exit {
+  background-color: rgba(23, 23, 23, 0.7);
+}
+
+.App-dark .menu-anim-exit-active {
+  background-color: transparent;
+  -webkit-transition: background-color .25s;
+  transition: background-color .25s;
+}
+
+.App-dark .menu-anim-exit-done {
+  background-color: transparent;
 }
 
 .App-dark .menu nav {

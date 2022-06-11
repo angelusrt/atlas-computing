@@ -6,6 +6,7 @@ import PostCard from "./components/PostCard"
 import Post from "./components/Post"
 import About from "./components/About"
 import './App.css'
+import { CSSTransition } from "react-transition-group"
 
 const _host = "192.168.0.115:3000"
 const _header = {
@@ -19,20 +20,27 @@ const _header = {
 
 function Menu(props) {
   return(
-    <header className="menu" onClick={(e) => {
-      e.clientX > (0.65 * window.innerWidth + 6 + 40) &&
-      props.setIsMenu()
-    }}>
-      <Navbar 
-        menu={true}
-        isDT={props.isDT} 
-        path={props.path}
-        index={props.index}
-        author={props.author}
-        setIsDT={() => props.setIsDT(!props.isDT)}
-        setIsMenu={props.setIsMenu}
-      />
-    </header>
+    <CSSTransition
+      classNames="menu-anim"
+      in={props.isMenu} 
+      timeout={500}
+      unmountOnExit
+    >
+      <header className="menu" onClick={(e) => {
+        e.clientX > (0.65 * window.innerWidth + 6 + 40) &&
+        props.setIsMenu()
+      }}>
+        <Navbar 
+          menu={true}
+          isDT={props.isDT} 
+          path={props.path}
+          index={props.index}
+          author={props.author}
+          setIsDT={() => props.setIsDT(!props.isDT)}
+          setIsMenu={props.setIsMenu}
+        />
+      </header>
+    </CSSTransition>
   )
 }
 
@@ -106,17 +114,15 @@ function App() {
           icon="Home"
           onFunc={() => setIsMenu(!isMenu)}
         />
-        {
-          isMenu && 
-          <Menu 
-            isDT={isDT} 
-            path={path}
-            index={index}
-            author={author}
-            setIsDT={() => setIsDT(!isDT)}
-            setIsMenu={() => setIsMenu(false)}
-          />
-        }
+        <Menu 
+          isDT={isDT} 
+          isMenu={isMenu}
+          path={path}
+          index={index}
+          author={author}
+          setIsDT={() => setIsDT(!isDT)}
+          setIsMenu={() => setIsMenu(false)}
+        />
         <Routes>
           <Route path="/" element={
             <Home 
