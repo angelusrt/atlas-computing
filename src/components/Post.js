@@ -5,10 +5,9 @@ function Post(props) {
   const[data, setData] = useState()
   const[resolved, setResolved] = useState(false)
   const[path] = useState(useLocation().pathname)
-  const {post} = props
   
   const onGet = async () => {
-    return await fetch(`http://${props.host}/api/post/${post}`, props.header)
+    return await fetch(`http://${props.host}/api${path}`, props.header)
     .then(res => res.json())
     .then(data => {
       setData(data)

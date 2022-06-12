@@ -19,8 +19,8 @@ function ButtonWrapper(props) {
         props.path === "/" &&
         <h1>
         { 
-          props.pathCurrent === "/Post"?"at.com":
-          props.pathCurrent === "/About"?"Sobre":
+          props.pathCurrent === "/post"?"at.com":
+          props.pathCurrent === "/about"?"Sobre":
           "Recentes"
         }
         </h1>

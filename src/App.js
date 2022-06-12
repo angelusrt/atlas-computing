@@ -56,9 +56,9 @@ function Home(props) {
       setData(data.map((post, key) => (
         <PostCard 
           key={key}
+          id={post._id}
           tags={post.tags} 
           title={post.title}
-          onFunc={() => props.setPost(post._id)}
         />
       )))
       setResolved(true)
@@ -80,7 +80,6 @@ function Home(props) {
 function App() {
   //Dark theme
   const[isDT, setIsDT] = useState(false)
-  const[post, setPost] = useState({})
   const[path, setPath] = useState("/")
   //Mobile and Menu Vars
   const[isMenu, setIsMenu] = useState(false)
@@ -129,21 +128,19 @@ function App() {
               host={_host}
               header={_header} 
               setPath={path => setPath(path)} 
-              setPost={post => setPost(post)}
             />
           }/>
-          <Route path="/About" element={
+          <Route path="/about" element={
             <About 
               host={_host}
               header={_header}  
               setPath={path => setPath(path)}
             />
           }/>
-          <Route path="/Post" element={
+          <Route path="/post/:id" element={
             <Post 
               host={_host}
               header={_header}  
-              post={post} 
               setPath={path => setPath(path)}
               setIndex={index => setIndex(index)}
               setAuthor={author => setAuthor(author)}
