@@ -9,7 +9,7 @@ function Navbar(props){
   
   return(
     !props.menu?
-    <nav className={path === "/post"?"nav-post":null}>
+    <nav className={path.substring(0, 5) === "/post"?"nav-post":null}>
       <span className="left-side">
         <Button 
           path="/" 
@@ -34,7 +34,7 @@ function Navbar(props){
         />
       </span>
     </nav> :
-    <nav className={path === "/post"?"nav-post":null}>
+    <nav className={path.substring(0, 5) === "/post"?"nav-post":null}>
       <span className="right-side">
         <Button 
           path="/" 
@@ -54,7 +54,7 @@ function Navbar(props){
           }} 
         />
         {
-          props.path.substring(0, 5) === "/post" &&
+          path.substring(0, 5) === "/post" &&
           <>
             <Button 
               name="Índice"

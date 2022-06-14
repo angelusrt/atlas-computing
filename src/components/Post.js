@@ -49,13 +49,30 @@ function Post(props) {
                 </h2>
                 {
                   section.paragraphs.map((p, key) => 
-                    p.mode === "normal"?
-                    <p key={key}>{p.text}</p> :
-                    p.mode === "code"?
-                    <p key={key} className={"code-text code-text-normal"}>
-                      {p.text}
-                    </p> :
-                    <a key={key} href={p.text}>{p.text}</a>
+                    <React.Fragment key={key}>
+                      {
+                        p.image !== undefined &&
+                        p.image.map((img, key) => 
+                          <img 
+                            key={`a${key}`}
+                            src={`http://${props.host}/api/image/${img}`} 
+                            alt="..."
+                          />
+                        )
+                      }
+                      {
+                        p.mode === "normal"?
+                        <p key={`b${key}`}>{p.text}</p> :
+                        p.mode === "code"?
+                        <p 
+                          key={`b${key}`} 
+                          className={"code-text code-text-normal"}
+                        >
+                          {p.text}
+                        </p> :
+                        <a key={`b${key}`} href={p.text}>{p.text}</a>
+                      }
+                    </React.Fragment>
                   )
                 }
               </section>
