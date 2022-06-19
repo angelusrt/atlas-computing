@@ -8,7 +8,10 @@ function PostCard(props) {
           <a key={key}>{`#${tag}`}</a>
         )}
       </span>
-      <Link to={`/post/${props.id}`}>
+      <Link 
+        to={`/post/${props.id}`} 
+        onClick={() => props.setPostPos(props.postPos)}
+      > 
         <h2>{props.title}</h2>
       </Link>
     </article>

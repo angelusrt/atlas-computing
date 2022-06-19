@@ -26,10 +26,8 @@ function About(props) {
       {
         data.dev.map((dev, key) =>
           <section key={key}>
-            <div className="wrapper">
-              <h2>{dev.authorName}</h2>
-              <h3>{dev.authorDescription}</h3>
-            </div>
+            <h2>{dev.authorName}</h2>
+            <h3>{dev.authorDescription}</h3>
             <span>
               {
                 dev.socials.map((social, key) => 

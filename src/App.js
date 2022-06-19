@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import React, {useState, useEffect} from "react"
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Button from "./components/Button"
@@ -35,7 +35,6 @@ function Menu(props) {
           isDT={props.isDT} 
           path={props.path}
           index={props.index}
-          author={props.author}
           setIsDT={() => props.setIsDT(!props.isDT)}
           setIsMenu={props.setIsMenu}
         />
@@ -50,17 +49,43 @@ function Home(props) {
   const[path] = useState(useLocation().pathname)
 
   const onGet = async () => {
+    let lastDate
     return await fetch(`http://${props.host}/api/post`, props.header)
     .then(res => res.json())
     .then(data => {
-      setData(data.map((post, key) => (
-        <PostCard 
-          key={key}
-          id={post._id}
-          tags={post.tags} 
-          title={post.title}
-        />
-      )))
+      setData(data.sort((a,b) => 
+      a.date - b.date).reverse().map((post, key) => {
+        let dateContent
+
+        if(lastDate !== post.date.slice(0,10)){
+          dateContent = (
+            <div>
+              <h3>
+                {
+                  post.date.slice(8, 10) + " " + 
+                  post.date.slice(5, 7) + " " +
+                  post.date.slice(0, 4)
+                }
+              </h3>
+              <hr/>
+            </div>
+          )
+          lastDate = post.date.slice(0,10)
+        }
+        return (
+          <React.Fragment key={key}>
+            {dateContent}
+            <PostCard 
+              postPos={key}
+              id={post._id}
+              tags={post.tags} 
+              title={post.title}
+              setPostPos={props.setPostPos}
+            />
+          </React.Fragment>
+        )
+      }))
+      props.setPostData(data)
       setResolved(true)
     })
     .catch(err => console.log(err))
@@ -84,7 +109,8 @@ function App() {
   //Mobile and Menu Vars
   const[isMenu, setIsMenu] = useState(false)
   const[index, setIndex] = useState()
-  const[author, setAuthor] = useState()
+  const[postData, setPostData] = useState([])
+  const[postPos, setPostPos] = useState()
 
   useEffect(() => {
     document.body.style.background = isDT?"#171717":"#f6f6f6"
@@ -99,7 +125,7 @@ function App() {
       document.body.style.height = "auto"
     }
   },[isMenu])
-
+  
   return (
     <Router>
       <div className={isDT?"App App-dark":"App"}>
@@ -118,7 +144,6 @@ function App() {
           isMenu={isMenu}
           path={path}
           index={index}
-          author={author}
           setIsDT={() => setIsDT(!isDT)}
           setIsMenu={() => setIsMenu(false)}
         />
@@ -128,6 +153,8 @@ function App() {
               host={_host}
               header={_header} 
               setPath={path => setPath(path)} 
+              setPostData={arr => setPostData(arr)}
+              setPostPos={pos => setPostPos(pos)}
             />
           }/>
           <Route path="/about" element={
@@ -140,10 +167,13 @@ function App() {
           <Route path="/post/:id" element={
             <Post 
               host={_host}
-              header={_header}  
+              header={_header} 
+              postData={postData} 
+              postPos={postPos}
               setPath={path => setPath(path)}
               setIndex={index => setIndex(index)}
-              setAuthor={author => setAuthor(author)}
+              // setPostData={arr => setPostData(arr)}
+              setPostPos={pos => setPostPos(pos)}
             />
           }/>
         </Routes>

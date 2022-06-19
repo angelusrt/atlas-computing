@@ -3,38 +3,40 @@ import Button from "./Button"
 
 function Navbar(props){
   const[isIndex, setIsIndex] = useState(false)
-  const[isAuthor, setIsAuthor] = useState(false)
 
   const {path, isDT, setIsDT} = props
   
   return(
     !props.menu?
-    <nav className={path.substring(0, 5) === "/post"?"nav-post":null}>
-      <span className="left-side">
-        <Button 
-          path="/" 
-          pathCurrent={path}
-          onFunc={props.setIsMenu}
-        />
-        {/* {
-          path === "/" &&
-          <Button mode="button" name="Filtrar"/>
-        } */}
-      </span>
-      <span className="right-side right-side-navbar"> 
-        <Button 
-          path="/about"
-          icon="Exclamation" 
-          name ="Sobre"
-        />
-        <Button 
-          icon={isDT?"Moon":"Sun"} 
-          name={isDT?"Modo claro":"Modo escuro"}
-          onFunc={setIsDT} 
-        />
-      </span>
+    <nav className={
+      path.substring(0, 5) === "/post"?
+      "nav-post": 
+      path.substring(0, 6) === "/about"?
+      "nav-about": "nav-home"
+    }>
+      <div className="nav-content">
+        <span className="left-side">
+          <Button 
+            path="/" 
+            pathCurrent={path}
+            onFunc={props.setIsMenu}
+          />
+        </span>
+        <span className="right-side right-side-navbar"> 
+          <Button 
+            path="/about"
+            icon="Exclamation" 
+            name ="Sobre"
+          />
+          <Button 
+            icon={isDT?"Moon":"Sun"} 
+            name={isDT?"Modo claro":"Modo escuro"}
+            onFunc={setIsDT} 
+          />
+        </span>
+      </div>
     </nav> :
-    <nav className={path.substring(0, 5) === "/post"?"nav-post":null}>
+    <nav>
       <span className="right-side">
         <Button 
           path="/" 
@@ -58,10 +60,7 @@ function Navbar(props){
           <>
             <Button 
               name="Índice"
-              onFunc={() => {
-                setIsIndex(!isIndex)
-                setIsAuthor(false)
-              }}
+              onFunc={() => setIsIndex(!isIndex)}
             />
             {
               props.index && isIndex &&
@@ -73,24 +72,6 @@ function Navbar(props){
                   onFunc={props.setIsMenu}
                 />
               )
-            }
-            <Button 
-              name="Autor"
-              onFunc={() => {
-                setIsAuthor(!isAuthor)
-                setIsIndex(false)
-              }}
-            />
-            {
-              props.author && isAuthor &&
-              <section className="wrapper">
-                <h2>
-                  {props.author.authorName}
-                </h2>
-                <h3>
-                  {props.author.authorDescription}
-                </h3>
-              </section>
             }
           </>
         }

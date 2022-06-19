@@ -11,6 +11,12 @@
   text-decoration: none;
 }
 
+.App h1 {
+  font: 800 40px 'Exo', sans-serif;
+  color: #171717;
+  margin: 0;
+}
+
 .App h2 {
   font: 700 30px 'Exo', sans-serif;
   color: #171717;
@@ -18,7 +24,7 @@
 }
 
 .App h3 {
-  font: 600 14px 'Quicksand', sans-serif;
+  font: 600 18px 'Quicksand', sans-serif;
   color: #595959;
   margin: 0;
 }
@@ -102,104 +108,41 @@
   background-color: transparent;
 }
 
+.App .button-icon {
+  background-color: #e5e5e5;
+}
+
 .App .button-icon h3 {
   display: none;
   padding-left: 10px;
 }
 
 .App .button-icon-anim-enter {
-  background-color: transparent;
-  width: 50px;
-}
-
-.App .button-icon-anim-enter h3 {
-  display: none;
-  width: 0px;
-  padding-left: 0;
-  opacity: 0.5;
-}
-
-.App .button-icon-anim-enter svg {
-  position: absolute;
-  left: 10px;
-  top: 10px;
+  background-color: #e5e5e5;
 }
 
 .App .button-icon-anim-enter-active {
-  background-color: #e5e5e5;
-  width: 100%;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App .button-icon-anim-enter-active h3 {
-  display: inline-block;
-  width: calc(100% - 30px);
-  padding-left: 10px;
-  margin-left: 30px;
-  opacity: 1;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  background-color: #c4c4c4;
+  -webkit-transition: background-color .25s;
+  transition: background-color .25s;
 }
 
 .App .button-icon-anim-enter-done {
-  background-color: #e5e5e5;
-}
-
-.App .button-icon-anim-enter-done h3 {
-  display: inline-block;
-  margin-left: 30px;
-}
-
-.App .button-icon-anim-enter-done svg {
-  position: absolute;
-  left: 10px;
-  top: 10px;
+  background-color: #c4c4c4;
 }
 
 .App .button-icon-anim-exit {
-  background-color: #e5e5e5;
-  width: 100%;
-}
-
-.App .button-icon-anim-exit h3 {
-  display: inline-block;
-  width: 100%;
-  padding-left: 10px;
-  margin-left: 30px;
-  opacity: 1;
-}
-
-.App .button-icon-anim-exit svg {
-  position: absolute;
-  left: 10px;
-  top: 10px;
+  background-color: #c4c4c4;
 }
 
 .App .button-icon-anim-exit-active {
-  background-color: transparent;
-  width: 50px;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-.App .button-icon-anim-exit-active h3 {
-  display: inline-block;
-  width: 0;
-  padding-left: 10px;
-  margin-left: 30px;
-  margin-right: auto;
-  opacity: 0.5;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  background-color: #e5e5e5;
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
 }
 
 .App .button-icon-anim-exit-done {
-  background-color: transparent;
-}
-
-.App .button-icon-anim-exit-done h3 {
-  display: none;
+  background-color: #e5e5e5;
 }
 
 .App .i-button {
@@ -207,41 +150,8 @@
   position: fixed;
   bottom: 20px;
   left: 20px;
-  background-color: #e5e5e5;
-  padding: 20px;
+  padding: 15px;
   margin-left: 0;
-}
-
-.App .i-button-anim-enter {
-  background-color: #e5e5e5;
-}
-
-.App .i-button-anim-enter-active {
-  background-color: #c4c4c4;
-  -webkit-transition: background-color .25s;
-  transition: background-color .25s;
-}
-
-.App .i-button-anim-enter-done {
-  background-color: #c4c4c4;
-}
-
-.App .i-button-anim-exit {
-  background-color: #c4c4c4;
-}
-
-.App .i-button-anim-exit-active {
-  background-color: #e5e5e5;
-  -webkit-transition: background-color 1s;
-  transition: background-color 1s;
-}
-
-.App .i-button-anim-exit-done {
-  background-color: #e5e5e5;
-}
-
-.App .i-button svg {
-  fill: #171717;
 }
 
 .App section {
@@ -250,7 +160,7 @@
 
 .App section a {
   display: block;
-  font: italic 400 20px 'Roboto', sans-serif;
+  font: italic 400 24px 'Roboto', sans-serif;
   color: #44b499;
   padding-bottom: 10px;
   margin: 0;
@@ -263,7 +173,7 @@
 }
 
 .App section a:last-child {
-  padding-bottom: 80px;
+  padding-bottom: 0;
 }
 
 .App section .code-text {
@@ -314,21 +224,21 @@
 }
 
 .App nav {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #f6f6f6;
+  background-color: rgba(246, 246, 246, 0.9);
+  width: 100%;
   padding: 10px 0;
-  margin: auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.App nav h1 {
-  font: 800 40px 'Exo', sans-serif;
-  color: #171717;
-  margin: 0;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
 }
 
 .App nav .left-side {
@@ -371,6 +281,10 @@
           justify-content: flex-end;
 }
 
+.App .nav-home {
+  position: fixed;
+}
+
 .App .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -389,7 +303,7 @@
 }
 
 .App .wrapper a {
-  font: 600 14px 'Quicksand', sans-serif;
+  font: 600 18px 'Quicksand', sans-serif;
   color: #44b499;
   margin: 0 5px 0 0;
 }
@@ -409,23 +323,23 @@
 }
 
 .App .menu-anim-enter nav {
-  opacity: 0.5;
-  -webkit-transform: translate(-60%, 0);
-          transform: translate(-60%, 0);
+  opacity: 0;
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
 }
 
 .App .menu-anim-enter-active {
   background-color: rgba(246, 246, 246, 0.7);
-  -webkit-transition: background-color .25s;
-  transition: background-color .25s;
+  -webkit-transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .App .menu-anim-enter-active nav {
   opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
-  -webkit-transition: all .25s;
-  transition: all .25s;
+  -webkit-transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .App .menu-anim-enter-done {
@@ -450,16 +364,16 @@
 
 .App .menu-anim-exit-active {
   background-color: transparent;
-  -webkit-transition: background-color .25s;
-  transition: background-color .25s;
+  -webkit-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
 }
 
 .App .menu-anim-exit-active nav {
   opacity: 0;
-  -webkit-transform: translate(-60%, 0);
-          transform: translate(-60%, 0);
-  -webkit-transition: all .25s;
-  transition: all .25s;
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+  -webkit-transition: all .5s ease-out;
+  transition: all .5s ease-out;
 }
 
 .App .menu-anim-exit-done {
@@ -468,12 +382,13 @@
 
 .App .menu-anim-exit-done nav {
   opacity: 0;
-  -webkit-transform: translate(-60%, 0);
-          transform: translate(-60%, 0);
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
 }
 
 .App .menu nav {
   overflow: auto;
+  background-color: #f6f6f6;
   width: 65%;
   height: calc(100% - 6px - 80px);
   margin: 0;
@@ -522,32 +437,52 @@
   padding-left: 0;
 }
 
-.App .menu nav span .wrapper {
-  width: calc(100% - 6px - 80px);
-  padding: 40px;
-  margin: 20px calc(-20px - 3px);
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
+.App .home main {
+  padding: 80px 0;
+  margin: auto;
 }
 
-.App .home main {
-  margin: auto;
+.App .home main div {
+  position: relative;
+  margin: 40px 0 30px 0;
+}
+
+.App .home main div h3 {
+  position: absolute;
+  top: -10px;
+  left: 30px;
+  background-color: #f6f6f6;
+  padding: 0 10px;
+  font-weight: 700;
+  color: #c4c4c4;
+}
+
+.App .home main div hr {
+  border: 1.5px solid #e5e5e5;
 }
 
 .App .home main article {
   width: calc(100% - 6px - 80px);
-  height: calc(280px - 80px);
-  padding: 40px;
-  margin: 40px 0;
+  padding: 100px 40px 40px 40px;
+  margin: 20px 0;
 }
 
 .App .post header {
-  width: calc(100% - 6px - 80px);
-  height: calc(280px - 80px - 6px);
-  padding: 40px;
-  margin: 0 auto 40px auto;
+  width: calc(100% - 6px - 40px);
+  padding: 120px 20px 60px 20px;
+  margin: 0 auto;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.App .post header h1 {
+  margin-bottom: 10px;
+}
+
+.App .post header h4 {
+  font: 500 18px/24px 'Roboto Slab', sans-serif;
+  color: #787878;
+  margin: 0 0 20px 0;
 }
 
 .App .post header aside {
@@ -559,25 +494,106 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 
 .App .post main article {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
-.App .post main aside {
+.App .post main article section:last-of-type {
+  padding-bottom: 100px;
+}
+
+.App .post main article .post-link-section {
+  padding-top: 20px;
+}
+
+.App .post main article .post-link-section h3 {
+  margin-bottom: 10px;
+}
+
+.App .post main article .post-link-section a {
+  word-break: normal;
+  text-decoration: none;
+}
+
+.App .post main article .post-link-section a:first-of-type {
+  padding-top: 0;
+}
+
+.App .post main article .last-post-link-section {
   display: none;
 }
 
+.App .post main aside {
+  display: block;
+  width: auto;
+  margin-top: 0;
+}
+
+.App .post main aside h2 {
+  margin: 60px 0 20px 0;
+}
+
+.App .post main aside section {
+  display: block;
+  padding: 40px 20px 0 20px;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  margin: 0;
+}
+
+.App .post main aside section:first-child h2 {
+  margin: 0 0 5px 0;
+}
+
+.App .post main aside section:last-child {
+  padding: 60px 20px 40px 20px;
+}
+
+.App .post main aside section h2 {
+  margin: 0;
+}
+
+.App .post main aside section h3 {
+  margin-bottom: 10px;
+}
+
+.App .post main aside section h3:last-child {
+  margin-bottom: 0;
+}
+
+.App .post main aside section a {
+  display: block;
+  font: 20px 'Quicksand', sans-serif;
+  color: #787878;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.App .post main aside section a:last-child {
+  padding-bottom: 0;
+}
+
+.App .post main aside .post-link-section h3 {
+  margin-bottom: 10px;
+}
+
+.App .post main aside .post-link-section a:first-of-type {
+  word-break: normal;
+  padding-top: 0;
+}
+
 .App .about {
+  padding-top: 80px;
   padding-bottom: 160px;
-  margin: auto 40px;
+  margin: auto 20px;
 }
 
 .App .about header {
@@ -589,11 +605,36 @@
   margin: 20px 0 5px 0;
 }
 
+.App .about section h2:first-child {
+  font-size: 30px;
+  margin: 0;
+}
+
+.App .about section h3 {
+  font-weight: 700;
+  color: #787878;
+}
+
+.App .about section h3:first-of-type {
+  font-weight: 600;
+  color: #595959;
+}
+
+.App .about section a h3 {
+  font-weight: 600;
+  color: #363636;
+}
+
+.App .about section a h3:first-of-type {
+  font-weight: 600;
+  color: #363636;
+}
+
 .App .about span {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 20px 0 0 0;
+  margin: 20px 0 40px 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -605,18 +646,12 @@
   margin-right: 10px;
 }
 
-.App .about .wrapper {
-  padding: 40px;
-  margin: 0 -40px;
-}
-
-.App .about .wrapper h2 {
-  font-size: 30px;
-  margin: 0;
-}
-
 .App-dark {
   background-color: #171717;
+}
+
+.App-dark h1 {
+  color: #f6f6f6;
 }
 
 .App-dark h2 {
@@ -675,59 +710,35 @@
   background-color: transparent;
 }
 
+.App-dark .button-icon {
+  background-color: #363636;
+}
+
 .App-dark .button-icon-anim-enter {
-  background-color: transparent;
+  background-color: #363636;
 }
 
 .App-dark .button-icon-anim-enter-active {
-  background-color: #363636;
-}
-
-.App-dark .button-icon-anim-enter-done {
-  background-color: #363636;
-}
-
-.App-dark .button-icon-anim-exit {
-  background-color: #363636;
-}
-
-.App-dark .button-icon-anim-exit-active {
-  background-color: transparent;
-}
-
-.App-dark .button-icon-anim-exit-done {
-  background-color: transparent;
-}
-
-.App-dark .i-button {
-  background-color: #363636;
-}
-
-.App-dark .i-button-anim-enter {
-  background-color: #363636;
-}
-
-.App-dark .i-button-anim-enter-active {
   background-color: #595959;
   -webkit-transition: background-color .25s;
   transition: background-color .25s;
 }
 
-.App-dark .i-button-anim-enter-done {
+.App-dark .button-icon-anim-enter-done {
   background-color: #595959;
 }
 
-.App-dark .i-button-anim-exit {
+.App-dark .button-icon-anim-exit {
   background-color: #595959;
 }
 
-.App-dark .i-button-anim-exit-active {
+.App-dark .button-icon-anim-exit-active {
   background-color: #363636;
   -webkit-transition: background-color 1s;
   transition: background-color 1s;
 }
 
-.App-dark .i-button-anim-exit-done {
+.App-dark .button-icon-anim-exit-done {
   background-color: #363636;
 }
 
@@ -760,11 +771,7 @@
 }
 
 .App-dark nav {
-  background-color: #171717;
-}
-
-.App-dark nav h1 {
-  color: #f6f6f6;
+  background-color: rgba(23, 23, 23, 0.7);
 }
 
 .App-dark .wrapper {
@@ -809,10 +816,44 @@
 }
 
 .App-dark .menu nav {
+  background-color: #171717;
   border-color: #363636;
 }
 
+.App-dark .home main div h3 {
+  color: #c4c4c4;
+  background-color: #171717;
+}
+
+.App-dark .home main div hr {
+  border-color: #363636;
+}
+
+.App-dark .post header h4 {
+  color: #c4c4c4;
+}
+
+.App-dark .about section h3 {
+  color: #c4c4c4;
+}
+
+.App-dark .about section h3:first-of-type {
+  color: #c4c4c4;
+}
+
+.App-dark .about section a h3 {
+  color: #f6f6f6;
+}
+
+.App-dark .about section a h3:first-of-type {
+  color: #f6f6f6;
+}
+
 @media (min-width: 680px) {
+  .App h1 {
+    margin: 0;
+    font-size: 50px;
+  }
   .App h2 {
     font-size: 40px;
     margin: 0;
@@ -836,6 +877,82 @@
   .App .button svg {
     width: 30px;
     height: 30px;
+  }
+  .App .button-icon-anim-enter {
+    width: 50px;
+  }
+  .App .button-icon-anim-enter h3 {
+    display: none;
+    width: 0px;
+    padding-left: 0;
+    opacity: 0.5;
+  }
+  .App .button-icon-anim-enter svg {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+  .App .button-icon-anim-enter-active {
+    background-color: #e5e5e5;
+    width: 100%;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  .App .button-icon-anim-enter-active h3 {
+    display: inline-block;
+    width: calc(100% - 30px);
+    padding-left: 10px;
+    margin-left: 30px;
+    opacity: 1;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  .App .button-icon-anim-enter-done {
+    background-color: #e5e5e5;
+  }
+  .App .button-icon-anim-enter-done h3 {
+    display: inline-block;
+    margin-left: 30px;
+  }
+  .App .button-icon-anim-enter-done svg {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+  .App .button-icon-anim-exit {
+    background-color: #e5e5e5;
+    width: 100%;
+  }
+  .App .button-icon-anim-exit h3 {
+    display: inline-block;
+    width: 100%;
+    padding-left: 10px;
+    margin-left: 30px;
+    opacity: 1;
+  }
+  .App .button-icon-anim-exit svg {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+  .App .button-icon-anim-exit-active {
+    background-color: #e5e5e5;
+    width: 50px;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  .App .button-icon-anim-exit-active h3 {
+    display: inline-block;
+    width: 0;
+    padding-left: 10px;
+    margin-left: 30px;
+    margin-right: auto;
+    opacity: 0.5;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  .App .button-icon-anim-exit-done h3 {
+    display: none;
   }
   .App .i-button {
     display: none;
@@ -863,32 +980,37 @@
     font-size: 30px;
   }
   .App nav {
-    margin: auto;
-    padding: 20px;
+    padding: 20px 0;
+  }
+  .App nav .nav-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     width: calc(100% - 40px);
     max-width: 680px;
+    padding: 0 20px;
+    margin: auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
-  .App nav h1 {
-    margin: 0;
-    font-size: 50px;
-  }
-  .App nav .left-side {
+  .App nav .nav-content .left-side {
     margin-right: auto;
   }
-  .App nav .left-side button {
+  .App nav .nav-content .left-side button {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
   }
-  .App nav .right-side {
+  .App nav .nav-content .right-side {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-  .App nav .mobile-post {
+  .App nav .nav-content .mobile-post {
     display: none;
   }
-  .App .nav-post {
+  .App .nav-post .nav-content {
     max-width: calc(95% - 160px - 6px + 40px);
   }
   .App .menu {
@@ -901,39 +1023,34 @@
   .App .home main {
     width: calc(100% - 6px);
     max-width: calc(680px - 40px + 160px + 6px);
+    padding: 120px 0;
     margin: auto;
   }
+  .App .home main div h3 {
+    top: -14px;
+    left: 70px;
+  }
   .App .home main article {
-    margin: 40px 0;
-    height: calc(320px - 80px);
     width: auto;
-    padding: 40px 80px;
+    padding: 180px 80px 40px 80px;
+    margin: 40px 0;
   }
   .App .post {
     width: 95%;
     margin: auto;
   }
   .App .post header {
-    margin: 0 auto 80px auto;
+    width: calc(100% - 160px - 6px);
+    padding: 160px 80px 80px 80px;
+    margin: 0 auto;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    width: calc(100% - 160px - 6px);
-    padding: 80px 80px 100px 80px;
-    height: calc(320px - 180px - 6px);
+  }
+  .App .post header h4 {
+    font-size: 24px;
   }
   .App .post header aside {
-    display: block;
-    position: absolute;
-    width: calc(100% - 80px - 80px - 6px);
-    left: 37px;
-    bottom: -110px;
-    padding: 40px;
-  }
-  .App .post main {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+    display: none;
   }
   .App .post main article {
     -webkit-box-flex: 1;
@@ -943,16 +1060,33 @@
   }
   .App .post main aside {
     display: block;
-    width: calc(320px - 80px - 6px);
-    margin-top: 120px;
-    padding: 0 80px 80px 80px;
+    width: auto;
+    padding: 0 83px;
+    margin-top: 0px;
   }
-  .App .post main aside h2 {
-    margin-bottom: 40px;
+  .App .post main aside section {
+    padding: 40px 0;
+    margin: 0;
+  }
+  .App .post main aside section:last-child {
+    padding: 60px 0 80px 0;
+  }
+  .App .post main aside section h2 {
+    margin: 0 0 5px 0;
+  }
+  .App .post main aside section h3 {
+    margin-bottom: 10px;
+  }
+  .App .post main aside section h3:last-child {
+    margin-bottom: 0;
+  }
+  .App .post main aside section a {
+    font-size: 24px;
   }
   .App .about {
     max-width: calc(100% - 160px - 6px);
     width: calc(680px - 40px + 6px);
+    padding-top: 100px;
     padding-bottom: 160px;
     margin: auto;
   }
@@ -963,30 +1097,46 @@
     font-size: 30px;
     margin: 40px 0 10px 0;
   }
+  .App .about section h2:first-child {
+    font-size: 40px;
+  }
   .App .about section h3 {
     font-size: 24px;
   }
-  .App .about span {
-    margin: 40px 0 0 0;
+  .App .about section span {
+    margin: 30px 0 60px 0;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
   }
-  .App .about span .button {
+  .App .about section span .button {
     margin-left: 0;
     margin-right: 10px;
   }
-  .App .about .wrapper {
-    margin: 0 calc(-80px - 3px);
-    padding: 40px 80px;
+  .App .about section span .button h3 {
+    color: #171717;
+  }
+  .App-dark .button-icon-anim-enter-active {
+    background-color: #363636;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  .App-dark .button-icon-anim-enter-done {
+    background-color: #363636;
+  }
+  .App-dark .button-icon-anim-exit {
+    background-color: #363636;
+  }
+  .App-dark .about section span .button h3 {
+    color: #f6f6f6;
   }
 }
 
 @media (min-width: 1025px) {
   .App .post header {
     width: calc(100% - 560px - 6px);
-    height: calc(320px - 80px - 6px);
-    padding: 40px 480px 40px 80px;
+    padding: 180px 480px 80px 80px;
+    margin-bottom: 80px;
   }
   .App .post header aside {
     display: -webkit-box;
@@ -1007,13 +1157,23 @@
         -ms-flex-direction: row;
             flex-direction: row;
   }
+  .App .post main article .last-post-link-section {
+    display: block;
+  }
   .App .post main aside {
     display: block;
-    padding: 40px 86px 0 43px;
+    width: calc(320px - 80px);
     margin-top: 0;
   }
+  .App .post main aside section {
+    display: none;
+    padding: 40px 0;
+  }
+  .App .post main aside section:last-child {
+    display: block;
+  }
   .App .post main aside h2 {
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
   }
 }
 /*# sourceMappingURL=App.css.map */

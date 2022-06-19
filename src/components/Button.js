@@ -7,7 +7,7 @@ function ButtonWrapper(props) {
   return(
     <button 
       className={props.buttonName}
-      onClick={() => props.onFunc()} 
+      onClick={() => props.onFunc!==undefined?props.onFunc():null} 
       onTouchStart={() => props.setIsButton(true)}
       onTouchEnd={() => props.setIsButton(false)}
       onMouseOver={() => props.setIsButton(true)}
@@ -19,9 +19,10 @@ function ButtonWrapper(props) {
         props.path === "/" &&
         <h1>
         { 
-          props.pathCurrent === "/post"?"at.com":
-          props.pathCurrent === "/about"?"Sobre":
-          "Recentes"
+          props.pathCurrent.substring(0, 5) === "/post"?
+          "AtCom": 
+          props.pathCurrent.substring(0, 6) === "/about"?
+          "Sobre": "Recentes"
         }
         </h1>
       }
@@ -33,12 +34,11 @@ function Button(props){
   const[isButton, setIsButton] = useState(false)
 
   const transName=(
-    props.icon===undefined?"button-anim":
-    props.icon==="Home"?"i-button-anim":"button-icon-anim"
+    props.icon===undefined?"button-anim":"button-icon-anim"
   )
   const buttonName=(
     props.icon===undefined?"button":
-    props.icon==="Home"?"button i-button":"button button-icon"
+    props.icon==="Home"?"button button-icon i-button":"button button-icon"
   )
 
   return(
