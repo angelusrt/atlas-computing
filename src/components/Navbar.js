@@ -3,7 +3,6 @@ import Button from "./Button"
 
 function Navbar(props){
   const[isIndex, setIsIndex] = useState(false)
-
   const {path, isDT, setIsDT} = props
   
   return(
@@ -23,11 +22,14 @@ function Navbar(props){
           />
         </span>
         <span className="right-side right-side-navbar"> 
-          <Button 
-            path="/about"
-            icon="Exclamation" 
-            name ="Sobre"
-          />
+          {
+            path.substring(0, 6) !== "/about" &&
+            <Button 
+              path="/about"
+              icon="Exclamation" 
+              name ="Sobre"
+            />
+          }
           <Button 
             icon={isDT?"Moon":"Sun"} 
             name={isDT?"Modo claro":"Modo escuro"}
@@ -43,11 +45,14 @@ function Navbar(props){
           pathCurrent={path}
           onFunc={props.setIsMenu}
         />
-        <Button 
-          path="/about"
-          name="Sobre"
-          onFunc={props.setIsMenu}
-        />
+        {
+          path.substring(0, 6) !== "/about" &&
+          <Button 
+            path="/about"
+            name="Sobre"
+            onFunc={props.setIsMenu}
+          />
+        }
         <Button 
           name={isDT?"Modo claro":"Modo escuro"}
           onFunc={() => {

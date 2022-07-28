@@ -29,6 +29,12 @@
   margin: 0;
 }
 
+.App h4 {
+  font: 500 18px/24px 'Roboto Slab', sans-serif;
+  color: #787878;
+  margin: 0;
+}
+
 .App p {
   font: 400 20px/30px 'Roboto', sans-serif;
   color: #595959;
@@ -448,13 +454,10 @@
 }
 
 .App .home main div h3 {
-  position: absolute;
-  top: -10px;
-  left: 30px;
   background-color: #f6f6f6;
-  padding: 0 10px;
-  font-weight: 700;
   color: #c4c4c4;
+  padding: 10px 0 0 43px;
+  font-weight: 700;
 }
 
 .App .home main div hr {
@@ -467,6 +470,103 @@
   margin: 20px 0;
 }
 
+.App .home main article h4 {
+  display: none;
+}
+
+.App .home .main-anim-enter {
+  height: 0;
+  padding: 0;
+}
+
+.App .home .main-anim-enter .non-active-post {
+  position: relative;
+  opacity: 0;
+}
+
+.App .home .main-anim-enter .active-post {
+  position: absolute;
+  width: calc(100% - 6px - 80px);
+  padding: 100px 40px 40px 40px;
+  margin: 20px 0;
+  top: 100;
+}
+
+.App .home .main-anim-enter .active-post h4 {
+  opacity: 0;
+}
+
+.App .home .main-anim-enter-active .non-active-post {
+  position: absolute;
+  top: 0;
+}
+
+.App .home .main-anim-enter-active .active-post {
+  width: calc(100% - 6px - 40px);
+  padding: 103px 20px 60px 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top-style: none;
+  top: 0;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+}
+
+.App .home .main-anim-enter-active .active-post a h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 10px 0 20px 0;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+}
+
+.App .home .main-anim-enter-active .active-post h4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 1;
+  margin: 0;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+}
+
+.App .home .main-anim-enter-done {
+  display: none;
+}
+
+.App .home .main-anim-enter-done .non-active-post {
+  opacity: 0;
+  display: none;
+}
+
+.App .home .main-anim-enter-done .active-post {
+  position: absolute;
+  display: none;
+}
+
+.App .home .main-anim-exit .non-active-post {
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.App .home .main-anim-exit-active .non-active-post {
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.App .home .main-anim-exit-done .non-active-post {
+  opacity: 1;
+}
+
+.App .post {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
 .App .post header {
   width: calc(100% - 6px - 40px);
   padding: 120px 20px 60px 20px;
@@ -476,13 +576,7 @@
 }
 
 .App .post header h1 {
-  margin-bottom: 10px;
-}
-
-.App .post header h4 {
-  font: 500 18px/24px 'Roboto Slab', sans-serif;
-  color: #787878;
-  margin: 0 0 20px 0;
+  margin: 10px 0 20px 0;
 }
 
 .App .post header aside {
@@ -497,6 +591,7 @@
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
+  padding: 0;
 }
 
 .App .post main article {
@@ -590,6 +685,44 @@
   padding-top: 0;
 }
 
+.App .post-anim-enter .wrapper {
+  opacity: 0;
+}
+
+.App .post-anim-enter main {
+  opacity: 0;
+}
+
+.App .post-anim-enter-active .wrapper {
+  opacity: 1;
+  -webkit-transition: opacity .25s;
+  transition: opacity .25s;
+}
+
+.App .post-anim-enter-active main {
+  opacity: 1;
+  -webkit-transition: opacity .75s;
+  transition: opacity .75s;
+}
+
+.App .post-anim-enter-done main {
+  opacity: 1;
+}
+
+.App .post-anim-exit main {
+  opacity: 1;
+}
+
+.App .post-anim-exit-active main {
+  opacity: 0;
+  -webkit-transition: opacity .75s;
+  transition: opacity .75s;
+}
+
+.App .post-anim-exit-done main {
+  opacity: 0;
+}
+
 .App .about {
   padding-top: 80px;
   padding-bottom: 160px;
@@ -646,6 +779,34 @@
   margin-right: 10px;
 }
 
+.App .about-anim-enter {
+  opacity: 0;
+}
+
+.App .about-anim-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity .75s;
+  transition: opacity .75s;
+}
+
+.App .about-anim-enter-done {
+  opacity: 1;
+}
+
+.App .about-anim-exit {
+  opacity: 1;
+}
+
+.App .about-anim-exit-active {
+  opacity: 0;
+  -webkit-transition: opacity .75s;
+  transition: opacity .75s;
+}
+
+.App .about-anim-exit-done {
+  opacity: 0;
+}
+
 .App-dark {
   background-color: #171717;
 }
@@ -659,6 +820,10 @@
 }
 
 .App-dark h3 {
+  color: #c4c4c4;
+}
+
+.App-dark h4 {
   color: #c4c4c4;
 }
 
@@ -827,10 +992,6 @@
 
 .App-dark .home main div hr {
   border-color: #363636;
-}
-
-.App-dark .post header h4 {
-  color: #c4c4c4;
 }
 
 .App-dark .about section h3 {
@@ -1027,16 +1188,60 @@
     margin: auto;
   }
   .App .home main div h3 {
-    top: -14px;
-    left: 70px;
+    padding: 20px 0 0 83px;
   }
   .App .home main article {
     width: auto;
     padding: 180px 80px 40px 80px;
     margin: 40px 0;
   }
+  .App .home .main-anim {
+    max-width: none;
+  }
+  .App .home .main-anim-enter .active-post {
+    position: absolute;
+    top: 200;
+    width: calc(100% - 6px - 160px);
+    padding: 100px 80px 40px 80px;
+    margin: 20px 0;
+  }
+  .App .home .main-anim-enter .active-post h4 {
+    opacity: 0;
+  }
+  .App .home .main-anim-enter-active {
+    max-width: none;
+  }
+  .App .home .main-anim-enter-active .active-post {
+    width: calc(95% - 6px - 160px);
+    margin: 0 calc(2.5% - 3px);
+    padding: 163px 80px 80px 80px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top-style: none;
+    top: 0;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+  }
+  .App .home .main-anim-enter-active .active-post a h2 {
+    font-size: 50px;
+    font-weight: 800;
+    margin: 10px 0 20px 0;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+  }
+  .App .home .main-anim-enter-active .active-post h4 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    opacity: 1;
+    margin: 0;
+    font-size: 24px;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+  }
   .App .post {
     width: 95%;
+    padding: 0 2.5%;
     margin: auto;
   }
   .App .post header {
@@ -1052,6 +1257,10 @@
   .App .post header aside {
     display: none;
   }
+  .App .post main {
+    max-width: none;
+    padding: 0;
+  }
   .App .post main article {
     -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -1061,7 +1270,7 @@
   .App .post main aside {
     display: block;
     width: auto;
-    padding: 0 83px;
+    padding: 0 80px;
     margin-top: 0px;
   }
   .App .post main aside section {
@@ -1133,6 +1342,44 @@
 }
 
 @media (min-width: 1025px) {
+  .App .home .main-anim-enter .active-post {
+    position: absolute;
+    top: 200;
+    width: calc(100% - 6px - 160px);
+    padding: 100px 80px 40px 80px;
+    margin: 20px 0;
+  }
+  .App .home .main-anim-enter .active-post h4 {
+    opacity: 0;
+  }
+  .App .home .main-anim-enter-active .active-post {
+    width: calc(95% - 6px - 560px);
+    margin: 0 calc(2.5% - 3px);
+    padding: 183px 480px 80px 80px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top-style: none;
+    top: 0;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+  }
+  .App .home .main-anim-enter-active .active-post a h2 {
+    font-size: 50px;
+    font-weight: 800;
+    margin: 10px 0 20px 0;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+  }
+  .App .home .main-anim-enter-active .active-post h4 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    opacity: 1;
+    margin: 0;
+    font-size: 24px;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+  }
   .App .post header {
     width: calc(100% - 560px - 6px);
     padding: 180px 480px 80px 80px;
@@ -1174,6 +1421,23 @@
   }
   .App .post main aside h2 {
     margin: 0 0 10px 0;
+  }
+  .App .post-anim-enter header .wrapper {
+    right: -80px;
+    opacity: 0;
+  }
+  .App .post-anim-enter-active header .wrapper {
+    right: 40px;
+    opacity: 1;
+    -webkit-transition-delay: .25s;
+            transition-delay: .25s;
+    -webkit-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: .5s;
+            transition-duration: .5s;
+  }
+  .App .post-anim-enter-done header .wrapper {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=App.css.map */
