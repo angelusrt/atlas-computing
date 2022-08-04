@@ -15,13 +15,8 @@ $white-opaque: rgba(246, 246, 246, 0.7);
 $black-opaque: rgba(23, 23, 23, 0.7);
 
 $green1: #44b499;
-$green2: #6bd2a1; 
-$blue1: #5e6eff;
-$blue2: #96adff;
-$red1: #f46161;
-$red2: #fca28f;
-$yellow1: #fbcb50;
-$yellow2: #fff48e;
+$green2: #6bd2a1;
+$green3: #bbd7cb;
 
 .App{
   background-color: $white;
@@ -63,7 +58,7 @@ $yellow2: #fff48e;
     height: 100%;
     width: 100%;
     border-radius: 20px;
-    margin: 20px auto 0 auto;
+    margin: 0 auto;//margin: 20px auto 0 auto;
   }
 
   //buttons
@@ -100,14 +95,14 @@ $yellow2: #fff48e;
       background-color: transparent;
     }
     &-anim-enter-active{
-      background-color: $light-grey1;
+      background-color: $green3;//$light-grey1
       transition: background-color .25s;
     }
     &-anim-enter-done{
-      background-color: $light-grey1;
+      background-color: $green3;
     }
     &-anim-exit{
-      background-color: $light-grey1;
+      background-color: $green3;
     }
     &-anim-exit-active{
       background-color: transparent;
@@ -118,31 +113,31 @@ $yellow2: #fff48e;
     }
   }
   .button-icon{
-    background-color: $light-grey1;
+    background-color: $green3;//light-grey1
 
     h3{
       display: none;
       padding-left: 10px;
     }
     &-anim-enter{
-      background-color: $light-grey1;
+      background-color: $green3;//light-grey1
     }
     &-anim-enter-active{
-      background-color: $light-grey2;
+      background-color: $green3;//light-grey2
       transition: background-color .25s;
     }
     &-anim-enter-done{
-      background-color: $light-grey2;
+      background-color: $green3;
     }
     &-anim-exit{
-      background-color: $light-grey2;
+      background-color: $green3;
     }
     &-anim-exit-active{
-      background-color: $light-grey1;
+      background-color: $green3;
       transition: background-color 1s;
     }
     &-anim-exit-done{
-      background-color: $light-grey1;
+      background-color: $green3;
     }
   }
   .i-button{
@@ -155,55 +150,6 @@ $yellow2: #fff48e;
   }
 
   //container
-  section{
-    margin: 0 0 40px 0;
-
-    a{
-      display: block;
-      font: italic 400 24px 'Roboto', sans-serif;
-      color: $green1;
-      padding-bottom: 10px;
-      margin: 0;
-      text-decoration: underline;
-      word-break: break-all;
-
-      &:first-of-type{
-        padding-top: 30px;
-      }
-      &:last-child{
-        padding-bottom: 0;
-      }
-    }
-    .code-text{
-      font: 500 20px/40px 'Roboto Mono', sans-serif;
-      padding: 30px 0 0 0;
-      margin: 0;
-      
-      &-normal{
-        color: $dark-grey2;
-      }
-      &-green{
-        color: $green1;
-      }
-      &-yellow{
-        color: $yellow1;
-      }
-      &-red{
-        color: $red1;
-      }
-      &-blue{
-        color: $blue1;
-      }
-    }
-    .button{
-      &:first-of-type{
-        padding: 10px;
-      }
-      &:last-of-type{
-        padding: 10px;
-      }
-    }
-  }
   aside a{
     display: block;
     font: 24px 'Quicksand', sans-serif;
@@ -389,7 +335,7 @@ $yellow2: #fff48e;
         }
       }
       article{
-        width: calc(100% - 6px - 80px);
+        // width: calc(100% - 6px - 80px);
         padding: 100px 40px 40px 40px;
         margin: 20px 0;
 
@@ -503,9 +449,48 @@ $yellow2: #fff48e;
       article{
         flex: 1;
         padding: 0 20px; 
-
-        section:last-of-type{
+        
+        &:last-of-type{
           padding-bottom: 100px;
+        }
+        h2{
+          padding: 20px 0 40px 0;
+
+          &:first-of-type{
+            padding: 0 0 40px 0;
+          }
+        }
+        p{
+          padding: 0 0 40px 0;
+        }
+        a{
+          display: block;
+          font: italic 400 24px 'Roboto', sans-serif;
+          color: $green1;
+          padding-bottom: 10px;
+          margin: 0;
+          text-decoration: underline;
+          word-break: break-all;
+
+          &:first-of-type{
+            padding-top: 30px;
+          }
+          &:last-child{
+            padding-bottom: 0;
+          }
+        }
+        code{
+          font: 500 20px/40px 'Roboto Mono', sans-serif;
+          padding: 30px 0 0 0;
+          margin: 0;
+        }
+        .button{
+          &:first-of-type{
+            padding: 10px;
+          }
+          &:last-of-type{
+            padding: 10px;
+          }
         }
         .post-link-section{
           padding-top: 20px;
@@ -548,7 +533,7 @@ $yellow2: #fff48e;
             padding: 60px 20px 40px 20px;
           }
           h2{
-            margin: 0;
+            margin: 0 0 40px 0;
           }
           h3{
             margin-bottom: 10px;
@@ -778,18 +763,18 @@ $yellow2: #fff48e;
       &-normal{
         color: $light-grey2;
       }
-      &-green{
-        color: $green2;
-      }
-      &-yellow{
-        color: $yellow2;
-      }
-      &-red{
-        color: $red2;
-      }
-      &-blue{
-        color: $blue2;
-      }
+      // &-green{
+      //   color: $green2;
+      // }
+      // &-yellow{
+      //   color: $yellow2;
+      // }
+      // &-red{
+      //   color: $red2;
+      // }
+      // &-blue{
+      //   color: $blue2;
+      // }
     }
   }
   nav{
@@ -874,7 +859,7 @@ $yellow2: #fff48e;
       font-size: 24px;
     }
     p{
-      font-size: 30px;
+      font-size: 28px;
       line-height: 45px;
       padding: 40px 0 0 0;
       margin: 0;
@@ -912,7 +897,7 @@ $yellow2: #fff48e;
         }
       }
       &-anim-enter-active{
-        background-color: $light-grey1;
+        background-color: $green3;//light-grey1
         width: 100%;
         transition: all 1s;
         
@@ -927,7 +912,7 @@ $yellow2: #fff48e;
         }
       }
       &-anim-enter-done{
-        background-color: $light-grey1;
+        background-color: $green3;
         
         h3{
           display: inline-block;
@@ -940,7 +925,7 @@ $yellow2: #fff48e;
         }
       }
       &-anim-exit{
-        background-color: $light-grey1;
+        background-color: $green3;
         width: 100%;
         
         h3{
@@ -957,7 +942,7 @@ $yellow2: #fff48e;
         }
       }
       &-anim-exit-active{
-        background-color: $light-grey1;
+        background-color: $green3;
         width: 50px;
         transition: all 1s;
         

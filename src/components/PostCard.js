@@ -28,9 +28,7 @@ function PostCard(props) {
       </Link>
       <h4>
         {
-          props.date.slice(8, 10) + " " + 
-          props.date.slice(5, 7) + " " +
-          props.date.slice(0, 4)
+          new Date(props.date).toLocaleDateString('en-GB')
         }
       </h4>
     </article>

@@ -46,7 +46,7 @@
   height: 100%;
   width: 100%;
   border-radius: 20px;
-  margin: 20px auto 0 auto;
+  margin: 0 auto;
 }
 
 .App .button {
@@ -91,17 +91,17 @@
 }
 
 .App .button-anim-enter-active {
-  background-color: #e5e5e5;
+  background-color: #bbd7cb;
   -webkit-transition: background-color .25s;
   transition: background-color .25s;
 }
 
 .App .button-anim-enter-done {
-  background-color: #e5e5e5;
+  background-color: #bbd7cb;
 }
 
 .App .button-anim-exit {
-  background-color: #e5e5e5;
+  background-color: #bbd7cb;
 }
 
 .App .button-anim-exit-active {
@@ -115,7 +115,7 @@
 }
 
 .App .button-icon {
-  background-color: #e5e5e5;
+  background-color: #bbd7cb;
 }
 
 .App .button-icon h3 {
@@ -124,31 +124,31 @@
 }
 
 .App .button-icon-anim-enter {
-  background-color: #e5e5e5;
+  background-color: #bbd7cb;
 }
 
 .App .button-icon-anim-enter-active {
-  background-color: #c4c4c4;
+  background-color: #bbd7cb;
   -webkit-transition: background-color .25s;
   transition: background-color .25s;
 }
 
 .App .button-icon-anim-enter-done {
-  background-color: #c4c4c4;
+  background-color: #bbd7cb;
 }
 
 .App .button-icon-anim-exit {
-  background-color: #c4c4c4;
+  background-color: #bbd7cb;
 }
 
 .App .button-icon-anim-exit-active {
-  background-color: #e5e5e5;
+  background-color: #bbd7cb;
   -webkit-transition: background-color 1s;
   transition: background-color 1s;
 }
 
 .App .button-icon-anim-exit-done {
-  background-color: #e5e5e5;
+  background-color: #bbd7cb;
 }
 
 .App .i-button {
@@ -158,62 +158,6 @@
   left: 20px;
   padding: 15px;
   margin-left: 0;
-}
-
-.App section {
-  margin: 0 0 40px 0;
-}
-
-.App section a {
-  display: block;
-  font: italic 400 24px 'Roboto', sans-serif;
-  color: #44b499;
-  padding-bottom: 10px;
-  margin: 0;
-  text-decoration: underline;
-  word-break: break-all;
-}
-
-.App section a:first-of-type {
-  padding-top: 30px;
-}
-
-.App section a:last-child {
-  padding-bottom: 0;
-}
-
-.App section .code-text {
-  font: 500 20px/40px 'Roboto Mono', sans-serif;
-  padding: 30px 0 0 0;
-  margin: 0;
-}
-
-.App section .code-text-normal {
-  color: #595959;
-}
-
-.App section .code-text-green {
-  color: #44b499;
-}
-
-.App section .code-text-yellow {
-  color: #fbcb50;
-}
-
-.App section .code-text-red {
-  color: #f46161;
-}
-
-.App section .code-text-blue {
-  color: #5e6eff;
-}
-
-.App section .button:first-of-type {
-  padding: 10px;
-}
-
-.App section .button:last-of-type {
-  padding: 10px;
 }
 
 .App aside a {
@@ -465,7 +409,6 @@
 }
 
 .App .home main article {
-  width: calc(100% - 6px - 80px);
   padding: 100px 40px 40px 40px;
   margin: 20px 0;
 }
@@ -601,8 +544,52 @@
   padding: 0 20px;
 }
 
-.App .post main article section:last-of-type {
+.App .post main article:last-of-type {
   padding-bottom: 100px;
+}
+
+.App .post main article h2 {
+  padding: 20px 0 40px 0;
+}
+
+.App .post main article h2:first-of-type {
+  padding: 0 0 40px 0;
+}
+
+.App .post main article p {
+  padding: 0 0 40px 0;
+}
+
+.App .post main article a {
+  display: block;
+  font: italic 400 24px 'Roboto', sans-serif;
+  color: #44b499;
+  padding-bottom: 10px;
+  margin: 0;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.App .post main article a:first-of-type {
+  padding-top: 30px;
+}
+
+.App .post main article a:last-child {
+  padding-bottom: 0;
+}
+
+.App .post main article code {
+  font: 500 20px/40px 'Roboto Mono', sans-serif;
+  padding: 30px 0 0 0;
+  margin: 0;
+}
+
+.App .post main article .button:first-of-type {
+  padding: 10px;
+}
+
+.App .post main article .button:last-of-type {
+  padding: 10px;
 }
 
 .App .post main article .post-link-section {
@@ -653,7 +640,7 @@
 }
 
 .App .post main aside section h2 {
-  margin: 0;
+  margin: 0 0 40px 0;
 }
 
 .App .post main aside section h3 {
@@ -919,22 +906,6 @@
   color: #c4c4c4;
 }
 
-.App-dark section .code-text-green {
-  color: #6bd2a1;
-}
-
-.App-dark section .code-text-yellow {
-  color: #fff48e;
-}
-
-.App-dark section .code-text-red {
-  color: #fca28f;
-}
-
-.App-dark section .code-text-blue {
-  color: #96adff;
-}
-
 .App-dark nav {
   background-color: rgba(23, 23, 23, 0.7);
 }
@@ -1023,7 +994,7 @@
     font-size: 24px;
   }
   .App p {
-    font-size: 30px;
+    font-size: 28px;
     line-height: 45px;
     padding: 40px 0 0 0;
     margin: 0;
@@ -1054,7 +1025,7 @@
     top: 10px;
   }
   .App .button-icon-anim-enter-active {
-    background-color: #e5e5e5;
+    background-color: #bbd7cb;
     width: 100%;
     -webkit-transition: all 1s;
     transition: all 1s;
@@ -1069,7 +1040,7 @@
     transition: all 1s;
   }
   .App .button-icon-anim-enter-done {
-    background-color: #e5e5e5;
+    background-color: #bbd7cb;
   }
   .App .button-icon-anim-enter-done h3 {
     display: inline-block;
@@ -1081,7 +1052,7 @@
     top: 10px;
   }
   .App .button-icon-anim-exit {
-    background-color: #e5e5e5;
+    background-color: #bbd7cb;
     width: 100%;
   }
   .App .button-icon-anim-exit h3 {
@@ -1097,7 +1068,7 @@
     top: 10px;
   }
   .App .button-icon-anim-exit-active {
-    background-color: #e5e5e5;
+    background-color: #bbd7cb;
     width: 50px;
     -webkit-transition: all 1s;
     transition: all 1s;

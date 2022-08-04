@@ -1,4 +1,7 @@
 import React, {useState, useEffect, useRef} from "react"
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from "remark-gfm"
+import {CSSTransition} from "react-transition-group"
 import {
   BrowserRouter as Router, 
   Routes, 
@@ -8,7 +11,6 @@ import {
   Link, 
   useOutletContext
 } from "react-router-dom"
-import {CSSTransition} from "react-transition-group"
 import Navbar from "./components/Navbar"
 import Button from "./components/Button"
 import PostCard from "./components/PostCard"
@@ -54,14 +56,14 @@ function Home(props) {
   const[isPost, setIsPost] = useState(true)
   const[data, setData] = useState()
   const[pos, setPos] = useState()
-  
+
   const ref = useRef()
   const location = useLocation().pathname
-  const{host, header, path, setPath} = props
+  const{host, header, path, lang, setPath} = props
   let lastDate
 
   const onGet = async () => {
-    return await fetch(`http://${host}/api/post`, header)
+    return await fetch(`http://${host}/api/post/${lang}`, header)
     .then(res => res.json())
     .then(data => {
       setResolved(false)
@@ -74,7 +76,6 @@ function Home(props) {
   useEffect(() => {setPath(location)},[location])
   useEffect(() => {setIsPost(path==="/"?false:true)},[path])
   useEffect(() => {onGet()},[])
-  useEffect(() => {if(ref.current)console.log(ref.current.className, isPost)},[ref.current, isPost])
 
   return(
     <div className="home">
@@ -85,7 +86,9 @@ function Home(props) {
       >
         <main ref={ref}>
           {
-            resolved &&
+            resolved && 
+            data !== null && 
+            data !== undefined &&
             data.sort(
               (a,b) => 
               (
@@ -111,9 +114,7 @@ function Home(props) {
                   <div className="non-active-post">
                     <h3>
                       {
-                        post.date.slice(8, 10) + " " + 
-                        post.date.slice(5, 7) + " " +
-                        post.date.slice(0, 4)
+                        new Date(post.date).toLocaleDateString('en-GB')
                       }
                     </h3>
                   </div>
@@ -152,19 +153,24 @@ function Home(props) {
 function Post(props) {
   const[data, setData] = useState()
   const[resolved, setResolved] = useState(false)
+  const[indexList, setIndexList] = useState()
   const[postData, pos, setPos] = useOutletContext()
 
   const location = useLocation().pathname
-  const{host, header, path, setPath, setIndex} = props
+  const ref = useRef()
+  const{host, header, path, lang, setPath, setIndex} = props
   
   const onGet = async () => {
-    return await fetch(`http://${host}/api${location}`, header)
+    return await fetch(
+      `http://${host}/api/post/${lang}/${location.substring(6)}`, 
+      header
+    )
     .then(res => res.json())
     .then(data => {
-      setResolved(false)//?
+      setResolved(false)
       setData(data)
       setResolved(true)
-      setIndex(data.body.section)
+      setIndex(data.content[0].markdown)
     })
     .catch(err => console.log(err))
   }
@@ -172,6 +178,23 @@ function Post(props) {
   useEffect(() => {setPath(location)},[location])
   useEffect(() => {onGet()},[path])
   useEffect(() => {window.scroll({top:0, behavior: "smooth"})},[location])
+  useEffect(() => {
+    if(ref.current){
+      console.log(ref.current.children)
+      setIndexList(
+        [...ref.current.children]
+        .filter(item => item.id !== "")
+        .map((item, key) => 
+          <a 
+            key={key}
+            href={`#${item.id}`} 
+          >
+            {item.id}
+          </a>
+        )
+      )
+    }
+  },[ref.current])
 
   return (
     <CSSTransition
@@ -189,12 +212,10 @@ function Post(props) {
                   <a key={key}>{`#${tag}`}</a>
                 )}
               </span>
-              <h1>{data.title}</h1>
+              <h1>{data.content[0].title}</h1>
               <h4>
                 {
-                  data.date.slice(8, 10) + " " + 
-                  data.date.slice(5, 7) + " " +
-                  data.date.slice(0, 4)
+                  new Date(data.date).toLocaleDateString('en-GB')
                 }
               </h4>
               <aside className="wrapper">
@@ -203,7 +224,7 @@ function Post(props) {
               </aside>
             </header>
             <main>
-              <article>
+              <article ref={ref}>
                 {
                   pos !== 0 && 
                   postData[pos - 1] !== undefined &&
@@ -217,43 +238,15 @@ function Post(props) {
                     </Link>
                   </section>
                 }
-                {
-                  data.body.section.map((section, key) => 
-                    <section key={key}>
-                      <h2 id={`${section.title}${key}`}>
-                        {section.title}
-                      </h2>
-                      {
-                        section.paragraphs.map((p, key) => 
-                          <React.Fragment key={key}>
-                            {
-                              p.mode === "normal"?
-                              <p key={`b${key}`}>{p.text}</p> :
-                              p.mode === "code"?
-                              <p 
-                                key={`b${key}`} 
-                                className={"code-text code-text-normal"}
-                              >
-                                {p.text}
-                              </p> :
-                              <a key={`b${key}`} href={p.text}>{p.text}</a>
-                            }
-                            {
-                              p.image !== undefined &&
-                              p.image.map((img, key) => 
-                                <img 
-                                  key={`a${key}`}
-                                  src={`http://${host}/api/image/${img}`} 
-                                  alt="..."
-                                />
-                              )
-                            }
-                          </React.Fragment>
-                        )
-                      }
-                    </section>
-                  )
-                }
+                <ReactMarkdown 
+                  remarkPlugins={[remarkGfm]} 
+                  components={{
+                    h2: ({node, ...props}) => 
+                      <h2 id={props.children} {...props}/>
+                  }}
+                >
+                  {data.content[0].markdown}
+                </ReactMarkdown>
                 {
                   postData[pos + 1] !== undefined && 
                   pos !== postData.length - 1 &&
@@ -289,16 +282,7 @@ function Post(props) {
                 }
                 <section>
                   <h2>Índice</h2>
-                  {
-                    data.body.section.map((section, key) => 
-                      <a 
-                        key={key}
-                        href={`#${section.title}${key}`} 
-                      >
-                        {section.title}
-                      </a>
-                    )
-                  }
+                  {indexList}
                 </section>
               </aside>
             </main>
@@ -373,6 +357,9 @@ function About(props) {
 }
 
 function App() {
+  //Default language 
+  const[lang,setLang] = useState("pt")
+
   //Dark theme
   const[isDT, setIsDT] = useState(false)
   const[path, setPath] = useState("/")
@@ -421,6 +408,7 @@ function App() {
               host={_host}
               header={_header} 
               path={path}
+              lang={lang}
               setPath={path => setPath(path)}
               setIndex={index => setIndex(index)}
             />
@@ -430,6 +418,7 @@ function App() {
                 host={_host}
                 header={_header} 
                 path={path}
+                lang={lang}
                 setPath={path => setPath(path)}
                 setIndex={index => setIndex(index)}
               />
