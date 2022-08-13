@@ -24,7 +24,7 @@
 }
 
 .App h3 {
-  font: 600 18px 'Quicksand', sans-serif;
+  font: 600 20px 'Quicksand', sans-serif;
   color: #595959;
   margin: 0;
 }
@@ -128,17 +128,17 @@
 }
 
 .App .button-icon-anim-enter-active {
-  background-color: #bbd7cb;
+  background-color: #44b499;
   -webkit-transition: background-color .25s;
   transition: background-color .25s;
 }
 
 .App .button-icon-anim-enter-done {
-  background-color: #bbd7cb;
+  background-color: #44b499;
 }
 
 .App .button-icon-anim-exit {
-  background-color: #bbd7cb;
+  background-color: #44b499;
 }
 
 .App .button-icon-anim-exit-active {
@@ -171,6 +171,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
 }
 
 .App nav {
@@ -253,7 +255,7 @@
 }
 
 .App .wrapper a {
-  font: 600 18px 'Quicksand', sans-serif;
+  font: 700 16px 'Quicksand', sans-serif;
   color: #44b499;
   margin: 0 5px 0 0;
 }
@@ -268,74 +270,6 @@
   height: 100%;
 }
 
-.App .menu-anim-enter {
-  background-color: transparent;
-}
-
-.App .menu-anim-enter nav {
-  opacity: 0;
-  -webkit-transform: translate(-100%, 0);
-          transform: translate(-100%, 0);
-}
-
-.App .menu-anim-enter-active {
-  background-color: rgba(246, 246, 246, 0.7);
-  -webkit-transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.App .menu-anim-enter-active nav {
-  opacity: 1;
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
-  -webkit-transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.App .menu-anim-enter-done {
-  background-color: rgba(246, 246, 246, 0.7);
-}
-
-.App .menu-anim-enter-done nav {
-  opacity: 1;
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
-}
-
-.App .menu-anim-exit {
-  background-color: rgba(246, 246, 246, 0.7);
-}
-
-.App .menu-anim-exit nav {
-  opacity: 1;
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
-}
-
-.App .menu-anim-exit-active {
-  background-color: transparent;
-  -webkit-transition: background-color .5s ease-out;
-  transition: background-color .5s ease-out;
-}
-
-.App .menu-anim-exit-active nav {
-  opacity: 0;
-  -webkit-transform: translate(-100%, 0);
-          transform: translate(-100%, 0);
-  -webkit-transition: all .5s ease-out;
-  transition: all .5s ease-out;
-}
-
-.App .menu-anim-exit-done {
-  background-color: transparent;
-}
-
-.App .menu-anim-exit-done nav {
-  opacity: 0;
-  -webkit-transform: translate(-100%, 0);
-          transform: translate(-100%, 0);
-}
-
 .App .menu nav {
   overflow: auto;
   background-color: #f6f6f6;
@@ -344,7 +278,9 @@
   margin: 0;
   padding: 40px 20px;
   border: 3px solid #e5e5e5;
-  border-radius: 40px;
+  border-left-style: none;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -385,22 +321,91 @@
 .App .menu nav span .button h3 {
   display: block;
   padding-left: 0;
+  white-space: normal;
+}
+
+.App .menu-anim-enter {
+  background-color: transparent;
+}
+
+.App .menu-anim-enter nav {
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+}
+
+.App .menu-anim-enter-active {
+  background-color: rgba(246, 246, 246, 0.7);
+  -webkit-transition: background-color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: background-color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.App .menu-anim-enter-active nav {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.App .menu-anim-enter-done {
+  background-color: rgba(246, 246, 246, 0.7);
+}
+
+.App .menu-anim-enter-done nav {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.App .menu-anim-exit {
+  background-color: rgba(246, 246, 246, 0.7);
+}
+
+.App .menu-anim-exit nav {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.App .menu-anim-exit-active {
+  background-color: transparent;
+  -webkit-transition: background-color .3s ease-out;
+  transition: background-color .3s ease-out;
+}
+
+.App .menu-anim-exit-active nav {
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+}
+
+.App .menu-anim-exit-done {
+  background-color: transparent;
+}
+
+.App .menu-anim-exit-done nav {
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
 }
 
 .App .home main {
-  padding: 80px 0;
+  opacity: 0;
+  padding: 70px 0 100px 0;
   margin: auto;
 }
 
 .App .home main div {
   position: relative;
-  margin: 40px 0 30px 0;
+  margin: 20px 0 20px 0;
 }
 
 .App .home main div h3 {
   background-color: #f6f6f6;
+  font-family: 'Roboto';
   color: #c4c4c4;
-  padding: 10px 0 0 43px;
+  padding: 0 0 0 23px;
   font-weight: 700;
 }
 
@@ -409,8 +414,12 @@
 }
 
 .App .home main article {
-  padding: 100px 40px 40px 40px;
+  padding: 100px 20px 40px 20px;
   margin: 20px 0;
+}
+
+.App .home main article h2 {
+  margin-top: 10px;
 }
 
 .App .home main article h4 {
@@ -418,6 +427,7 @@
 }
 
 .App .home .main-anim-enter {
+  opacity: 1;
   height: 0;
   padding: 0;
 }
@@ -429,38 +439,44 @@
 
 .App .home .main-anim-enter .active-post {
   position: absolute;
-  width: calc(100% - 6px - 80px);
-  padding: 100px 40px 40px 40px;
+  width: calc(100% - 6px - 40px);
+  padding: 100px 20px 40px 20px;
   margin: 20px 0;
-  top: 100;
+  top: 100px;
 }
 
 .App .home .main-anim-enter .active-post h4 {
   opacity: 0;
 }
 
+.App .home .main-anim-enter-active {
+  opacity: 1;
+  padding: 0;
+}
+
 .App .home .main-anim-enter-active .non-active-post {
   position: absolute;
-  top: 0;
+  opacity: 0;
 }
 
 .App .home .main-anim-enter-active .active-post {
-  width: calc(100% - 6px - 40px);
+  position: absolute;
+  width: calc(100% - 40px - 6px);
   padding: 103px 20px 60px 20px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-top-style: none;
   top: 0;
-  -webkit-transition: all .25s;
-  transition: all .25s;
+  -webkit-transition: padding,top .3s ease-in;
+  transition: padding,top .3s ease-in;
 }
 
 .App .home .main-anim-enter-active .active-post a h2 {
   font-size: 40px;
   font-weight: 800;
   margin: 10px 0 20px 0;
-  -webkit-transition: all .25s;
-  transition: all .25s;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
 }
 
 .App .home .main-anim-enter-active .active-post h4 {
@@ -469,12 +485,13 @@
   display: flex;
   opacity: 1;
   margin: 0;
-  -webkit-transition: all .25s;
-  transition: all .25s;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
 }
 
 .App .home .main-anim-enter-done {
   display: none;
+  opacity: 0;
 }
 
 .App .home .main-anim-enter-done .non-active-post {
@@ -487,25 +504,24 @@
   display: none;
 }
 
-.App .home .main-anim-exit .non-active-post {
+.App .home .main-anim-exit {
   opacity: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
 }
 
-.App .home .main-anim-exit-active .non-active-post {
+.App .home .main-anim-exit-active {
   opacity: 1;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
+  -webkit-transition: opacity 0.3s ease-in;
+  transition: opacity 0.3s ease-in;
 }
 
-.App .home .main-anim-exit-done .non-active-post {
+.App .home .main-anim-exit-done {
   opacity: 1;
 }
 
 .App .post {
   position: absolute;
+  width: 100%;
   top: 0;
   z-index: -1;
 }
@@ -631,14 +647,6 @@
   margin: 0;
 }
 
-.App .post main aside section:first-child h2 {
-  margin: 0 0 5px 0;
-}
-
-.App .post main aside section:last-child {
-  padding: 60px 20px 40px 20px;
-}
-
 .App .post main aside section h2 {
   margin: 0 0 40px 0;
 }
@@ -663,6 +671,18 @@
   padding-bottom: 0;
 }
 
+.App .post main aside section div {
+  margin: 0;
+}
+
+.App .post main aside section:first-child h2 {
+  margin: 0 0 5px 0;
+}
+
+.App .post main aside section:last-child {
+  padding: 60px 20px 40px 20px;
+}
+
 .App .post main aside .post-link-section h3 {
   margin-bottom: 10px;
 }
@@ -680,19 +700,23 @@
   opacity: 0;
 }
 
-.App .post-anim-enter-active .wrapper {
+.App .post-anim-entering .wrapper {
   opacity: 1;
   -webkit-transition: opacity .25s;
   transition: opacity .25s;
 }
 
-.App .post-anim-enter-active main {
+.App .post-anim-entering main {
   opacity: 1;
   -webkit-transition: opacity .75s;
   transition: opacity .75s;
 }
 
-.App .post-anim-enter-done main {
+.App .post-anim-entered main {
+  opacity: 1;
+}
+
+.App .post-anim-exit .wrapper {
   opacity: 1;
 }
 
@@ -700,13 +724,23 @@
   opacity: 1;
 }
 
-.App .post-anim-exit-active main {
+.App .post-anim-exiting .wrapper {
   opacity: 0;
   -webkit-transition: opacity .75s;
   transition: opacity .75s;
 }
 
-.App .post-anim-exit-done main {
+.App .post-anim-exiting main {
+  opacity: 0;
+  -webkit-transition: opacity .75s;
+  transition: opacity .75s;
+}
+
+.App .post-anim-exited .wrapper {
+  opacity: 0;
+}
+
+.App .post-anim-exited main {
   opacity: 0;
 }
 
@@ -902,7 +936,7 @@
   color: #6bd2a1;
 }
 
-.App-dark section .code-text-normal {
+.App-dark section code {
   color: #c4c4c4;
 }
 
@@ -1004,7 +1038,6 @@
   }
   .App .button {
     padding: 10px;
-    margin-left: 10px;
   }
   .App .button svg {
     width: 30px;
@@ -1015,7 +1048,7 @@
   }
   .App .button-icon-anim-enter h3 {
     display: none;
-    width: 0px;
+    width: 0;
     padding-left: 0;
     opacity: 0.5;
   }
@@ -1041,10 +1074,12 @@
   }
   .App .button-icon-anim-enter-done {
     background-color: #bbd7cb;
+    width: 100%;
   }
   .App .button-icon-anim-enter-done h3 {
     display: inline-block;
     margin-left: 30px;
+    padding-left: 10px;
   }
   .App .button-icon-anim-enter-done svg {
     position: absolute;
@@ -1057,7 +1092,7 @@
   }
   .App .button-icon-anim-exit h3 {
     display: inline-block;
-    width: 100%;
+    width: calc(100% - 30px);
     padding-left: 10px;
     margin-left: 30px;
     opacity: 1;
@@ -1076,9 +1111,8 @@
   .App .button-icon-anim-exit-active h3 {
     display: inline-block;
     width: 0;
-    padding-left: 10px;
-    margin-left: 30px;
-    margin-right: auto;
+    padding-left: 0;
+    margin-left: 0;
     opacity: 0.5;
     -webkit-transition: all 1s;
     transition: all 1s;
@@ -1100,13 +1134,7 @@
     padding-bottom: 10px;
     font-size: 30px;
   }
-  .App section a:first-of-type {
-    padding-top: 40px;
-  }
-  .App section a:last-child {
-    padding-bottom: 0;
-  }
-  .App section .code-text {
+  .App section code {
     margin: 0;
     padding: 40px 0 0 0;
     font-size: 30px;
@@ -1125,6 +1153,10 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+  .App nav .nav-content span {
+    -ms-flex-flow: nowrap;
+        flex-flow: nowrap;
   }
   .App nav .nav-content .left-side {
     margin-right: auto;
@@ -1183,6 +1215,7 @@
     max-width: none;
   }
   .App .home .main-anim-enter-active .active-post {
+    position: absolute;
     width: calc(95% - 6px - 160px);
     margin: 0 calc(2.5% - 3px);
     padding: 163px 80px 80px 80px;
@@ -1248,9 +1281,6 @@
     padding: 40px 0;
     margin: 0;
   }
-  .App .post main aside section:last-child {
-    padding: 60px 0 80px 0;
-  }
   .App .post main aside section h2 {
     margin: 0 0 5px 0;
   }
@@ -1261,7 +1291,18 @@
     margin-bottom: 0;
   }
   .App .post main aside section a {
+    margin: 0;
+    padding-bottom: 10px;
     font-size: 24px;
+  }
+  .App .post main aside section a:first-of-type {
+    padding-top: 40px;
+  }
+  .App .post main aside section a:last-child {
+    padding-bottom: 0;
+  }
+  .App .post main aside section:last-child {
+    padding: 60px 0 80px 0;
   }
   .App .about {
     max-width: calc(100% - 160px - 6px);
@@ -1324,6 +1365,7 @@
     opacity: 0;
   }
   .App .home .main-anim-enter-active .active-post {
+    position: absolute;
     width: calc(95% - 6px - 560px);
     margin: 0 calc(2.5% - 3px);
     padding: 183px 480px 80px 80px;
@@ -1389,25 +1431,26 @@
   }
   .App .post main aside section:last-child {
     display: block;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
   }
   .App .post main aside h2 {
     margin: 0 0 10px 0;
   }
   .App .post-anim-enter header .wrapper {
-    right: -80px;
     opacity: 0;
   }
-  .App .post-anim-enter-active header .wrapper {
-    right: 40px;
+  .App .post-anim-entering header .wrapper {
     opacity: 1;
     -webkit-transition-delay: .25s;
             transition-delay: .25s;
-    -webkit-transition-property: all;
-    transition-property: all;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
     -webkit-transition-duration: .5s;
             transition-duration: .5s;
   }
-  .App .post-anim-enter-done header .wrapper {
+  .App .post-anim-entered header .wrapper {
     opacity: 1;
   }
 }

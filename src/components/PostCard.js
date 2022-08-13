@@ -20,8 +20,8 @@ function PostCard(props) {
         to={`/post/${props.id}`} 
         onClick={() => {
           setActive(true)
-          props.setPos(props.pos)
           props.setIsPost()
+          props.setCurrentData()
         }}
       > 
         <h2>{props.title}</h2>

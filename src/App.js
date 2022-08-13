@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useRef} from "react"
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from "remark-gfm"
+import {compiler} from 'markdown-to-jsx'
 import {CSSTransition} from "react-transition-group"
 import {
   BrowserRouter as Router, 
@@ -8,7 +7,6 @@ import {
   Route, 
   useLocation, 
   Outlet, 
-  Link, 
   useOutletContext
 } from "react-router-dom"
 import Navbar from "./components/Navbar"
@@ -52,61 +50,55 @@ function Menu(props) {
 }
 
 function Home(props) {
-  const[resolved, setResolved] = useState(false)
-  const[isPost, setIsPost] = useState(true)
   const[data, setData] = useState()
-  const[pos, setPos] = useState()
-
-  const ref = useRef()
+  const[isPost, setIsPost] = useState(true)
+  const[isExited, setIsExited] = useState(false)
+  const[currentData, setCurrentData] = useState()
+  const{host, header, lang, path, setPath} = props
   const location = useLocation().pathname
-  const{host, header, path, lang, setPath} = props
   let lastDate
 
   const onGet = async () => {
     return await fetch(`http://${host}/api/post/${lang}`, header)
     .then(res => res.json())
     .then(data => {
-      setResolved(false)
-      setData(data)
-      setResolved(true)
-    })
-    .catch(err => console.log(err))
+      setData( data.sort((a,b) => 
+        (
+          b.date.substring(0, 4) +
+          b.date.substring(5, 7) +
+          b.date.substring(8, 10) +
+          b.date.substring(11, 13) +
+          b.date.substring(14, 16) +
+          b.date.substring(17, 19)
+        ) - (
+          a.date.substring(0, 4) +
+          a.date.substring(5, 7) +
+          a.date.substring(8, 10) +
+          a.date.substring(11, 13) +
+          a.date.substring(14, 16) +
+          a.date.substring(17, 19)
+        )
+      ))
+    }).catch(err => console.log(err))
   }
 
-  useEffect(() => {setPath(location)},[location])
-  useEffect(() => {setIsPost(path==="/"?false:true)},[path])
   useEffect(() => {onGet()},[])
-
+  useEffect(() => {setIsPost(path==="/"?false:true)},[path])
+  useEffect(() => {setPath(location)},[location])
   return(
     <div className="home">
       <CSSTransition
         classNames="main-anim"
-        in={isPost} 
+        in={isPost}
         timeout={500} 
+        onEntered={() => setIsExited(true)}
+        onExited={() => setIsExited(false)}
       >
-        <main ref={ref}>
+        <main>
           {
-            resolved && 
-            data !== null && 
-            data !== undefined &&
-            data.sort(
-              (a,b) => 
-              (
-                b.date.substring(0, 4) +
-                b.date.substring(5, 7) +
-                b.date.substring(8, 10) +
-                b.date.substring(11, 13) +
-                b.date.substring(14, 16) +
-                b.date.substring(17, 19)
-              ) - (
-                a.date.substring(0, 4) +
-                a.date.substring(5, 7) +
-                a.date.substring(8, 10) +
-                a.date.substring(11, 13) +
-                a.date.substring(14, 16) +
-                a.date.substring(17, 19)
-              )
-            ).map((post, key) => {
+            data && 
+            data != undefined &&
+            data.map((post, key) => {
               let dateContent
       
               if(lastDate !== post.date.slice(0,10)){
@@ -114,7 +106,8 @@ function Home(props) {
                   <div className="non-active-post">
                     <h3>
                       {
-                        new Date(post.date).toLocaleDateString('en-GB')
+                        new Date(post.date)
+                        .toLocaleDateString('pt-br', {dateStyle:"medium"})
                       }
                     </h3>
                   </div>
@@ -126,18 +119,13 @@ function Home(props) {
                 <React.Fragment key={key}>
                   {dateContent}
                   <PostCard 
-                    pos={pos}
                     isPost={isPost}
-                    activeClass={
-                      ref.current !== undefined?
-                      ref.current.className:""
-                    }
                     id={post._id}
                     tags={post.tags} 
                     title={post.title}
                     date={post.date}
-                    setPos={pos => setPos(pos)}
                     setIsPost={() => setIsPost(!isPost)}
+                    setCurrentData={() => setCurrentData(post)}
                   />
                 </React.Fragment>
               )
@@ -145,20 +133,31 @@ function Home(props) {
           }
         </main>
       </CSSTransition>
-      <Outlet context={[{postData:data}, pos, setPos]}/>
+      <Outlet context={[currentData, isExited, setIsExited]}/>
     </div>
   )
 }
 
 function Post(props) {
-  const[data, setData] = useState()
+  const[currentData, isExited, setIsExited] = useOutletContext()
+  const[data, setData] = useState(
+    currentData != undefined ? 
+    {
+      tags: currentData.tags,
+      content: [{
+        title: currentData.title
+      }],
+      date: currentData.date
+    }: undefined
+  )
   const[resolved, setResolved] = useState(false)
-  const[indexList, setIndexList] = useState()
-  const[postData, pos, setPos] = useOutletContext()
-
+  const[markdown, setMarkdown] = useState()
   const location = useLocation().pathname
+  const refIndex = useRef()
   const ref = useRef()
-  const{host, header, path, lang, setPath, setIndex} = props
+  const{
+    host, header, lang, index, path, setIndex, setPath
+  } = props
   
   const onGet = async () => {
     return await fetch(
@@ -166,100 +165,77 @@ function Post(props) {
       header
     )
     .then(res => res.json())
-    .then(data => {
-      setResolved(false)
-      setData(data)
-      setResolved(true)
-      setIndex(data.content[0].markdown)
-    })
+    .then(data => setData(data))
     .catch(err => console.log(err))
   }
   
+  useEffect(() => {onGet()},[])
   useEffect(() => {setPath(location)},[location])
-  useEffect(() => {onGet()},[path])
-  useEffect(() => {window.scroll({top:0, behavior: "smooth"})},[location])
   useEffect(() => {
-    if(ref.current){
-      console.log(ref.current.children)
-      setIndexList(
-        [...ref.current.children]
-        .filter(item => item.id !== "")
-        .map((item, key) => 
-          <a 
-            key={key}
-            href={`#${item.id}`} 
-          >
-            {item.id}
-          </a>
-        )
-      )
+    window.scroll({top:0, behavior: "smooth"})
+  },[path])
+  useEffect(() => {
+    if (
+      currentData != undefined && isExited 
+      && data.content[0].markdown != undefined
+    ){
+      setMarkdown(compiler(data.content[0].markdown))
+    } else if(currentData === undefined && data != undefined) {
+      setMarkdown(compiler(data.content[0].markdown))
+      setIsExited(true)
     }
-  },[ref.current])
+  },[isExited, data])
+  useEffect(() => {
+    if(ref.current && markdown)
+      setIndex(
+        [...ref.current.children[0].children]
+        .filter(item => item.id !== "")
+        .map(item => {return{id:item.id, content: item.textContent}})
+      )
+  },[ref.current, markdown])
+  useEffect(() => {
+    if(refIndex.current && markdown) setResolved(true)
+  },[refIndex.current, markdown])
 
   return (
     <CSSTransition
-      classNames="post-anim"
-      in={resolved} 
+      in={resolved && isExited}
       timeout={500} 
     >  
-      <div className="post">
-        {
-          resolved &&
-          <>
+      {
+        state =>
+        <div className={`post post-anim-${state}`}>
+          {
+            data != undefined &&
             <header className="wrapper">
-              <span>
-                {data.tags.map((tag, key) =>   
-                  <a key={key}>{`#${tag}`}</a>
-                )}
-              </span>
-              <h1>{data.content[0].title}</h1>
-              <h4>
+                <span>
+                  {data.tags.map((tag, key) =>   
+                    <a key={key}>{`#${tag}`}</a>
+                  )}
+                </span>
+                <h1>{data.content[0].title}</h1>
+                <h4>
+                  {
+                    new Date(data.date).toLocaleDateString('en-GB')
+                  }
+                </h4>
                 {
-                  new Date(data.date).toLocaleDateString('en-GB')
+                  data.content[0].markdown != undefined &&
+                  <aside className="wrapper">
+                    <h2>{data.authorName}</h2>
+                    <h3>{data.authorDescription}</h3>
+                  </aside>
                 }
-              </h4>
-              <aside className="wrapper">
-                <h2>{data.authorName}</h2>
-                <h3>{data.authorDescription}</h3>
-              </aside>
             </header>
+          }
+          {
+            data != undefined && 
+            data.content[0].markdown != undefined &&
             <main>
-              <article ref={ref}>
-                {
-                  pos !== 0 && 
-                  postData[pos - 1] !== undefined &&
-                  <section className="post-link-section last-post-link-section">
-                    <h3>Artigo anterior:</h3>
-                    <Link 
-                      to={`/post/${postData[pos - 1]._id}`}
-                      onClick={() => setPos(pos - 1)}
-                    >
-                      <h2>{postData[pos - 1].title}</h2>
-                    </Link>
-                  </section>
-                }
-                <ReactMarkdown 
-                  remarkPlugins={[remarkGfm]} 
-                  components={{
-                    h2: ({node, ...props}) => 
-                      <h2 id={props.children} {...props}/>
-                  }}
-                >
-                  {data.content[0].markdown}
-                </ReactMarkdown>
-                {
-                  postData[pos + 1] !== undefined && 
-                  pos !== postData.length - 1 &&
-                  <section className="post-link-section">
-                    <h3>Artigo posterior:</h3>
-                    <Link 
-                      to={`/post/${postData[pos + 1]._id}`}
-                      onClick={() => setPos(pos + 1)}
-                    >
-                      <h2>{postData[pos + 1].title}</h2>
-                    </Link>
-                  </section>
-                }
+              <article>
+                <div ref={ref}>
+                  {markdown}
+                </div>
               </article>
               <aside>
                 <section>
@@ -267,58 +243,56 @@ function Post(props) {
                   <h2>{data.authorName}</h2>
                   <h3>{data.authorDescription}</h3>
                 </section>
-                {
-                  pos !== 0 && 
-                  postData[pos - 1] !== undefined &&
-                  <section className="post-link-section">
-                    <h3>Artigo anterior:</h3>
-                    <Link 
-                      to={`/post/${postData[pos - 1]._id}`}
-                      onClick={() => setPos(pos - 1)}
-                    >
-                      <h2>{postData[pos - 1].title}</h2>
-                    </Link>
-                  </section>
-                }
                 <section>
                   <h2>Índice</h2>
-                  {indexList}
+                  <div ref={refIndex}>
+                    {
+                      index &&
+                      index.map((item, key) => 
+                        <a 
+                          key={key}
+                          href={`#${item.id}`} 
+                        >
+                          {item.content}
+                        </a>
+                      )
+                    }
+                  </div>
                 </section>
               </aside>
             </main>
-          </>
-        }
-      </div>
+          }
+        </div>
+      }
     </CSSTransition>
   )
 }
 
 function About(props) {
   const[data, setData] = useState()
-  const[resolved, setResolved] = useState(false)
-  const[path] = useState(useLocation().pathname)
+  let path = useLocation().pathname
 
   const onGet = async () => {
     return await fetch(`http://${props.host}/api/dev/`, props.header)
     .then(res => res.json())
     .then(data => {
       setData(data)
-      setResolved(true)
     })
     .catch(err => console.log(err))
   }
+
   useEffect(() => {props.setPath(path)},[])
   useEffect(() => {onGet()},[])
 
   return (
     <CSSTransition
       classNames="about-anim"
-      in={resolved} 
+      in={data != undefined} 
       timeout={500} 
     >  
       <div className="about">
         {
-          resolved &&
+          data &&
           <>
             <header><p>{data.about}</p></header>
             {
@@ -357,13 +331,11 @@ function About(props) {
 }
 
 function App() {
-  //Default language 
   const[lang,setLang] = useState("pt")
-
-  //Dark theme
-  const[isDT, setIsDT] = useState(false)
+  const[isDT, setIsDT] = useState(
+    window.matchMedia("(prefers-color-scheme: dark)").matches?true:false
+  )
   const[path, setPath] = useState("/")
-  //Mobile and Menu Vars
   const[isMenu, setIsMenu] = useState(false)
   const[index, setIndex] = useState()
 
@@ -410,7 +382,6 @@ function App() {
               path={path}
               lang={lang}
               setPath={path => setPath(path)}
-              setIndex={index => setIndex(index)}
             />
           }>
             <Route path="/post/:id" element={
@@ -419,16 +390,18 @@ function App() {
                 header={_header} 
                 path={path}
                 lang={lang}
+                index={index}
                 setPath={path => setPath(path)}
                 setIndex={index => setIndex(index)}
+
               />
             }/>
           </Route>
           <Route path="/about" element={
             <About 
               host={_host}
-              header={_header}  
-              setPath={path => setPath(path)}
+              header={_header} 
+              setPath={path => setPath(path)} 
             />
           }/>
         </Routes>

@@ -18,7 +18,10 @@ function Navbar(props){
           <Button 
             path="/" 
             pathCurrent={path}
-            onFunc={props.setIsMenu}
+            onFunc={() => {
+              window.scroll({top:0, behavior: "smooth"})
+              props.setIsMenu()
+            }}
           />
         </span>
         <span className="right-side right-side-navbar"> 
@@ -31,7 +34,7 @@ function Navbar(props){
             />
           }
           <Button 
-            icon={isDT?"Moon":"Sun"} 
+            icon={isDT?"Sun":"Moon"} 
             name={isDT?"Modo claro":"Modo escuro"}
             onFunc={setIsDT} 
           />
@@ -72,8 +75,8 @@ function Navbar(props){
               props.index.map((index, key) => 
                 <Button
                   key={key}
-                  name={index.title}
-                  link={`#${index.title}${key}`}
+                  name={index.content}
+                  link={`#${index.id}`}
                   onFunc={props.setIsMenu}
                 />
               )
