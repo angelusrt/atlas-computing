@@ -85,6 +85,7 @@ function Home(props) {
   useEffect(() => {onGet()},[])
   useEffect(() => {setIsPost(path==="/"?false:true)},[path])
   useEffect(() => {setPath(location)},[location])
+  
   return(
     <div className="home">
       <CSSTransition
