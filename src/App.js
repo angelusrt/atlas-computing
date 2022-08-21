@@ -14,14 +14,14 @@ import Button from "./components/Button"
 import PostCard from "./components/PostCard"
 import './App.css'
 
-const _host = "192.168.0.115:3000"
+const _host = "server.atlascomputing.com.br:4000"
 const _header = {
   method: "GET",
   'Content-Type': 'application/json',
   'Accept-Encoding': 'gzip, deflate, br',
   connection: 'keep-alive',
   Accept: '*/*',
-  Host: _host,
+  Host: "server.atlascomputing.com.br:4000",
 }
 
 function Menu(props) {
@@ -59,7 +59,7 @@ function Home(props) {
   let lastDate
 
   const onGet = async () => {
-    return await fetch(`http://${host}/api/post/${lang}`, header)
+    return await fetch(`https://${host}/api/post/${lang}`, header)
     .then(res => res.json())
     .then(data => {
       setData( data.sort((a,b) => 
@@ -162,7 +162,7 @@ function Post(props) {
   
   const onGet = async () => {
     return await fetch(
-      `http://${host}/api/post/${lang}/${location.substring(6)}`, 
+      `https://${host}/api/post/${lang}/${location.substring(6)}`, 
       header
     )
     .then(res => res.json())
@@ -274,7 +274,7 @@ function About(props) {
   let path = useLocation().pathname
 
   const onGet = async () => {
-    return await fetch(`http://${props.host}/api/dev/`, props.header)
+    return await fetch(`https://${props.host}/api/dev/`, props.header)
     .then(res => res.json())
     .then(data => {
       setData(data)
