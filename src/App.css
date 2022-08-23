@@ -1038,10 +1038,26 @@
   }
   .App .button {
     padding: 10px;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+  .App .button h3 {
+    color: #171717;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
   }
   .App .button svg {
+    position: absolute;
+    left: 10px;
+    top: 10px;
     width: 30px;
     height: 30px;
+  }
+  .App .button-icon {
+    padding-left: 40px;
+    height: 50px;
+    width: calc(50px - 50px);
   }
   .App .button-icon-anim-enter {
     width: 50px;
@@ -1049,13 +1065,7 @@
   .App .button-icon-anim-enter h3 {
     display: none;
     width: 0;
-    padding-left: 0;
     opacity: 0.5;
-  }
-  .App .button-icon-anim-enter svg {
-    position: absolute;
-    left: 10px;
-    top: 10px;
   }
   .App .button-icon-anim-enter-active {
     background-color: #bbd7cb;
@@ -1065,9 +1075,7 @@
   }
   .App .button-icon-anim-enter-active h3 {
     display: inline-block;
-    width: calc(100% - 30px);
-    padding-left: 10px;
-    margin-left: 30px;
+    width: 100%;
     opacity: 1;
     -webkit-transition: all 1s;
     transition: all 1s;
@@ -1078,13 +1086,6 @@
   }
   .App .button-icon-anim-enter-done h3 {
     display: inline-block;
-    margin-left: 30px;
-    padding-left: 10px;
-  }
-  .App .button-icon-anim-enter-done svg {
-    position: absolute;
-    left: 10px;
-    top: 10px;
   }
   .App .button-icon-anim-exit {
     background-color: #bbd7cb;
@@ -1092,27 +1093,17 @@
   }
   .App .button-icon-anim-exit h3 {
     display: inline-block;
-    width: calc(100% - 30px);
-    padding-left: 10px;
-    margin-left: 30px;
+    width: 100%;
     opacity: 1;
-  }
-  .App .button-icon-anim-exit svg {
-    position: absolute;
-    left: 10px;
-    top: 10px;
   }
   .App .button-icon-anim-exit-active {
     background-color: #bbd7cb;
-    width: 50px;
+    width: calc(50px - 50px);
     -webkit-transition: all 1s;
     transition: all 1s;
   }
   .App .button-icon-anim-exit-active h3 {
-    display: inline-block;
     width: 0;
-    padding-left: 0;
-    margin-left: 0;
     opacity: 0.5;
     -webkit-transition: all 1s;
     transition: all 1s;
@@ -1330,12 +1321,30 @@
         -ms-flex-align: center;
             align-items: center;
   }
-  .App .about section span .button {
-    margin-left: 0;
-    margin-right: 10px;
+  .App .about section span .button-icon {
+    height: calc(50px - 20px);
   }
-  .App .about section span .button h3 {
-    color: #171717;
+  .App .about section span .button-icon-anim-enter {
+    width: calc(50px - 50px);
+  }
+  .App .about section span .button-icon-anim-enter-active {
+    width: 110px;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  .App .about section span .button-icon-anim-enter-done {
+    width: 110px;
+  }
+  .App .about section span .button-icon-anim-exit {
+    width: 110px;
+  }
+  .App .about section span .button-icon-anim-exit-active {
+    width: calc(50px - 50px);
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  .App-dark .button h3 {
+    color: #f6f6f6;
   }
   .App-dark .button-icon-anim-enter-active {
     background-color: #363636;

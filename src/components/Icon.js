@@ -31,7 +31,7 @@ function Github(prop){
     <svg 
       // width="100" 
       // height="100" 
-      viewBox="0 0 100 100" 
+      viewBox="-10 -10 120 120" //0 0 100 100
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
       {...prop}
@@ -255,7 +255,7 @@ function PersonalPage(prop) {
     <svg 
       // width="200" 
       // height="200" 
-      viewBox="0 0 200 200" 
+      viewBox="15 15 170 170" //0 0 200 200
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
       {...prop}
