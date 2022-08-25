@@ -586,10 +586,6 @@
   word-break: break-all;
 }
 
-.App .post main article a:first-of-type {
-  padding-top: 30px;
-}
-
 .App .post main article a:last-child {
   padding-bottom: 0;
 }
@@ -1285,9 +1281,6 @@
     margin: 0;
     padding-bottom: 10px;
     font-size: 24px;
-  }
-  .App .post main aside section a:first-of-type {
-    padding-top: 40px;
   }
   .App .post main aside section a:last-child {
     padding-bottom: 0;

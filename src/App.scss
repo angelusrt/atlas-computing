@@ -483,9 +483,6 @@ $green3: #bbd7cb;
           text-decoration: underline;
           word-break: break-all;
 
-          &:first-of-type{
-            padding-top: 30px;
-          }
           &:last-child{
             padding-bottom: 0;
           }
@@ -1146,9 +1143,6 @@ $green3: #bbd7cb;
               padding-bottom: 10px;
               font-size: 24px;
               
-              &:first-of-type{
-                padding-top: 40px;
-              }
               &:last-child{
                 padding-bottom: 0;
               }
