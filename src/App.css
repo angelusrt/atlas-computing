@@ -1285,6 +1285,9 @@
   .App .post main aside section a:last-child {
     padding-bottom: 0;
   }
+  .App .post main aside section div {
+    padding-top: 35px;
+  }
   .App .post main aside section:last-child {
     padding: 60px 0 80px 0;
   }
