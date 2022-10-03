@@ -20,6 +20,7 @@ const _header = {
   'Content-Type': 'application/json',
   'Accept-Encoding': 'gzip, deflate, br',
   connection: 'keep-alive',
+  referrerPolicy: "origin",
   Accept: '*/*',
   Host: "atlas-computing-359718.uc.r.appspot.com",
 }
