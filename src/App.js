@@ -14,7 +14,7 @@ import Button from "./components/Button"
 import PostCard from "./components/PostCard"
 import './App.css'
 
-const _host = "server.atlascomputing.com.br"
+const _host = "server.atlascomputing.com.br:4000"
 const _header = {
   method: "GET",
   'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ const _header = {
   connection: 'keep-alive',
   referrerPolicy: "origin",
   Accept: '*/*',
-  Host: "server.atlascomputing.com.br",
+  Host: "server.atlascomputing.com.br:4000",
 }
 
 function Menu(props) {
