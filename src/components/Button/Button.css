@@ -1,0 +1,69 @@
+.App-light button{
+  background-color: var(--white);
+  color: var(--black2);
+  transition: all 0.5s;
+}
+.App-light button svg{
+  fill: var(--black2);
+}
+.App-light button:hover{
+  background-color: var(--green3);
+  transition: all 0.5s;
+}
+.App-light .nav-button{
+  border: 2px solid var(--light-grey1);
+}
+.App-light .nav-button:hover{
+  border-color: var(--green3);
+}
+
+.App-dark button{
+  background-color: var(--black2);
+  color: var(--white);
+  transition: all 0.5s;
+}
+.App-dark button svg{
+  fill: var(--white);
+}
+.App-dark button:hover{
+ background-color: var(--black1); 
+ transition: all 0.5s;
+}
+.App-dark .nav-button{
+  border: 2px solid var(--black1);
+}
+
+button{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  width: fit-content;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  text-align: left;
+  text-decoration: none;
+}
+
+button svg{
+  width: 30px;
+  height: 30px;
+}
+
+.nav-button{
+  z-index: 1;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 15px;
+  margin-left: 0;
+}
+
+.nav-button .link,
+.nav-button button,
+.nav-button a{
+  margin-left: 0px;
+}

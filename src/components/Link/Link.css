@@ -1,0 +1,32 @@
+.App-light .link{
+  background-color: var(--white);
+  color: var(--black1);
+  transition: all 0.5s;
+}
+.App-light .link:hover{
+  background-color: var(--green3);
+  transition: all 0.5s;
+}
+
+.App-dark .link{
+  background-color: var(--black2);
+  color: var(--white);
+  transition: all 0.5s;
+}
+.App-dark .link:hover{
+ background-color: var(--black1); 
+ transition: all 0.5s;
+}
+
+.link{
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+  background-color: transparent;
+  width: fit-content;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  text-decoration: none;
+}

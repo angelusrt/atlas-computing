@@ -1,0 +1,26 @@
+.about header {
+  padding: 120px 20px 20px 20px;
+}
+.about section {
+  padding: 40px 20px;
+}
+.about div {
+  padding: 10px 0 40px 0;
+  margin-left: -20px;
+}
+.about h2 {
+  padding-bottom: 20px;
+}
+.about h2:first-of-type {
+  padding-bottom: 0;
+  font: 500 30px 'Quicksand', sans-serif;
+}
+
+@media (min-width: 850px) {
+  .about header {
+    padding: 120px calc(10% + 20px) 20px calc(10% + 20px);
+  }
+  .about section {
+    padding: 40px calc(10% + 20px);
+  }
+}

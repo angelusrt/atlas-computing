@@ -1,0 +1,36 @@
+.home main {
+  padding: 120px 0 100px 0;
+  margin: auto;
+} 
+
+.home article {
+  padding: 100px 20px 40px 20px;
+  margin: 20px 0;
+  border: 2px solid;
+  border-radius: 20px;
+}
+
+.home article h2{
+  margin-top: 10px;
+}
+.home article div {
+  display: block;
+  margin-bottom: 0px;
+}
+.home article div a {
+  margin-right: 10px;
+}
+.home article a[href]{
+  margin-left: -10px;
+}
+.home article button{
+  margin-left: 0;
+}
+
+
+@media (min-width: 850px) {
+  .home article {
+    padding: 100px 100px 40px 100px;
+    margin: 20px 10%;
+  }
+}
