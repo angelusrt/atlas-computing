@@ -1,6 +1,5 @@
 import { HTMLRef, ThemeEnum } from "./types"
 
-const host = process.env.REACT_APP_HOST
 const header: RequestInit = {
   method: "GET",
   keepalive: true,    
@@ -47,6 +46,5 @@ function showModal(ref: HTMLRef, isHidden: boolean) {
 }
 
 export {
-  host, header, 
-  remove, add, scrollToTop, capitalize, getThemePreference, showModal
+  header, remove, add, scrollToTop, capitalize, getThemePreference, showModal
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { capitalize, header, host } from "../../utils/utils"
+import { capitalize, header } from "../../utils/utils"
 import Link from "../../components/Link/Link"
 import "./About.css"
 
@@ -8,7 +8,7 @@ function About() {
   const[dev, setDev] = useState<JSX.Element[]>()
 
   const getAbout = async () => {
-    return await fetch(`${host}/api/dev/`, header)
+    return await fetch(`${process.env.REACT_APP_HOST}/api/dev/`, header)
       .then(res => res.json())
       .then((data: {about: string, data: DevType[]}) => {
         setAbout(<header><p>{data.about}</p></header>)

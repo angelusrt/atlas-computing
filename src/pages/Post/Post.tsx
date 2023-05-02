@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { useLocation } from "react-router-dom"
 import Link from "../../components/Link/Link"
 import { DivRef, IndexType } from "../../utils/types"
-import { header, host } from "../../utils/utils"
+import { header } from "../../utils/utils"
 import "./Post.css"
 
 type PostType = {
@@ -31,7 +31,7 @@ function Post(prop: PostType) {
   const location = useLocation().pathname
   
   const getPost = async () => {
-    const url = `${host}/api/post/${language}/${location.substring(6)}`
+    const url = `${process.env.REACT_APP_HOST}/api/post/${language}/${location.substring(6)}`
 
     await fetch(url, header)
       .then(res => res.json())

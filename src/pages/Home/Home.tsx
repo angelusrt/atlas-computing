@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { ButtonLink } from "../../components/Button/Button"
-import { PageEnum } from "../../utils/types"
-import { host, header  } from "../../utils/utils"
+import { header  } from "../../utils/utils"
 import "./Home.css"
 
 type HomeType = {
@@ -15,7 +14,7 @@ const Home = (prop: HomeType) => {
   const[posts, setPosts] = useState<any>()
   
   const getPosts = async () => {
-    return await fetch(`${host}/api/post/${language}`, header)
+    return await fetch(`${process.env.REACT_APP_HOST}/api/post/${language}`, header)
       .then(res => res.json())
       .then(posts => setPosts( posts.map((e: any, i: number) => 
         <Post key={i} data={e} setPage={setPage}/> 
