@@ -1,13 +1,5 @@
 
 /* Globals */
-.App-light nav {
-  background-color: var(--white-opaque);
-}
-
-.App-dark nav {
-  background-color: var(--black-opaque); 
-}
-
 .App-light .nav-dropdown{
   background-color: var(--white);
   border: 2px solid var(--light-grey1);
