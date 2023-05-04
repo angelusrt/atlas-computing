@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { ButtonLink } from "../../components/Button/Button"
 import { header  } from "../../utils/utils"
 import "./Home.css"
+
+type PostType = {
+  id: number,
+  contents: {title: string}[],
+  date: number,
+  tags: {name: string}[],
+}
 
 type HomeType = {
   language: string,
@@ -11,15 +18,14 @@ type HomeType = {
 const Home = (prop: HomeType) => {
   const{language, setPage} = prop
   
-  const[posts, setPosts] = useState<any>()
+  const[posts, setPosts] = useState<JSX.Element[]>()
   
   const getPosts = async () => {
     return await fetch(`${process.env.REACT_APP_HOST}/api/post/${language}`, header)
       .then(res => res.json())
-      .then(posts => setPosts( posts.map((e: any, i: number) => 
+      .then((posts: PostType[]) => setPosts(posts.map((e, i) => 
         <Post key={i} data={e} setPage={setPage}/> 
-      )))
-      .catch(err => console.log(err))
+      ))).catch(err => console.log(err))
   }
 
   useEffect(() => {getPosts()},[])
@@ -33,17 +39,12 @@ const Home = (prop: HomeType) => {
   )
 }
 
-type PostType = {
-  data: {
-    id: number,
-    contents: {title: string}[],
-    date: number,
-    tags: {name: string}[],
-  },
+type PostCardType = {
+  data: PostType,
   setPage: () => void
 }
 
-function Post(prop: PostType) {
+function Post(prop: PostCardType) {
   const {data, setPage} = prop
   const {date, tags, contents, id} = data
   const {title} = contents[0]

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import { getThemePreference } from "./utils/utils"
@@ -52,6 +52,7 @@ function App() {
           <Route path="/post/:id" element={
             <Post
               language={language}
+              index={index}
               setIndex={(index) => setIndex(index)}
             />
           }/>

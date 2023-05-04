@@ -3,6 +3,14 @@ import { capitalize, header } from "../../utils/utils"
 import Link from "../../components/Link/Link"
 import "./About.css"
 
+type DevType = {
+  name: string,
+  description: string,
+  socials: {name: string, link: string}[],
+  email: string,
+  telephone: string
+}
+
 function About() {
   const[about, setAbout] = useState<JSX.Element>()
   const[dev, setDev] = useState<JSX.Element[]>()
@@ -13,8 +21,7 @@ function About() {
       .then((data: {about: string, data: DevType[]}) => {
         setAbout(<header><p>{data.about}</p></header>)
         setDev(data.data.map((e, i) => <Dev key={i} {...e}/>))
-      })
-      .catch(err => console.log(err))
+      }).catch(err => console.log(err))
   }
 
   useEffect(() => {getAbout()},[])
@@ -25,14 +32,6 @@ function About() {
       {dev}
     </div>
   )
-}
-
-type DevType = {
-  name: string,
-  description: string,
-  socials: {name: string, icon: string, link: string}[],
-  email: string,
-  telephone: string
 }
 
 const Dev = (prop: DevType) => {
