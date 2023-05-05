@@ -1,12 +1,12 @@
-.App-light button{
+.App-light .button{
   background-color: var(--white);
   color: var(--black2);
   transition: all 0.5s;
 }
-.App-light button svg{
+.App-light .button svg{
   fill: var(--black2);
 }
-.App-light button:hover{
+.App-light .button:hover{
   background-color: var(--green3);
   transition: all 0.5s;
 }
@@ -17,15 +17,15 @@
   border-color: var(--green3);
 }
 
-.App-dark button{
+.App-dark .button{
   background-color: var(--black2);
   color: var(--white);
   transition: all 0.5s;
 }
-.App-dark button svg{
+.App-dark .button svg{
   fill: var(--white);
 }
-.App-dark button:hover{
+.App-dark .button:hover{
  background-color: var(--black1); 
  transition: all 0.5s;
 }
@@ -33,7 +33,7 @@
   border: 2px solid var(--black1);
 }
 
-button{
+.button{
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -48,7 +48,7 @@ button{
   text-decoration: none;
 }
 
-button svg{
+.button svg{
   width: 30px;
   height: 30px;
 }
@@ -63,7 +63,7 @@ button svg{
 }
 
 .nav-button .link,
-.nav-button button,
+.nav-button .button,
 .nav-button a{
   margin-left: 0px;
 }

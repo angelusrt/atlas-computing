@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
 import { capitalize, header } from "../../utils/utils"
 import Link from "../../components/Link/Link"
 import "./About.css"
+import { ReactNode } from "react"
 
 type DevType = {
   name: string,
@@ -11,20 +11,21 @@ type DevType = {
   telephone: string
 }
 
-function About() {
-  const[about, setAbout] = useState<JSX.Element>()
-  const[dev, setDev] = useState<JSX.Element[]>()
+const getAbout = async () => {
+  const about: {about: ReactNode, dev: ReactNode[]} = {about: '', dev: ['']}
 
-  const getAbout = async () => {
-    return await fetch(`${process.env.REACT_APP_HOST}/api/dev/`, header)
-      .then(res => res.json())
-      .then((data: {about: string, data: DevType[]}) => {
-        setAbout(<header><p>{data.about}</p></header>)
-        setDev(data.data.map((e, i) => <Dev key={i} {...e}/>))
-      }).catch(err => console.log(err))
-  }
+  await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/dev/`, header)
+    .then(res => res.json())
+    .then((data: {about: string, data: DevType[]}) => {
+      about.about = <header><p>{data.about}</p></header>,
+      about.dev = data.data.map((e, i) => <Dev key={i} {...e}/>)
+    }).catch(err => console.log(err))
 
-  useEffect(() => {getAbout()},[])
+  return about
+}
+
+const About = async () => {
+  const {about, dev} = await getAbout()
 
   return (
     <div className="about">

@@ -1,4 +1,4 @@
-import { HTMLRef, ThemeEnum } from "./types"
+import { HTMLRef, PageEnum, ThemeEnum } from "./types"
 
 const header: RequestInit = {
   method: "GET",
@@ -15,10 +15,6 @@ function add(ref: HTMLRef, mod: string) {
   ref.current.classList.add(ref.current.classList[0] + mod)
 }
 
-function scrollToTop() {
-  window.scroll({top:0, behavior: "smooth"})
-}
-
 function capitalize(text: string): string {
   return text[0].toUpperCase() + text.slice(1)
 }
@@ -30,6 +26,17 @@ function getThemePreference(): ThemeEnum {
     return ThemeEnum.Dark
   else 
     return ThemeEnum.Light
+}
+
+function getEnumFromPath(pathname: string): PageEnum {
+  if(pathname === "/")
+    return PageEnum.Home
+  else if(pathname.startsWith("/post"))
+    return PageEnum.Post
+  else if(pathname === "/about")
+    return PageEnum.About
+  else 
+    return PageEnum.Home
 }
 
 function showModal(ref: HTMLRef, isHidden: boolean) {
@@ -46,5 +53,5 @@ function showModal(ref: HTMLRef, isHidden: boolean) {
 }
 
 export {
-  header, remove, add, scrollToTop, capitalize, getThemePreference, showModal
+  header, remove, add, capitalize, getThemePreference, showModal, getEnumFromPath
 }

@@ -3,6 +3,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
+:root{
+  --white: #f6f6f6;
+  --light-grey1: #e5e5e5;
+  --light-grey2: #c4c4c4;
+  --dark-grey1: #787878;
+  --dark-grey2: #595959;
+  --black1: #363636;
+  --black2: #171717;
+
+  --white-opaque: rgba(246, 246, 246, 0.7);
+  --black-opaque: rgba(23, 23, 23, 0.7);
+
+  --green1: #44b499;
+  --green2: #6bd2a1;
+  --green3: #bbd7cb;
+}
+
+* {
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 h1{
   font: 800 40px 'Exo', sans-serif;
 }
@@ -28,6 +64,7 @@ h4::selection, p::selection, a::selection {
 
 .App-light{
   color: var(--black2); 
+  background-color: var(--white);
   border-color: var(--light-grey1);
 }
 .App-light .home article {
@@ -36,6 +73,7 @@ h4::selection, p::selection, a::selection {
 
 .App-dark{
   color: var(--white);
+  background-color: var(--black2);
   border-color: var(--black1);
 }
 .App-dark .home article {

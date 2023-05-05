@@ -1,16 +1,17 @@
+"use client"
+
 import { useEffect, useRef, useState } from "react"
-import { IndexType, PageEnum, ThemeEnum } from "../../utils/types"
-import { scrollToTop, add, remove } from "../../utils/utils"
-import { Button, ButtonLink } from "../Button/Button"
+import { usePathname } from "next/navigation"
+import { ThemeEnum } from "../../utils/types"
+import { add, getEnumFromPath, remove } from "../../utils/utils"
+import { Button, ButtonBlock, ButtonLink } from "../Button/Button"
 import Link from "../Link/Link"
 import "./Navbar.css"
+import Icon from "../Icon"
 
 type NavType = {
-  page: PageEnum,
   theme: ThemeEnum,
   setTheme: () => void,
-  setPage: (page: PageEnum) => void,
-  setIndex: () => void
 }
 
 const name = ["nav-home","nav-post", "nav-about"]
@@ -18,27 +19,19 @@ const title = ["Recentes", "AtCom", "Sobre"]
 const themeIcon = ["Sun", "Moon"]
 const themeText = ["Modo Claro", "Modo Escuro"]
 
-function Nav(prop: NavType){
-  const { page, theme, setTheme, setPage, setIndex } = prop
-  const { Home, About } = PageEnum
-
-  function changePage(page: PageEnum) {
-    scrollToTop()
-    setIndex()
-    setPage(page)
-  }
+function Nav({ theme, setTheme }: NavType){
+  const path = getEnumFromPath(usePathname())
   
   return(
-    <nav className={name[page]}>
+    <nav className={name[path]}>
       <span className="left-side">
-        <ButtonLink to="/" onClick={() => changePage(Home)}>
-          <h1>{title[page]}</h1>
+        <ButtonLink to="/">
+          <h1>{title[path]}</h1>
         </ButtonLink>
       </span>
       <span className="right-side"> 
-        <ButtonLink 
-          icon="Exclamation" to="/about" onClick={() => changePage(About)}
-        >
+        <ButtonLink to="/about">
+          <Icon name="Exclamation"/>
           <h3>Sobre</h3>
         </ButtonLink>
         <Button icon={themeIcon[theme]} onClick={setTheme}>
@@ -49,15 +42,15 @@ function Nav(prop: NavType){
   )
 }
 
-type NavButtonType = NavType & {index: IndexType[] | null, isMobile: boolean}
+type NavButtonType = NavType & {isMobile: boolean}
 
-const NavButton = (prop: NavButtonType) => {
-  const { page, theme, index, isMobile, setTheme, setPage, setIndex } = prop
-  const { Home, About } = PageEnum
-
+const NavButton = ({ theme, isMobile, setTheme }: NavButtonType) => {
   const [isToggle, setToggle] = useState(false)
   const [time , setTime] = useState<NodeJS.Timeout>()
+  const [index, setIndex] = useState<{href: string, text: string}[]>()
   
+  const pathname = usePathname()
+
   const buttonRef = useRef<HTMLButtonElement>(null!)
   const dropdownRef = useRef<HTMLDivElement>(null!)
 
@@ -74,12 +67,21 @@ const NavButton = (prop: NavButtonType) => {
       } 
   }
 
-  function changePage(page: PageEnum) {
-    scrollToTop()
-    setIndex()
-    setPage(page)
-  }
-
+  useEffect(() => {
+    if(pathname.startsWith("/post")){
+      const wrapper = document.getElementById("index-wrapper")
+      const items = []
+      if(wrapper && wrapper.children){
+        for (let i = 0; i < wrapper.children.length; i++)
+          items.push({
+            href: wrapper.children[i].getAttribute("href") || "",
+            text: wrapper.children[i].children[0].innerHTML
+          })
+          
+        setIndex(items)
+      } 
+    }
+  },[pathname])
   useEffect(() => {
     if(time) clearTimeout(time)
 
@@ -104,29 +106,24 @@ const NavButton = (prop: NavButtonType) => {
       icon="Home" 
       func={getFunc()}
     >
-      <div ref={dropdownRef} className="nav-dropdown">
+      <div ref={dropdownRef} className="nav-dropdown nav-dropdown--none">
         {
-          page != Home &&
-          <ButtonLink to="/" onClick={() => changePage(Home)}>
+          pathname !== "/" &&
+          <ButtonLink to="/">
             <h3>Home</h3>
           </ButtonLink>
         }
         {
-          page !== About &&
-          <ButtonLink to="/About" onClick={() => changePage(About)}>
+          pathname !== "/about" &&
+          <ButtonLink to="/about">
             <h3>Sobre</h3>
           </ButtonLink>
         }
-        <Button onClick={setTheme}>
+        <ButtonBlock onClick={setTheme}>
           <h3>{themeText[theme]}</h3>
-        </Button>
-        {index && index.map((e, i) => 
-          <Link 
-            isSelf
-            key={i} 
-            name={e.text} 
-            link={`#${e.id}`} 
-          />
+        </ButtonBlock>
+        {pathname.startsWith("/post") && index && index.map((e, i) => 
+          <Link isSelf key={i} name={e.text} link={e.href}/>
         )}
       </div> 
     </Button>

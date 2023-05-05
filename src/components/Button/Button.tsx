@@ -1,24 +1,24 @@
-import { Link } from 'react-router-dom'
-import { ButtonRef } from '../../utils/types'
+import Link from 'next/link'
+import { ReactNode } from 'react'
+import { ButtonRef, DivRef } from '../../utils/types'
 import Icon from '../Icon'
 import "./Button.css"
 
 type ButtonType = {
-  buttonRef?: ButtonRef, 
-  children?: any,
+  children?: ReactNode,
   icon?: string,
   name?: "nav-button"
   onClick?: () => void,
   func?: any
-}
+} 
 
-const Button = (prop: ButtonType) => {
-  const {buttonRef, icon, name, children, onClick, func} = prop
+const Button = (prop: ButtonType & {buttonRef?: ButtonRef}) => {
+  const {buttonRef, icon, name, children, func, onClick} = prop
 
   return (
     <button 
       ref={buttonRef} 
-      className={name} 
+      className={"button " + name} 
       onClick={onClick}
       {...func}
     >
@@ -28,12 +28,26 @@ const Button = (prop: ButtonType) => {
   )
 }
 
-type ButtonLinkType = ButtonType & {to: string}
-
-const ButtonLink = (prop: ButtonLinkType) => (
-  <Link to={prop.to}>
-    <Button {...prop}/>
+const ButtonLink = ({to, children}: {to: string, children: ReactNode}) => (
+  <Link href={to} className="button">
+    {children}
   </Link>
 )
 
-export {Button, ButtonLink}
+const ButtonBlock = (prop: ButtonType & {blockRef?: DivRef}) => {
+  const {blockRef, icon, name, children, func, onClick} = prop
+
+  return (
+    <div 
+      ref={blockRef} 
+      className={"button " + name} 
+      onClick={onClick}
+      {...func}
+    >
+      {icon && <Icon name={icon}/>}
+      {children}
+    </div>
+  )
+} 
+
+export {Button, ButtonLink, ButtonBlock}
