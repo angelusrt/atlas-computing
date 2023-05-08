@@ -18,15 +18,16 @@ const Home = () => {
   const getPosts = async () => {
     await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/post/pt-br`, header)
       .then(res => res.json())
-      .then((posts: PostType[]) => 
+      .then((posts: PostType[]) => {
+        setPosts(posts)
         localStorage.setItem('posts', JSON.stringify(posts))
-      ).catch(err => console.log(err))
+      }).catch(err => console.log(err))
   }
 
   useEffect(() => {
     const item = localStorage.getItem('posts')
 
-    if(item === null) 
+    if(item == null) 
       getPosts()
     else 
       setPosts(JSON.parse(item))
