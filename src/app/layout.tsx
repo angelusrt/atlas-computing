@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { Cookie } from "../components/Cookie/Cookie"
 import { Nav, NavButton } from "../components/Navbar/Navbar"
 import { ThemeEnum } from "../utils/types"
 import { getThemePreference } from "../utils/utils"
@@ -12,6 +13,7 @@ const color = ["#171717", "#f6f6f6"]
 function RootLayout({children}: {children: React.ReactNode}){
   const [isMobile, setIsMobile] = useState(false)
   const [theme, setTheme] = useState<ThemeEnum>(ThemeEnum.Light)
+  const [isCookie, setIsCookie] = useState(true)
 
   const onTheme = () => setTheme(theme ^ 1)
 
@@ -55,6 +57,13 @@ function RootLayout({children}: {children: React.ReactNode}){
       <body className={appName[theme]}> 
         <Nav theme={theme} setTheme={onTheme}/>
         <NavButton isMobile={isMobile} theme={theme} setTheme={onTheme}/>
+        <Cookie
+          paragraph="Nós usamos cookies para melhorar sua experiência. 
+            Usamos para salvar as postagens em armazenamento local, é temporário." 
+          button="Aceitar"
+          isCookie={isCookie}
+          setIsCookie={() => setIsCookie(false)}
+        />
         {children}
       </body>
     </html>

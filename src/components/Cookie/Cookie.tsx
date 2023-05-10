@@ -1,31 +1,31 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { add } from "../../utils/utils"
 import { Button } from "../Button/Button"
 import "./Cookie.css"
 
 type CookieType = {
   paragraph: string,
-  button: string
+  button: string,
+  isCookie: boolean,
+  setIsCookie: () => void
 }
 
 const Cookie = (prop: CookieType) => {
-  const [isToggle, setIsToggle] = useState(true)
-
   const ref = useRef<HTMLDivElement>(null!)
 
   useEffect(() => {
-    if(!isToggle){
+    if(!prop.isCookie){
       add(ref, "--hide")
       setTimeout(() => add(ref, "--none"), 500)
     }
-  }, [isToggle])
+  }, [prop.isCookie])
   
   return (
     <div ref={ref} className="cookie">
       <p>{prop.paragraph}</p>
-      <Button onClick={() => setIsToggle(false)}>
+      <Button onClick={prop.setIsCookie}>
         <h3>{prop.button}</h3>
       </Button>
     </div>

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { ButtonLink } from "../components/Button/Button"
-import { Cookie } from "../components/Cookie/Cookie"
 import { header } from "../utils/utils"
 import "./Home.css"
 
@@ -36,11 +35,6 @@ const Home = () => {
   
   return(
     <div className="home">
-      <Cookie 
-        paragraph="Nós usamos cookies para melhorar sua experiência. 
-          Usamos para salvar as postagens em armazenamento local, é temporário." 
-        button="Aceitar"
-      />
       <main>
         {posts && posts.map((e, i) => 
           <article key={i}>
