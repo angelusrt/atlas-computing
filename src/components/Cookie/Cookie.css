@@ -1,0 +1,41 @@
+.App-light .cookie{
+  background-color: var(--white);
+  border: 2px solid var(--light-grey1);
+
+  -webkit-box-shadow: 8px 8px 8px 0px var(--light-grey1);
+  -moz-box-shadow: 8px 8px 8px 0px var(--light-grey1);
+  box-shadow: 8px 8px 8px 0px var(--light-grey1);
+}
+.App-dark .cookie{
+  background-color: var(--black2);
+  border: 2px solid var(--black1);
+  
+  -webkit-box-shadow: 8px 8px 8px 0px #080808;
+  -moz-box-shadow: 8px 8px 8px 0px #080808;
+  box-shadow: 8px 8px 8px 0px #080808;
+}
+
+.cookie{
+  opacity: 1;
+  position: fixed;
+  inset: auto 20px 20px 20px;
+  max-width: 500px;
+  z-index: 2;
+  border-radius: 10px;
+  padding: 20px;
+  transition: opacity .5s;
+}
+.cookie p{
+  margin-bottom: 20px;
+}
+.cookie button{
+  margin-left: 0;
+}
+
+.cookie--hide{
+  opacity: 0;
+  transition: opacity .5s;
+}
+.cookie--none{
+  display: none;
+}
