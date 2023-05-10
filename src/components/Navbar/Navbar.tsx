@@ -82,18 +82,17 @@ const NavButton = ({ theme, isMobile, setTheme }: NavButtonType) => {
       } 
     }
   },[pathname])
+
   useEffect(() => {
     if(time) clearTimeout(time)
 
     if(isToggle){
-      add(buttonRef, "--hover")
-
       remove(dropdownRef, "--none")
+      add(buttonRef, "--hover")
       setTime(setTimeout(() => add(dropdownRef, "--show"), 10))
     }
     else{
       remove(buttonRef, "--hover")
-
       remove(dropdownRef, "--show")
       setTime(setTimeout(() => add(dropdownRef, "--none"), 500))
     }
