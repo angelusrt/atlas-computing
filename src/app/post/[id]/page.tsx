@@ -8,8 +8,10 @@ import "./Post.css"
 type DataType = {
   id: number,
   date: string,
-  devs: {name: string, description: string}[],
-  contents: {title: string, markdown: string}[],
+  name: string,
+  description: string,
+  title: string,
+  markdown: string
   tags: {name: string}[]
 }
 
@@ -21,7 +23,6 @@ type PostType = {
 
 const getPost = async (language: string, id: string) => { 
   const url = `${process.env.NEXT_PUBLIC_HOST}/api/post/${language}/${id}`
-  
   const data: PostType = {data: null!, markdown: '', index: null!}
 
   await fetch(url, header)
@@ -29,7 +30,7 @@ const getPost = async (language: string, id: string) => {
     .then((post: DataType[]) => {
       data.data = post[0]
 
-      const md = compiler(post[0].contents[0].markdown)
+      const md = compiler(post[0].markdown)
       data.markdown = md
 
       const index: IndexType[] = md.props.children
@@ -47,18 +48,18 @@ const Post = async (prop: {params: {id: string}}) => {
 
   return (
     <div className="post">
-      {data && data.tags && data.contents[0] && data.date && 
+      {data && data.tags && data.title && data.date && 
         <header>
           <div>
             {data.tags.map((e, i) => 
               <Link name={e.name} key={i} link={`#${e.name}`} isSelf/>
             )}
           </div>
-          <h1>{data.contents[0].title}</h1>
+          <h1>{data.title}</h1>
           <h4>{new Date(data.date).toLocaleDateString('en-GB')}</h4>
         </header>
       }
-      {data && data.devs[0] && markdown &&
+      {data && data.name && data.description && markdown &&
         <main>
           <article>
             <div>{markdown}</div>
@@ -66,8 +67,8 @@ const Post = async (prop: {params: {id: string}}) => {
           <aside>
             <section className="post-aside-actor">
               <h3>Autor:</h3>
-              <h2>{data.devs[0].name}</h2>
-              <h3>{data.devs[0].description}</h3>
+              <h2>{data.name}</h2>
+              <h3>{data.description}</h3>
             </section>
             <section className="post-aside-index">
               <h3>Índice:</h3>

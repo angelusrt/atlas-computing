@@ -8,7 +8,7 @@ import "./Home.css"
 
 type PostType = {
   id: number,
-  contents: {title: string}[],
+  title: string,
   date: number,
   tags: {name: string}[],
 }
@@ -42,26 +42,19 @@ const Home = () => {
         button="Aceitar"
       />
       <main>
-        {posts && posts.map((e, i) => <Post key={i} data={e}/>)}
+        {posts && posts.map((e, i) => 
+          <article key={i}>
+            <div>
+              {e.tags.map((e, i) => <a key={i}>{`#${e.name}`}</a>)}
+            </div>
+            <ButtonLink to={`/post/${e.id}`}> 
+              <h2>{e.title}</h2>
+            </ButtonLink>
+            <h4>{new Date(e.date).toLocaleDateString('en-GB')}</h4>
+          </article>
+        )}
       </main>
     </div>
-  )
-}
-
-function Post({data}: {data: PostType}) {
-  const {date, tags, contents, id} = data
-  const {title} = contents[0]
-
-  return (
-    <article>
-      <div>
-        {tags.map((e, i) => <a key={i}>{`#${e.name}`}</a>)}
-      </div>
-      <ButtonLink to={`/post/${id}`}> 
-        <h2>{title}</h2>
-      </ButtonLink>
-      <h4>{new Date(date).toLocaleDateString('en-GB')}</h4>
-    </article>
   )
 }
 
