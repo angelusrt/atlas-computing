@@ -14,6 +14,7 @@ function RootLayout({children}: {children: React.ReactNode}){
   const [isMobile, setIsMobile] = useState(false)
   const [theme, setTheme] = useState<ThemeEnum>(ThemeEnum.Light)
   const [isCookie, setIsCookie] = useState(true)
+  const [language, setLanguage] = useState<"pt-br" | "en-us">("pt-br")
 
   const onTheme = () => setTheme(theme ^ 1)
 
@@ -55,8 +56,8 @@ function RootLayout({children}: {children: React.ReactNode}){
         <meta property="twitter:image" content="https://storage.googleapis.com/atlascomputing-images/AtlasComputingScreenshot.png"/>
       </head>
       <body className={appName[theme]}> 
-        <Nav theme={theme} setTheme={onTheme}/>
-        <NavButton isMobile={isMobile} theme={theme} setTheme={onTheme}/>
+        <Nav language={language} theme={theme} setTheme={onTheme}/>
+        <NavButton language={language} isMobile={isMobile} theme={theme} setTheme={onTheme}/>
         <Cookie
           paragraph="Nós usamos cookies para melhorar sua experiência. 
             Usamos para salvar as postagens em armazenamento local, é temporário." 

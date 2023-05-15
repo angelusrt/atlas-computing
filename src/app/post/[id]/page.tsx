@@ -28,6 +28,8 @@ const getPost = async (language: string, id: string) => {
   await fetch(url, header)
     .then(res => res.json())
     .then((post: DataType[]) => {
+      if(post.length === 0) return null
+
       data.data = post[0]
 
       const md = compiler(post[0].markdown)

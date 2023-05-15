@@ -6,36 +6,35 @@ import { ThemeEnum } from "../../utils/types"
 import { add, getEnumFromPath, remove } from "../../utils/utils"
 import { Button, ButtonBlock, ButtonLink } from "../Button/Button"
 import Link from "../Link/Link"
-import "./Navbar.css"
 import Icon from "../Icon"
+import data from "../../data/data.json"
+import "./Navbar.css"
 
 type NavType = {
+  language: "pt-br" | "en-us",
   theme: ThemeEnum,
   setTheme: () => void,
 }
 
-const name = ["nav-home","nav-post", "nav-about"]
-const title = ["Recentes", "AtCom", "Sobre"]
 const themeIcon = ["Sun", "Moon"]
-const themeText = ["Modo Claro", "Modo Escuro"]
 
-function Nav({ theme, setTheme }: NavType){
+function Nav({ language, theme, setTheme }: NavType){
   const path = getEnumFromPath(usePathname())
   
   return(
-    <nav className={name[path]}>
+    <nav>
       <span className="left-side">
         <ButtonLink to="/">
-          <h1>{title[path]}</h1>
+          <h1>{data[language].titles[path]}</h1>
         </ButtonLink>
       </span>
       <span className="right-side"> 
         <ButtonLink to="/about">
           <Icon name="Exclamation"/>
-          <h3>Sobre</h3>
+          <h3>{data[language].titles[2]}</h3>
         </ButtonLink>
         <Button icon={themeIcon[theme]} onClick={setTheme}>
-          <h3>{themeText[theme]}</h3>
+          <h3>{data[language].themes[theme]}</h3>
         </Button>
       </span>
     </nav> 
@@ -44,7 +43,7 @@ function Nav({ theme, setTheme }: NavType){
 
 type NavButtonType = NavType & {isMobile: boolean}
 
-const NavButton = ({ theme, isMobile, setTheme }: NavButtonType) => {
+const NavButton = ({ language, theme, isMobile, setTheme }: NavButtonType) => {
   const [isToggle, setToggle] = useState(false)
   const [time , setTime] = useState<NodeJS.Timeout>()
   const [index, setIndex] = useState<{href: string, text: string}[]>()
@@ -115,11 +114,11 @@ const NavButton = ({ theme, isMobile, setTheme }: NavButtonType) => {
         {
           pathname !== "/about" &&
           <ButtonLink to="/about">
-            <h3>Sobre</h3>
+            <h3>{data[language].titles[2]}</h3>
           </ButtonLink>
         }
         <ButtonBlock onClick={setTheme}>
-          <h3>{themeText[theme]}</h3>
+          <h3>{data[language].themes[theme]}</h3>
         </ButtonBlock>
         {pathname.startsWith("/post") && index && index.map((e, i) => 
           <Link isSelf key={i} name={e.text} link={e.href}/>
