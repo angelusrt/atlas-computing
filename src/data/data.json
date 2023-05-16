@@ -1,10 +1,14 @@
-{
-  "pt-br": {
+[
+  {
     "titles": ["Recentes", "AtCom", "Sobre"],
     "themes": ["Modo claro", "Modo escuro"] 
   },
-  "en-us": {
+  {
     "titles": ["Newsfeed", "AtCom", "About"],
     "themes": ["Light mode", "Dark mode"]
+  },
+  {
+    "titles": ["News", "AtCom", "Über"],
+    "themes": ["Licht-modus", "Dunkler-modus"]
   }
-}
+]

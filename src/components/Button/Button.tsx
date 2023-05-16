@@ -7,7 +7,7 @@ import "./Button.css"
 type ButtonType = {
   children?: ReactNode,
   icon?: string,
-  name?: "nav-button"
+  name?: "nav-button" | "button-lang"
   onClick?: () => void,
   func?: any
 } 

@@ -9,6 +9,13 @@
   background-color: var(--black2);
   border: 2px solid var(--black1);
 }
+
+.App-light .nav-button hr{
+  border: 1px solid var(--light-grey1);
+}
+.App-dark .nav-button hr{
+  border: 1px solid var(--black1);
+}
 /* Globals */
 
 nav{
@@ -31,6 +38,15 @@ nav span:first-of-type{
 nav span:last-of-type{
   display: none;
   justify-content: flex-end;
+}
+
+.nav-button hr{
+  width: calc(100% + 36px);
+  margin: 20px -20px;
+}
+.nav-button .lang-wrapper{
+  display: flex;
+  flex-direction: row;
 }
 
 .nav-dropdown{

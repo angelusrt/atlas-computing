@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
-import { ThemeEnum } from "../../utils/types"
+import { LangEnum, ThemeEnum } from "../../utils/types"
 import { add, getEnumFromPath, remove } from "../../utils/utils"
 import { Button, ButtonBlock, ButtonLink } from "../Button/Button"
 import Link from "../Link/Link"
@@ -11,39 +11,42 @@ import data from "../../data/data.json"
 import "./Navbar.css"
 
 type NavType = {
-  language: "pt-br" | "en-us",
+  lang: LangEnum,
   theme: ThemeEnum,
   setTheme: () => void,
 }
 
 const themeIcon = ["Sun", "Moon"]
 
-function Nav({ language, theme, setTheme }: NavType){
+function Nav({ lang, theme, setTheme }: NavType){
   const path = getEnumFromPath(usePathname())
   
   return(
     <nav>
       <span className="left-side">
         <ButtonLink to="/">
-          <h1>{data[language].titles[path]}</h1>
+          <h1>{data[lang].titles[path]}</h1>
         </ButtonLink>
       </span>
       <span className="right-side"> 
         <ButtonLink to="/about">
           <Icon name="Exclamation"/>
-          <h3>{data[language].titles[2]}</h3>
+          <h3>{data[lang].titles[2]}</h3>
         </ButtonLink>
         <Button icon={themeIcon[theme]} onClick={setTheme}>
-          <h3>{data[language].themes[theme]}</h3>
+          <h3>{data[lang].themes[theme]}</h3>
         </Button>
       </span>
     </nav> 
   )
 }
 
-type NavButtonType = NavType & {isMobile: boolean}
+type NavButtonType = NavType & {
+  isMobile: boolean, 
+  setLang: (state: LangEnum) => void
+}
 
-const NavButton = ({ language, theme, isMobile, setTheme }: NavButtonType) => {
+const NavButton = ({ lang, theme, isMobile, setTheme, setLang }: NavButtonType) => {
   const [isToggle, setToggle] = useState(false)
   const [time , setTime] = useState<NodeJS.Timeout>()
   const [index, setIndex] = useState<{href: string, text: string}[]>()
@@ -114,12 +117,25 @@ const NavButton = ({ language, theme, isMobile, setTheme }: NavButtonType) => {
         {
           pathname !== "/about" &&
           <ButtonLink to="/about">
-            <h3>{data[language].titles[2]}</h3>
+            <h3>{data[lang].titles[2]}</h3>
           </ButtonLink>
         }
         <ButtonBlock onClick={setTheme}>
-          <h3>{data[language].themes[theme]}</h3>
+          <h3>{data[lang].themes[theme]}</h3>
         </ButtonBlock>
+        <hr/>
+        <div className="lang-wrapper">
+          <ButtonBlock onClick={() => setLang(LangEnum.PT)}>
+            <h3>PT</h3>
+          </ButtonBlock>
+          <ButtonBlock onClick={() => setLang(LangEnum.EN)}>
+            <h3>EN</h3>
+          </ButtonBlock>
+          <ButtonBlock onClick={() => setLang(LangEnum.DE)}>
+            <h3>DE</h3>
+          </ButtonBlock>
+        </div>
+        <hr/>
         {pathname.startsWith("/post") && index && index.map((e, i) => 
           <Link isSelf key={i} name={e.text} link={e.href}/>
         )}

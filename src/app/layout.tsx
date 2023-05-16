@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Cookie } from "../components/Cookie/Cookie"
 import { Nav, NavButton } from "../components/Navbar/Navbar"
-import { ThemeEnum } from "../utils/types"
+import { LangEnum, ThemeEnum } from "../utils/types"
 import { getThemePreference } from "../utils/utils"
 import "./globals.css"
 
@@ -14,7 +14,7 @@ function RootLayout({children}: {children: React.ReactNode}){
   const [isMobile, setIsMobile] = useState(false)
   const [theme, setTheme] = useState<ThemeEnum>(ThemeEnum.Light)
   const [isCookie, setIsCookie] = useState(true)
-  const [language, setLanguage] = useState<"pt-br" | "en-us">("pt-br")
+  const [lang, setLang] = useState<LangEnum>(LangEnum.PT)
 
   const onTheme = () => setTheme(theme ^ 1)
 
@@ -56,8 +56,14 @@ function RootLayout({children}: {children: React.ReactNode}){
         <meta property="twitter:image" content="https://storage.googleapis.com/atlascomputing-images/AtlasComputingScreenshot.png"/>
       </head>
       <body className={appName[theme]}> 
-        <Nav language={language} theme={theme} setTheme={onTheme}/>
-        <NavButton language={language} isMobile={isMobile} theme={theme} setTheme={onTheme}/>
+        <Nav lang={lang} theme={theme} setTheme={onTheme}/>
+        <NavButton 
+          lang={lang} 
+          isMobile={isMobile} 
+          theme={theme} 
+          setTheme={onTheme}
+          setLang={(s) => setLang(s)}
+        />
         <Cookie
           paragraph="Nós usamos cookies para melhorar sua experiência. 
             Usamos para salvar as postagens em armazenamento local, é temporário." 
