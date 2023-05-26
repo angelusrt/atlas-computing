@@ -43,14 +43,14 @@ function RootLayout({children}: {children: React.ReactNode}){
         <link rel="manifest" href="manifest.json" />
 
         <meta property="og:type" content="website"/>
-        <meta property="og:url" content="https://atlas-computing.vercel.app/"/>
+        <meta property="og:url" content="https://blog.atlascomputing.com.br/"/>
         <meta property="og:site_name" content="AtlasComputing"/>
         <meta property="og:title" content="AtlasComputing - Blog de programação"/>
         <meta property="og:description" content="Explore artigos referente a desenvolvimento com react e javascript."/>
         <meta property="og:image" content="https://storage.googleapis.com/atlascomputing-images/AtlasComputingScreenshot.png"/>
 
         <meta property="twitter:card" content="summary_large_image"/>
-        <meta property="twitter:url" content="https://atlas-computing.vercel.app/"/>
+        <meta property="twitter:url" content="https://blog.atlascomputing.com.br/"/>
         <meta property="twitter:title" content="AtlasComputing - Blog de programação"/>
         <meta property="twitter:description" content="Explore artigos referente a desenvolvimento com react e javascript."/>
         <meta property="twitter:image" content="https://storage.googleapis.com/atlascomputing-images/AtlasComputingScreenshot.png"/>
