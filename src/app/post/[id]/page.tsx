@@ -3,7 +3,10 @@ import { ReactNode } from "react"
 import Link from "../../../components/Link/Link"
 import { IndexType } from "../../../utils/types"
 import { header } from "../../../utils/utils"
+import dotenv from "dotenv"
 import "./Post.css"
+
+dotenv.config()
 
 type DataType = {
   id: number,
