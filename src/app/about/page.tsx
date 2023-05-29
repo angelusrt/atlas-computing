@@ -1,9 +1,10 @@
+"use client"
+
 import { capitalize, header } from "../../utils/utils"
+import { ReactNode, useContext } from "react"
+import { langContext } from "../layout"
 import Link from "../../components/Link/Link"
 import "./About.css"
-import { ReactNode, useContext } from "react"
-import { langDic } from "../../utils/types"
-import { langContext } from "../layout"
 
 type DevType = {
   name: string,
