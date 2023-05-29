@@ -3,6 +3,7 @@
 import { capitalize, header } from "../../utils/utils"
 import { ReactNode, useContext } from "react"
 import { langContext } from "../layout"
+import { LangEnum } from "../../utils/types"
 import Link from "../../components/Link/Link"
 import "./About.css"
 
@@ -41,7 +42,7 @@ const about: [string, string, string] = [
 const About = async () => {
   const dev = await getAbout()
 
-  const lang = useContext(langContext)
+  const lang: LangEnum = useContext(langContext) || 0
 
   return (
     <div className="about">
