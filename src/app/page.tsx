@@ -1,9 +1,11 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ButtonLink } from "../components/Button/Button"
 import { header } from "../utils/utils"
+import { langDic } from "../utils/types"
 import "./Home.css"
+import { langContext } from "./layout"
 
 type PostType = {
   id: number,
@@ -13,10 +15,13 @@ type PostType = {
 }
 
 const Home = () => {
-  const [posts, setPosts] = useState<PostType[]>()
+  const language = langDic[useContext(langContext)]
 
-  const getPosts = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/post/pt-br`, header)
+  const [posts, setPosts] = useState<PostType[]>()
+  const [lang, setLang] = useState<string>(language)
+
+  const getPosts = async (language: string) => {
+    await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/post/${language}`, header)
       .then(res => res.json())
       .then((posts: PostType[]) => {
         setPosts(posts)
@@ -27,11 +32,14 @@ const Home = () => {
   useEffect(() => {
     const item = localStorage.getItem('posts')
 
-    if(item == null) 
-      getPosts()
-    else 
+    if(item == null || language !== lang) {
+      setLang(language)
+      getPosts(language)
+    }
+    else {
       setPosts(JSON.parse(item))
-  },[])
+    }
+  },[language])
   
   return(
     <div className="home">
@@ -41,7 +49,7 @@ const Home = () => {
             <div>
               {e.tags.map((e, i) => <a key={i}>{`#${e.name}`}</a>)}
             </div>
-            <ButtonLink to={`/post/${e.id}`}> 
+            <ButtonLink to={`/post/${lang}/${e.id}`}> 
               <h2>{e.title}</h2>
             </ButtonLink>
             <h4>{new Date(e.date).toLocaleDateString('en-GB')}</h4>

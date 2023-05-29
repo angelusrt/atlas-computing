@@ -1,8 +1,8 @@
 import { compiler } from "markdown-to-jsx"
 import { ReactNode } from "react"
-import Link from "../../../components/Link/Link"
-import { IndexType } from "../../../utils/types"
-import { header } from "../../../utils/utils"
+import Link from "../../../../components/Link/Link"
+import { IndexType } from "../../../../utils/types"
+import { header } from "../../../../utils/utils"
 import dotenv from "dotenv"
 import "./Post.css"
 
@@ -48,8 +48,8 @@ const getPost = async (language: string, id: string) => {
   return data
 }
 
-const Post = async (prop: {params: {id: string}}) => {
-  const {data, markdown, index} = await getPost("pt-br", prop.params.id)
+const Post = async (prop: {params: {lang: string, id: string}}) => {
+  const {data, markdown, index} = await getPost(prop.params.lang, prop.params.id)
 
   return (
     <div className="post">

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, createContext} from "react"
 import { Cookie } from "../components/Cookie/Cookie"
 import { Nav, NavButton } from "../components/Navbar/Navbar"
 import { LangEnum, ThemeEnum } from "../utils/types"
@@ -9,6 +9,8 @@ import "./globals.css"
 
 const appName = ["App App-dark", "App App-light"]
 const color = ["#171717", "#f6f6f6"]
+
+const langContext = createContext(LangEnum.PT)
 
 function RootLayout({children}: {children: React.ReactNode}){
   const [isMobile, setIsMobile] = useState(false)
@@ -71,11 +73,13 @@ function RootLayout({children}: {children: React.ReactNode}){
           isCookie={isCookie}
           setIsCookie={() => setIsCookie(false)}
         />
-        {children}
+        <langContext.Provider value={lang}>
+          {children}
+        </langContext.Provider>
       </body>
     </html>
   )
 }
 
 export default RootLayout
-// export {IndexContext}
+export {langContext}
