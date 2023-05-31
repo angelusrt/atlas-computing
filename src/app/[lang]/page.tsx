@@ -1,11 +1,10 @@
 "use client"
 
-import { useContext, useEffect, useState } from "react"
-import { ButtonLink } from "../components/Button/Button"
-import { header } from "../utils/utils"
-import { langDic } from "../utils/types"
+import { useEffect, useState } from "react"
+import { ButtonLink } from "../../components/Button/Button"
+import { LangType } from "../../utils/types"
+import { getLang, header } from "../../utils/utils"
 import "./Home.css"
-import { langContext } from "./layout"
 
 type PostType = {
   id: number,
@@ -14,32 +13,28 @@ type PostType = {
   tags: {name: string}[],
 }
 
-const Home = () => {
-  const language = langDic[useContext(langContext)]
-
+const Home = ({params}: {params: {lang: string}}) => {
   const [posts, setPosts] = useState<PostType[]>()
-  const [lang, setLang] = useState<string>(language)
 
-  const getPosts = async (language: string) => {
-    await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/post/${language}`, header)
+  const getPosts = async (lang: LangType) => {
+    await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/post/${lang}`, header)
       .then(res => res.json())
       .then((posts: PostType[]) => {
         setPosts(posts)
         localStorage.setItem('posts', JSON.stringify(posts))
+        localStorage.setItem('language', lang)
       }).catch(err => console.log(err))
   }
 
   useEffect(() => {
     const item = localStorage.getItem('posts')
+    const lang = localStorage.getItem('language')
 
-    if(item == null || language !== lang) {
-      setLang(language)
-      getPosts(language)
-    }
-    else {
+    if(item == null || getLang(params.lang) !== lang) 
+      getPosts(getLang(params.lang))
+    else 
       setPosts(JSON.parse(item))
-    }
-  },[language])
+  },[params.lang])
   
   return(
     <div className="home">
@@ -49,7 +44,7 @@ const Home = () => {
             <div>
               {e.tags.map((e, i) => <a key={i}>{`#${e.name}`}</a>)}
             </div>
-            <ButtonLink to={`/post/${lang}/${e.id}`}> 
+            <ButtonLink to={`/${params.lang}/post/${e.id}`}> 
               <h2>{e.title}</h2>
             </ButtonLink>
             <h4>{new Date(e.date).toLocaleDateString('en-GB')}</h4>

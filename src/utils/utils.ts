@@ -1,10 +1,27 @@
-import { HTMLRef, PageEnum, ThemeEnum } from "./types"
+// import { usePathname } from "next/navigation"
+// import { useRouter } from "next/router"
+import { HTMLRef, langDic, LangType, PageEnum, ThemeEnum } from "./types"
 
 const header: RequestInit = {
   method: "GET",
   keepalive: true,    
   referrer: "",
   referrerPolicy: "origin",   
+}
+
+// function setLang(lang: LangType) {
+//   const router = useRouter()
+//
+//   router.push(usePathname().replace("/[A-Z]/", "/" + lang + "/"))
+// }
+
+function getLang(path: string) : LangType {
+  // const lang = pathname.slice(1, 7)
+
+  if((langDic as string[]).includes(path))
+    return path as LangType
+  else
+    return "en-us"
 }
 
 function remove(ref: HTMLRef, mod: string) {
@@ -29,11 +46,13 @@ function getThemePreference(): ThemeEnum {
 }
 
 function getEnumFromPath(pathname: string): PageEnum {
-  if(pathname === "/")
+  const path = pathname.split("/")[2]
+
+  if(path === "")
     return PageEnum.Home
-  else if(pathname.startsWith("/post"))
+  else if(path === "post")
     return PageEnum.Post
-  else if(pathname === "/about")
+  else if(path === "about")
     return PageEnum.About
   else 
     return PageEnum.Home
@@ -53,5 +72,13 @@ function showModal(ref: HTMLRef, isHidden: boolean) {
 }
 
 export {
-  header, remove, add, capitalize, getThemePreference, showModal, getEnumFromPath
+  header, 
+  remove, 
+  add, 
+  capitalize, 
+  getThemePreference, 
+  showModal, 
+  getEnumFromPath,
+  getLang,
+  // setLang,
 }

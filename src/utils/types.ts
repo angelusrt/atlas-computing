@@ -16,9 +16,11 @@ type IndexType = {
   text: string
 }
 
-enum LangEnum {PT, EN, DE}
+enum LangEnum { PT, EN, DE }
 
-const langDic = ["pt-br", "en-us", "de-de"] as const
+type LangType = "pt-br" | "en-us" | "de-de"
 
-export type { HTMLRef, DivRef, ButtonRef, PostType, IndexType }
+const langDic: LangType[] = ["pt-br", "en-us", "de-de"] 
+
+export type { HTMLRef, DivRef, ButtonRef, LangType, PostType, IndexType }
 export { ThemeEnum, PageEnum, LangEnum, langDic }

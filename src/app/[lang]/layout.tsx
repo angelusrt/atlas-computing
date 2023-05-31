@@ -1,22 +1,21 @@
 "use client"
 
-import { useEffect, useState, createContext} from "react"
-import { Cookie } from "../components/Cookie/Cookie"
-import { Nav, NavButton } from "../components/Navbar/Navbar"
-import { LangEnum, ThemeEnum } from "../utils/types"
-import { getThemePreference } from "../utils/utils"
+import { useRouter } from "next/navigation"
+import { ReactNode, useEffect, useState} from "react"
+import { Cookie } from "../../components/Cookie/Cookie"
+import { Nav, NavButton } from "../../components/Navbar/Navbar"
+import { ThemeEnum } from "../../utils/types"
+import { getLang, getThemePreference } from "../../utils/utils"
 import "./globals.css"
 
 const appName = ["App App-dark", "App App-light"]
 const color = ["#171717", "#f6f6f6"]
 
-const langContext = createContext(LangEnum.PT)
-
-function RootLayout({children}: {children: React.ReactNode}){
+function RootLayout({children, params}: {children: ReactNode, params: {lang: string}}){
   const [isMobile, setIsMobile] = useState(false)
   const [theme, setTheme] = useState<ThemeEnum>(ThemeEnum.Light)
   const [isCookie, setIsCookie] = useState(true)
-  const [lang, setLang] = useState<LangEnum>(LangEnum.PT)
+  const router = useRouter()
 
   const onTheme = () => setTheme(theme ^ 1)
 
@@ -40,8 +39,8 @@ function RootLayout({children}: {children: React.ReactNode}){
           content="Explore artigos referente a desenvolvimento com react e javascript."
         />
 
-        <link rel="icon" href="favicon.ico" />
         <link rel="apple-touch-icon" href="AtlasComputing.png" />
+        <link rel="icon" href="favicon.ico" />
         <link rel="manifest" href="manifest.json" />
 
         <meta property="og:type" content="website"/>
@@ -58,13 +57,13 @@ function RootLayout({children}: {children: React.ReactNode}){
         <meta property="twitter:image" content="https://storage.googleapis.com/atlascomputing-images/AtlasComputingScreenshot.png"/>
       </head>
       <body className={appName[theme]}> 
-        <Nav lang={lang} theme={theme} setTheme={onTheme}/>
+        <Nav lang={getLang(params.lang)} theme={theme} setTheme={onTheme}/>
         <NavButton 
-          lang={lang} 
-          isMobile={isMobile} 
-          theme={theme} 
-          setTheme={onTheme}
-          setLang={(s) => setLang(s)}
+					lang={getLang(params.lang)} 
+					isMobile={isMobile} 
+					theme={theme} 
+          router={router}
+					setTheme={onTheme}
         />
         <Cookie
           paragraph="Nós usamos cookies para melhorar sua experiência. 
@@ -73,13 +72,10 @@ function RootLayout({children}: {children: React.ReactNode}){
           isCookie={isCookie}
           setIsCookie={() => setIsCookie(false)}
         />
-        <langContext.Provider value={lang}>
-          {children}
-        </langContext.Provider>
+        {children}
       </body>
     </html>
   )
 }
 
 export default RootLayout
-export {langContext}
