@@ -22,7 +22,7 @@ const Home = ({params}: {params: {lang: string}}) => {
       .then((posts: PostType[]) => {
         setPosts(posts)
         localStorage.setItem('posts', JSON.stringify(posts))
-        localStorage.setItem('language', lang)
+        localStorage.setItem('language', JSON.stringify(lang))
       }).catch(err => console.log(err))
   }
 
@@ -30,7 +30,7 @@ const Home = ({params}: {params: {lang: string}}) => {
     const item = localStorage.getItem('posts')
     const lang = localStorage.getItem('language')
 
-    if(item == null || getLang(params.lang) !== lang) 
+    if(item == null || lang == null || getLang(params.lang) !== lang) 
       getPosts(getLang(params.lang))
     else 
       setPosts(JSON.parse(item))

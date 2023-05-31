@@ -1,6 +1,6 @@
 import { compiler } from "markdown-to-jsx"
 import { ReactNode } from "react"
-import { IndexType, langDic, LangEnum } from "../../../../utils/types"
+import { IndexType } from "../../../../utils/types"
 import { getLang, header } from "../../../../utils/utils"
 import Link from "../../../../components/Link/Link"
 import dotenv from "dotenv"
