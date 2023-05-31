@@ -39,7 +39,7 @@ const Home = ({params}: {params: {lang: string}}) => {
   return(
     <div className="home">
       <main>
-        {posts && posts.map((e, i) => 
+        {posts && posts[0] && posts[0].tags && posts[0].title && posts[0].date && posts.map((e, i) => 
           <article key={i}>
             <div>
               {e.tags.map((e, i) => <a key={i}>{`#${e.name}`}</a>)}

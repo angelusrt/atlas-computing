@@ -8,22 +8,25 @@ import { ThemeEnum } from "../../utils/types"
 import { getLang, getThemePreference } from "../../utils/utils"
 import "./globals.css"
 
-const appName = ["App App-dark", "App App-light"]
-const color = ["#171717", "#f6f6f6"]
+const appNames = ["App App-dark", "App App-light"]
+const themes = ["dark", "light"]
+const colors = ["#171717", "#f6f6f6"]
 
 function RootLayout({children, params}: {children: ReactNode, params: {lang: string}}){
   const [isMobile, setIsMobile] = useState(false)
   const [theme, setTheme] = useState<ThemeEnum>(ThemeEnum.Light)
-  const [isCookie, setIsCookie] = useState(true)
   const router = useRouter()
 
-  const onTheme = () => setTheme(theme ^ 1)
-
+  const onTheme = () => {
+    localStorage.setItem('theme', themes[theme ^ 1])
+    setTheme(theme ^ 1)
+  }
+  
   useEffect(() => {
     setIsMobile(window.innerWidth < 725)
     setTheme(getThemePreference())
   }, [])
-  useEffect(() => {document.body.style.background = color[theme]}, [theme])
+  useEffect(() => {document.body.style.background = colors[theme]}, [theme])
 
   return (
     <html lang="en">
@@ -56,22 +59,16 @@ function RootLayout({children, params}: {children: ReactNode, params: {lang: str
         <meta property="twitter:description" content="Explore artigos referente a desenvolvimento com react e javascript."/>
         <meta property="twitter:image" content="https://storage.googleapis.com/atlascomputing-images/AtlasComputingScreenshot.png"/>
       </head>
-      <body className={appName[theme]}> 
+      <body className={appNames[theme]}> 
         <Nav lang={getLang(params.lang)} theme={theme} setTheme={onTheme}/>
         <NavButton 
-					lang={getLang(params.lang)} 
-					isMobile={isMobile} 
-					theme={theme} 
+          lang={getLang(params.lang)} 
+          isMobile={isMobile} 
+          theme={theme} 
           router={router}
-					setTheme={onTheme}
+          setTheme={onTheme}
         />
-        <Cookie
-          paragraph="Nós usamos cookies para melhorar sua experiência. 
-            Usamos para salvar as postagens em armazenamento local, é temporário." 
-          button="Aceitar"
-          isCookie={isCookie}
-          setIsCookie={() => setIsCookie(false)}
-        />
+        <Cookie lang={getLang(params.lang)}/>
         {children}
       </body>
     </html>

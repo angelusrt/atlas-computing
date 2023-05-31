@@ -37,9 +37,14 @@ function capitalize(text: string): string {
 }
 
 function getThemePreference(): ThemeEnum {
+  const themePreference = localStorage.getItem('theme')
   const prefersDarkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
 
-  if(prefersDarkTheme)
+  if(themePreference == "light")
+    return ThemeEnum.Light
+  else if(themePreference == "dark")
+    return ThemeEnum.Dark
+  else if(prefersDarkTheme)
     return ThemeEnum.Dark
   else 
     return ThemeEnum.Light

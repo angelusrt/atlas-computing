@@ -2,16 +2,22 @@
     "pt-br": {
     "titles": ["Recentes", "AtCom", "Sobre"],
     "themes": ["Modo claro", "Modo escuro"],
-    "about": "O blog do Atlas Computing trata de assuntos como programação, design, tecnologia e afins. Ele foi criado com o intuito de se desafiar a aprender diversos aspectos da tecnologi assim como imagem e escrita. Tem como contribuintes, além de outros:"
+    "about": "O blog do Atlas Computing trata de assuntos como programação, design, tecnologia e afins. Ele foi criado com o intuito de se desafiar a aprender diversos aspectos da tecnologi assim como imagem e escrita. Tem como contribuintes, além de outros:",
+    "cookie": "Nós usamos cookies para melhorar sua experiência. Usamos para melhorar performance e lembrar de suas preferências como tema e língua. (Eles não saem de sua máquina)" ,
+    "cookieButton": "Aceitar"
   },
   "en-us": {
     "titles": ["Newsfeed", "AtCom", "About"],
     "themes": ["Light mode", "Dark mode"],
-    "about": "Atlas Computing blog deals with subjects like programming, design, technology and alike. It was created with the intent of challenging myself to learn the various aspects of technology as well as image and writing. It has as contributors, not limited to, but including:"
+    "about": "Atlas Computing blog deals with subjects like programming, design, technology and alike. It was created with the intent of challenging myself to learn the various aspects of technology as well as image and writing. It has as contributors, not limited to, but including:",
+    "cookie": "We use cookies to enhance your experience. We use them to enhance performance and to remember your preferences like theme and language. (They stay in your machine)",
+    "cookieButton": "Accept"
   },
   "de-de": {
     "titles": ["News", "AtCom", "Über"],
     "themes": ["Licht-modus", "Dunkler-modus"],
-    "about": "Atlas Computing blog handelt mit theme wie programming, design, technologie und so weite. Es war bildet mit der wünsche auf herausforderung meinselbst zu lernen die viele gesichte auf technologie sowie bild und schreibung. Es hat wie verfasserer, besonders:"
+    "about": "Atlas Computing blog handelt mit theme wie programming, design, technologie und so weite. Es war bildet mit der wünsche auf herausforderung meinselbst zu lernen die viele gesichte auf technologie sowie bild und schreibung. Es hat wie verfasserer, besonders:",
+    "cookie": "Wir nutzen Cookies, um Ihre Erfahrung zu verbessern. Wir nutzen sie, um die Leistung zu verbessern und Ihre Präferenzen wie Thema und Sprache zu speichern. (Sie bleiben in deiner Maschine)",
+    "cookieButton": "Akceptieren"
   }
 }

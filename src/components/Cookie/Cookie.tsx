@@ -1,32 +1,36 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { add } from "../../utils/utils"
+import { LangType } from "../../utils/types"
+import { add, remove } from "../../utils/utils"
 import { Button } from "../Button/Button"
+import data from "../../data/data.json"
 import "./Cookie.css"
 
-type CookieType = {
-  paragraph: string,
-  button: string,
-  isCookie: boolean,
-  setIsCookie: () => void
-}
-
-const Cookie = (prop: CookieType) => {
+const Cookie = ({lang}: {lang: LangType}) => {
   const ref = useRef<HTMLDivElement>(null!)
 
+  function onClick() {
+    localStorage.setItem('isCookie', JSON.stringify(true))
+    
+    add(ref, "--hide")
+    setTimeout(() => add(ref, "--none"), 500)
+  }
+  
   useEffect(() => {
-    if(!prop.isCookie){
-      add(ref, "--hide")
-      setTimeout(() => add(ref, "--none"), 500)
+    const isCookie = localStorage.getItem('isCookie')
+
+    if(isCookie != "true"){
+      remove(ref, "--none")
+      setTimeout(() => remove(ref, "--hide"), 500)
     }
-  }, [prop.isCookie])
+  }, [])
   
   return (
-    <div ref={ref} className="cookie">
-      <p>{prop.paragraph}</p>
-      <Button onClick={prop.setIsCookie}>
-        <h3>{prop.button}</h3>
+    <div ref={ref} className="cookie cookie--hide cookie--none">
+      <p>{data[lang].cookie}</p>
+      <Button onClick={onClick}>
+        <h3>{data[lang].cookieButton}</h3>
       </Button>
     </div>
   )
